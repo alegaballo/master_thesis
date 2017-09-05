@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message OffloadRequest {
+    message Requirements {
+        float cpu = 1;
+        float memory = 2;
+        float latency = 3;
+    }
+    
+    enum Type {
+    	LAMBDA = 0;
+    	STANDARD = 1;
+    }
+
+    Requirements requirements = 1;
+    Type type = 2;
+
+}
