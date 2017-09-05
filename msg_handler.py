@@ -1,17 +1,38 @@
+import  protobuf.messages_pb2 as msg_pb2
 import os
 import socketserver
 from ryu.base import app_manager
 from ryu.controller import event
 from ryu.lib import hub
 
-class MyTCPHandler(socketserver.BaseRequestHandler):
+MESSAGE_TYPES = {'offload_request': msg_pb2.OffloadRequest()}
+
+class MyTCPHandler(socketserver.StreamRequestHandler):
     def handle(self, *args):
-        # self.request is the TCP socket connected to the client
-        self.data = self.request.recv(1024).strip()
+        message = self.read_message()
         print("{} wrote:".format(self.client_address[0]))
+        print(message)
         self.server.ryu_app.send_event_to_observers(EventMsg('New Policy request'))
         # just send back the same data, but upper-cased
         self.request.sendall(self.data.upper())
+
+    def send_message(self, message):
+        size = string(message.ByteSize())
+        self.request.sendall(bytes(size + '\n'))
+        self.request.sendall(message.SerializeToString())
+
+    def read_message(self,):
+        self.data = self.rfile.readline().strip()
+
+        try:
+            msg_size = int(self.data)
+        except ValueError:
+            print('not a valid message size')
+
+        message_s = self.request.recv(msg_size)
+        message = MESSAGE_TYPES['offload_request']
+        message.MergeFromString(message_s)
+        return message
         
 class EventMsg(event.EventBase):
     def __init__(self, msg):
