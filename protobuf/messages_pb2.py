@@ -19,10 +19,58 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='messages.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0emessages.proto\"\xc8\x01\n\x0eOffloadRequest\x12\x32\n\x0crequirements\x18\x01 \x01(\x0b\x32\x1c.OffloadRequest.Requirements\x12\"\n\x04type\x18\x02 \x01(\x0e\x32\x14.OffloadRequest.Type\x1a<\n\x0cRequirements\x12\x0b\n\x03\x63pu\x18\x01 \x01(\x02\x12\x0e\n\x06memory\x18\x02 \x01(\x02\x12\x0f\n\x07latency\x18\x03 \x01(\x02\" \n\x04Type\x12\n\n\x06LAMBDA\x10\x00\x12\x0c\n\x08STANDARD\x10\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0emessages.proto\"\xae\x04\n\x0eOffloadRequest\x12\x32\n\x0crequirements\x18\x01 \x01(\x0b\x32\x1c.OffloadRequest.Requirements\x12\"\n\x04type\x18\x02 \x01(\x0e\x32\x14.OffloadRequest.Type\x12\"\n\x04task\x18\x03 \x01(\x0b\x32\x14.OffloadRequest.Task\x1a\x92\x01\n\x0cRequirements\x12\x0b\n\x03\x63pu\x18\x01 \x01(\x02\x12\x0e\n\x06memory\x18\x02 \x01(\x05\x12\x35\n\x07latency\x18\x03 \x01(\x0e\x32$.OffloadRequest.Requirements.Latency\".\n\x07Latency\x12\n\n\x06URGENT\x10\x00\x12\x0c\n\x08STANDARD\x10\x01\x12\t\n\x05LOOSE\x10\x02\x1a\xe8\x01\n\x04Task\x12\x11\n\x07task_id\x18\x01 \x01(\tH\x00\x12\x33\n\x07wrapper\x18\x02 \x01(\x0b\x32 .OffloadRequest.Task.TaskWrapperH\x00\x1a\x86\x01\n\x0bTaskWrapper\x12\x0c\n\x04name\x18\x01 \x01(\t\x12:\n\x04type\x18\x02 \x01(\x0e\x32,.OffloadRequest.Task.TaskWrapper.WrapperType\x12\x0c\n\x04task\x18\x03 \x01(\x0c\"\x1f\n\x0bWrapperType\x12\x07\n\x03JAR\x10\x00\x12\x07\n\x03\x45GG\x10\x01\x42\x0f\n\rtask_location\" \n\x04Type\x12\n\n\x06LAMBDA\x10\x00\x12\x0c\n\x08STANDARD\x10\x01\x62\x06proto3')
 )
 
 
+
+_OFFLOADREQUEST_REQUIREMENTS_LATENCY = _descriptor.EnumDescriptor(
+  name='Latency',
+  full_name='OffloadRequest.Requirements.Latency',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='URGENT', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='STANDARD', index=1, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LOOSE', index=2, number=2,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=262,
+  serialized_end=308,
+)
+_sym_db.RegisterEnumDescriptor(_OFFLOADREQUEST_REQUIREMENTS_LATENCY)
+
+_OFFLOADREQUEST_TASK_TASKWRAPPER_WRAPPERTYPE = _descriptor.EnumDescriptor(
+  name='WrapperType',
+  full_name='OffloadRequest.Task.TaskWrapper.WrapperType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='JAR', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EGG', index=1, number=1,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=495,
+  serialized_end=526,
+)
+_sym_db.RegisterEnumDescriptor(_OFFLOADREQUEST_TASK_TASKWRAPPER_WRAPPERTYPE)
 
 _OFFLOADREQUEST_TYPE = _descriptor.EnumDescriptor(
   name='Type',
@@ -41,8 +89,8 @@ _OFFLOADREQUEST_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=187,
-  serialized_end=219,
+  serialized_start=545,
+  serialized_end=577,
 )
 _sym_db.RegisterEnumDescriptor(_OFFLOADREQUEST_TYPE)
 
@@ -63,15 +111,15 @@ _OFFLOADREQUEST_REQUIREMENTS = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='memory', full_name='OffloadRequest.Requirements.memory', index=1,
-      number=2, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='latency', full_name='OffloadRequest.Requirements.latency', index=2,
-      number=3, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -80,6 +128,7 @@ _OFFLOADREQUEST_REQUIREMENTS = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _OFFLOADREQUEST_REQUIREMENTS_LATENCY,
   ],
   options=None,
   is_extendable=False,
@@ -87,8 +136,93 @@ _OFFLOADREQUEST_REQUIREMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=125,
-  serialized_end=185,
+  serialized_start=162,
+  serialized_end=308,
+)
+
+_OFFLOADREQUEST_TASK_TASKWRAPPER = _descriptor.Descriptor(
+  name='TaskWrapper',
+  full_name='OffloadRequest.Task.TaskWrapper',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='OffloadRequest.Task.TaskWrapper.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='OffloadRequest.Task.TaskWrapper.type', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='task', full_name='OffloadRequest.Task.TaskWrapper.task', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _OFFLOADREQUEST_TASK_TASKWRAPPER_WRAPPERTYPE,
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=392,
+  serialized_end=526,
+)
+
+_OFFLOADREQUEST_TASK = _descriptor.Descriptor(
+  name='Task',
+  full_name='OffloadRequest.Task',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='task_id', full_name='OffloadRequest.Task.task_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='wrapper', full_name='OffloadRequest.Task.wrapper', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[_OFFLOADREQUEST_TASK_TASKWRAPPER, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='task_location', full_name='OffloadRequest.Task.task_location',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=311,
+  serialized_end=543,
 )
 
 _OFFLOADREQUEST = _descriptor.Descriptor(
@@ -112,10 +246,17 @@ _OFFLOADREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='task', full_name='OffloadRequest.task', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
-  nested_types=[_OFFLOADREQUEST_REQUIREMENTS, ],
+  nested_types=[_OFFLOADREQUEST_REQUIREMENTS, _OFFLOADREQUEST_TASK, ],
   enum_types=[
     _OFFLOADREQUEST_TYPE,
   ],
@@ -126,12 +267,26 @@ _OFFLOADREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=19,
-  serialized_end=219,
+  serialized_end=577,
 )
 
+_OFFLOADREQUEST_REQUIREMENTS.fields_by_name['latency'].enum_type = _OFFLOADREQUEST_REQUIREMENTS_LATENCY
 _OFFLOADREQUEST_REQUIREMENTS.containing_type = _OFFLOADREQUEST
+_OFFLOADREQUEST_REQUIREMENTS_LATENCY.containing_type = _OFFLOADREQUEST_REQUIREMENTS
+_OFFLOADREQUEST_TASK_TASKWRAPPER.fields_by_name['type'].enum_type = _OFFLOADREQUEST_TASK_TASKWRAPPER_WRAPPERTYPE
+_OFFLOADREQUEST_TASK_TASKWRAPPER.containing_type = _OFFLOADREQUEST_TASK
+_OFFLOADREQUEST_TASK_TASKWRAPPER_WRAPPERTYPE.containing_type = _OFFLOADREQUEST_TASK_TASKWRAPPER
+_OFFLOADREQUEST_TASK.fields_by_name['wrapper'].message_type = _OFFLOADREQUEST_TASK_TASKWRAPPER
+_OFFLOADREQUEST_TASK.containing_type = _OFFLOADREQUEST
+_OFFLOADREQUEST_TASK.oneofs_by_name['task_location'].fields.append(
+  _OFFLOADREQUEST_TASK.fields_by_name['task_id'])
+_OFFLOADREQUEST_TASK.fields_by_name['task_id'].containing_oneof = _OFFLOADREQUEST_TASK.oneofs_by_name['task_location']
+_OFFLOADREQUEST_TASK.oneofs_by_name['task_location'].fields.append(
+  _OFFLOADREQUEST_TASK.fields_by_name['wrapper'])
+_OFFLOADREQUEST_TASK.fields_by_name['wrapper'].containing_oneof = _OFFLOADREQUEST_TASK.oneofs_by_name['task_location']
 _OFFLOADREQUEST.fields_by_name['requirements'].message_type = _OFFLOADREQUEST_REQUIREMENTS
 _OFFLOADREQUEST.fields_by_name['type'].enum_type = _OFFLOADREQUEST_TYPE
+_OFFLOADREQUEST.fields_by_name['task'].message_type = _OFFLOADREQUEST_TASK
 _OFFLOADREQUEST_TYPE.containing_type = _OFFLOADREQUEST
 DESCRIPTOR.message_types_by_name['OffloadRequest'] = _OFFLOADREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -144,12 +299,28 @@ OffloadRequest = _reflection.GeneratedProtocolMessageType('OffloadRequest', (_me
     # @@protoc_insertion_point(class_scope:OffloadRequest.Requirements)
     ))
   ,
+
+  Task = _reflection.GeneratedProtocolMessageType('Task', (_message.Message,), dict(
+
+    TaskWrapper = _reflection.GeneratedProtocolMessageType('TaskWrapper', (_message.Message,), dict(
+      DESCRIPTOR = _OFFLOADREQUEST_TASK_TASKWRAPPER,
+      __module__ = 'messages_pb2'
+      # @@protoc_insertion_point(class_scope:OffloadRequest.Task.TaskWrapper)
+      ))
+    ,
+    DESCRIPTOR = _OFFLOADREQUEST_TASK,
+    __module__ = 'messages_pb2'
+    # @@protoc_insertion_point(class_scope:OffloadRequest.Task)
+    ))
+  ,
   DESCRIPTOR = _OFFLOADREQUEST,
   __module__ = 'messages_pb2'
   # @@protoc_insertion_point(class_scope:OffloadRequest)
   ))
 _sym_db.RegisterMessage(OffloadRequest)
 _sym_db.RegisterMessage(OffloadRequest.Requirements)
+_sym_db.RegisterMessage(OffloadRequest.Task)
+_sym_db.RegisterMessage(OffloadRequest.Task.TaskWrapper)
 
 
 # @@protoc_insertion_point(module_scope)

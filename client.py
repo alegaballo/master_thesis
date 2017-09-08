@@ -7,14 +7,16 @@ data = " ".join(sys.argv[1:])
 
 # Create a socket (SOCK_STREAM means a TCP socket)
 msg = msg_pb2.OffloadRequest()
-msg.type = msg_pb2.OffloadRequest.STANDARD
-req = msg_pb2.OffloadRequest.Requirements()
-req.memory = 0.5
-req.cpu = .9
-req.latency = 1.2
-msg.requirements.CopyFrom(req)
-print(msg)
-
+msg.type = msg_pb2.OffloadRequest.LAMBDA
+msg.requirements.cpu = 0.5
+msg.requirements.memory = 50
+msg.requirements.latency = msg_pb2.OffloadRequest.Requirements.URGENT
+msg.task.wrapper.name = 'task 1'
+msg.task.wrapper.type = msg_pb2.OffloadRequest.Task.TaskWrapper.JAR
+with open('sample.txt', 'rb') as f:
+	jar = f.read()
+print(type(jar))
+msg.task.wrapper.task = jar
 srz = msg.SerializeToString()
 size = msg.ByteSize()
 print(msg.ByteSize())

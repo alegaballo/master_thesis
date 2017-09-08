@@ -2,9 +2,15 @@ syntax = "proto3";
 
 message OffloadRequest {
     message Requirements {
+        enum Latency {
+            URGENT = 0;
+            STANDARD = 1;
+            LOOSE = 2;
+        }
+
         float cpu = 1;
-        float memory = 2;
-        float latency = 3;
+        int32 memory = 2;
+        Latency latency = 3;
     }
     
     enum Type {
@@ -12,7 +18,26 @@ message OffloadRequest {
     	STANDARD = 1;
     }
 
+    message Task {
+        message TaskWrapper {
+            enum WrapperType {
+                JAR = 0;
+                EGG = 1;
+            }
+
+            string name = 1;
+            WrapperType type = 2;
+            bytes task = 3;
+        }
+
+        oneof task_location {
+            string task_id = 1;
+            TaskWrapper wrapper = 2;
+        }
+    }
+
     Requirements requirements = 1;
     Type type = 2;
+    Task task = 3;
 
 }
