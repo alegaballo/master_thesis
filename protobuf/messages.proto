@@ -41,3 +41,29 @@ message OffloadRequest {
     Task task = 3;
 
 }
+
+message Response{
+    enum Result {
+        OK = 0;
+        INVALID_MSG_SIZE = 1;
+        INVALID_REQUEST = 2;
+    }
+
+    Result result = 1;
+    string msg = 2;
+}
+
+message Message{
+    enum Type {
+        OFFLOAD_REQUEST = 0;
+        RESPONSE = 1;
+        TASK = 2;
+    }
+
+    Type type = 1;
+    oneof msg_type {
+        OffloadRequest off_req = 2;
+        OffloadRequest.Task task = 3;
+        Response response = 4;
+    }
+}
