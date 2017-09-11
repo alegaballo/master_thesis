@@ -3,7 +3,7 @@ import socket
 import sys
 import time
 
-HOST, PORT = "localhost", 9996
+HOST, PORT = "localhost", 9999
 data = " ".join(sys.argv[1:])
 
 message = msg_pb2.OffloadRequest()
@@ -21,10 +21,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     # Connect to server and send data
     sock.connect((HOST, PORT))
     sock.sendall(bytes(str(size) + "\n", "utf-8"))
-    print(sock.recv(1024).strip())
+    answer_s = sock.recv(1024)
+    answer = msg_pb2.Message()
+    answer.ParseFromString(answer_s)
+    print(answer)
     sock.sendall(message.SerializeToString())
     # Receive data from the server and shut down
     received = str(sock.recv(1024), "utf-8")
-
-print("Sent:     {}".format(message))
-print("Received: {}".format(received))

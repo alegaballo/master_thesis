@@ -4,34 +4,35 @@ import socketserver
 
 
 MESSAGE_TYPES = {'offload_request': msg_pb2.OffloadRequest()}
+RESPONSES = {'OK': msg_pb2.Response.OK, 'INVALID_SIZE': msg_pb2.Response.INVALID_MSG_SIZE,
+             'INVALID_REQUEST': msg_pb2.Response.INVALID_REQUEST}
 
 
 class MyTCPHandler(socketserver.StreamRequestHandler):
+    def setup(self):
+        # calling superclass method which initialize rfile
+        super(MyTCPHandler, self).setup()
+        self.SEND_MSGS = {'response': self.send_response}
+
     def handle(self, *args):
-
         message = self.read_message()
-        print("{} wrote:".format(self.client_address[0]))
-        print(message)
-        # self.server.ryu_app.send_event_to_observers(EventMsg('New Policy request'))
-        # just send back the same data, but upper-cased
-        self.data = bytes('ciao', 'utf-8')
-        self.request.sendall(self.data.upper())
+        if message:
+            print("{} wrote:".format(self.client_address[0]))
+            print(message)
 
-    def send_message(self, message):
-        size = str(message.ByteSize())
-        self.request.sendall(bytes(size + '\n'))
-        self.request.sendall(message.SerializeToString())
+            # need to scan msg content
 
-    def read_message(self):
-        self.data = self.rfile.readline().strip()
-        try:
-            msg_size = int(self.data)
-        except ValueError:
-            print('not a valid message size')
-            # send error message
+    def send_message(self, MESSAGE_TYPE, **kwargs):
+        self.SEND_MSGS[MESSAGE_TYPE](**kwargs)
 
-        print('Expected message size', msg_size)
-        self.request.sendall(bytes('OK\n', 'utf-8'))
+    def send_response(self, **kwargs):
+        msg = msg_pb2.Message()
+        msg.type = msg_pb2.Message.RESPONSE
+        msg.response.result = kwargs['response']
+        msg.response.msg = kwargs['msg']
+        self.request.sendall(msg.SerializeToString())
+
+    def receive_message(self, msg_size):
         received = 0
         message_s = bytes()
         while received != msg_size:
@@ -39,14 +40,31 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
             received = len(message_s)
 
         print('Received message size: {:}'.format(len(message_s)))
-        message = MESSAGE_TYPES['offload_request']
+        message = msg_pb2.Message()
         message.ParseFromString(message_s)
 
         return message
 
+    def read_message(self):
+        # reading incoming message size
+        self.data = self.rfile.readline().strip()
+
+        try:
+            msg_size = int(self.data)
+        except ValueError:
+            print('not a valid message size')
+            self.send_message('response', response=RESPONSES['INVALID_SIZE'], msg='{:} is not a valid msg size'.format(self.data))
+            return
+            # send error message
+        message = msg_pb2.Message()
+        print('Expected message size', msg_size)
+        self.send_message('response', response=RESPONSES['OK'], msg='OK')
+
+        return self.receive_message(msg_size)
+
 
 def main():
-    HOST, PORT = "localhost", 9996
+    HOST, PORT = "localhost", 9999
     server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
     server.serve_forever()
 
