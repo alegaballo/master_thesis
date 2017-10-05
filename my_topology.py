@@ -2,8 +2,10 @@ from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.util import dumpNodeConnections
 from mininet.log import setLogLevel
+from mininet.cli import CLI
 import logging
 import random
+import time
 
 logger = logging.getLogger()
 
@@ -44,10 +46,11 @@ def start_network():
     topo = CustomTopology()
     net = Mininet(topo)
     net.start()
-    print "Dumping host connections"
-    dumpNodeConnections(net.hosts)
-    print "Testing network connectivity"
-    net.pingAll()
+    # spanning tree is slow, it needs up to 40 seconds to converge, pingall won't completely work until then
+    for sw in net.switches:
+        sw.sendCmd('ovs-vsctl set bridge {:}  stp-enable=true'.format(sw))
+     
+    CLI(net)
     net.stop()
 
 
