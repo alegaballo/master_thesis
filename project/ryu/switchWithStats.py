@@ -174,9 +174,6 @@ class SimpleSwitch13(app_manager.RyuApp):
                     # checking if the port is the incoming port for that router
                     if sw_mapping[router] == stat.match['in_port']:
                         #update count : current stats - previous stats for the specific router,switch,port triple
-                        print('{:} new: port {:} count {:} -- old: port {:} count {:}'.format(sw_name, stat.match['in_port'], stat.packet_count,
-                                                                                    self.stats[sw_name][i].match['in_port'], 
-                                                                                    self.stats[sw_name][i].packet_count))
                         self.packet_count[router][sw_name] = stat.packet_count - self.stats[sw_name][i].packet_count
                 
                 flows.append('packet_count=%s in_port=%s'%(stat.packet_count, stat.match['in_port']))
