@@ -1,12 +1,13 @@
 import inspect
 import os
+from random import randint 
 from mininext.topo import Topo
 from mininext.services.quagga import QuaggaService
 from collections import namedtuple
 
 QuaggaHost = namedtuple("QuaggaHost", "name ip loIP")
 net = None
-OUTER = 12
+OUTER = 6
 INNER = 4
 
 class MyTopo(Topo):
@@ -23,14 +24,21 @@ class MyTopo(Topo):
         quaggaBaseConfigPath = selfPath + '/configs/'
         outer = self.createQuaggRing(OUTER, quaggaSvc, quaggaBaseConfigPath)
         inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", s_name="si{:d}")
-        idx=[1,3,4,6,7,9,10,11] # indexes of the outer routers to connect with the inners
-        j=0
-        for i, ix in enumerate(idx):
-            sw = self.addSwitch("sio{:d}".format(i+1))
-            self.addLinkWithSwitch(inner[j],outer[ix],sw)     
-            j+=i%2 # 2 outer per each inner
         
-    def createQuaggRing(self, n, quaggaSvc, quaggaBaseConfigPath, r_name="r{:d}", s_name="s{:d}"):
+        # creating custom connections between inner and outer rings
+        self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("sio1"))       
+        self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("sio2"))
+        self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("sio3"))
+        self.addLinkWithSwitch(outer[3], inner[3], self.addSwitch("sio4"))
+        self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("sio5"))
+        self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("sio6"))
+        
+        
+        
+        
+        
+
+    def createQuaggRing(self, n, quaggaSvc, quaggaBaseConfigPath, r_name="r{:d}", s_name="s{:d}", bw=None):
         routers = []
         switches = []
         for i in range(n): 
@@ -49,9 +57,12 @@ class MyTopo(Topo):
 
         num_routers = len(routers)
         for i in range(num_routers):
-            self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i])
+            self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw)
+            #self.addLink(routers[i], routers[(i+1)%num_routers])
         return routers 
     
-    def addLinkWithSwitch(self, r1, r2, s):
-        self.addLink(r1,s)
-        self.addLink(s,r2)
+    def addLinkWithSwitch(self, r1, r2, s, bw=None):
+        bw=randint(5,200)
+        self.addLink(r1,s, bw=bw)
+        self.addLink(s,r2, bw=bw)
+        
