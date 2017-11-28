@@ -26,12 +26,12 @@ class MyTopo(Topo):
         inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", s_name="si{:d}")
         
         # creating custom connections between inner and outer rings
-        self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("sio1"))       
-        self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("sio2"))
-        self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("sio3"))
-        self.addLinkWithSwitch(outer[3], inner[3], self.addSwitch("sio4"))
-        self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("sio5"))
-        self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("sio6"))
+        self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("sio1",protocols='OpenFlow13'))       
+        self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("sio2", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("sio3", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[3], inner[3], self.addSwitch("sio4", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("sio5", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("sio6", protocols='OpenFlow13'))
         
         
         
@@ -53,7 +53,7 @@ class MyTopo(Topo):
             self.addNodeService(node=r_name.format(i+1), service=quaggaSvc,
                                 nodeConfig=quaggaSvcConfig)
             routers.append(quaggaContainer)
-            switches.append(self.addSwitch(s_name.format(i+1)))
+            switches.append(self.addSwitch(s_name.format(i+1),protocols='OpenFlow13'))
 
         num_routers = len(routers)
         for i in range(num_routers):
