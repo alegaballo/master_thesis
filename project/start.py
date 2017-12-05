@@ -37,7 +37,7 @@ def startNetwork():
     info('** Starting the network\n')
     global net
     net = MiniNExT(topo, controller=None, link=TCLink)
-    net.addController('c0', controller=RemoteController, ip='127.0.0.1', port=6633) 
+    c=net.addController('c0', controller=RemoteController, ip='127.0.0.1', port=6633) 
 
     #net = MiniNExT(topo, controller=Ryu) 
 
@@ -48,9 +48,9 @@ def startNetwork():
  #   time.sleep(90)
   #  simulateTraffic(net,topo.hosts())
 #    info("** Enabling spanning tree on switches\n")
-#    for sw in net.switches:
+    for sw in net.switches:
 #        sw.sendCmd('ovs-vsctl set bridge {:}  stp-enable=true'.format(sw))
-    
+        sw.start([c])    
 
     info('** Dumping host connections\n')
     dumpNodeConnections(net.hosts)
@@ -83,7 +83,7 @@ def setInterfaces(net, confFile):
                 continue
             elif params:
                 router, interface, ip = params.split(" ")
-                print(params)
+#                print(params)
                 net.get(router).setIP(ip, 24, interface)
                 # checking if switch or router
                 if "s" in router:

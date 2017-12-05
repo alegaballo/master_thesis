@@ -4,6 +4,7 @@ from random import randint
 from mininext.topo import Topo
 from mininext.services.quagga import QuaggaService
 from collections import namedtuple
+import pickle
 
 QuaggaHost = namedtuple("QuaggaHost", "name ip loIP")
 net = None
@@ -22,23 +23,31 @@ class MyTopo(Topo):
 
         # Path configurations for mounts
         quaggaBaseConfigPath = selfPath + '/configs/'
+        
+        # Initialize data structure to map each router with the port on the switch corresponding to incoming traffic
+        self.in_interface = {}
+        
         outer = self.createQuaggRing(OUTER, quaggaSvc, quaggaBaseConfigPath)
-        inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", s_name="si{:d}")
+        
+        # inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", s_name="si{:d}")
+        # test with different naming because of problem with contorller
+        inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", count=OUTER)
         
         # creating custom connections between inner and outer rings
-        self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("sio1",protocols='OpenFlow13'))       
-        self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("sio2", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("sio3", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[3], inner[3], self.addSwitch("sio4", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("sio5", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("sio6", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("s11",protocols='OpenFlow13'))       
+        self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("s12", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("s13", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[3], inner[3], self.addSwitch("s14", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("s15", protocols='OpenFlow13'))
+        self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("s16", protocols='OpenFlow13'))
         
+        print(self.in_interface)
+        # saving mapping on file
+        with open('/tmp/switch_mapping.pkl', 'wb+') as f:
+            pickle.dump(self.in_interface, f)
+            
         
-        
-        
-        
-
-    def createQuaggRing(self, n, quaggaSvc, quaggaBaseConfigPath, r_name="r{:d}", s_name="s{:d}", bw=None):
+    def createQuaggRing(self, n, quaggaSvc, quaggaBaseConfigPath, r_name="r{:d}", s_name="s{:d}", count=0, bw=None):
         routers = []
         switches = []
         for i in range(n): 
@@ -53,7 +62,7 @@ class MyTopo(Topo):
             self.addNodeService(node=r_name.format(i+1), service=quaggaSvc,
                                 nodeConfig=quaggaSvcConfig)
             routers.append(quaggaContainer)
-            switches.append(self.addSwitch(s_name.format(i+1),protocols='OpenFlow13'))
+            switches.append(self.addSwitch(s_name.format(count + i + 1),protocols='OpenFlow13'))
 
         num_routers = len(routers)
         for i in range(num_routers):
@@ -65,4 +74,12 @@ class MyTopo(Topo):
         bw=randint(5,200)
         self.addLink(r1,s, bw=bw)
         self.addLink(s,r2, bw=bw)
+        # saving the port on the switch for incoming traffic on the specific router
+        #self.in_interface.append("{:} {:} 2".format(r1, s))
+        #self.in_interface.append("{:} {:} 1".format(r2, s))
+        if s not in self.in_interface:
+            self.in_interface[s]={}
+        self.in_interface[s][r1]=2
+        self.in_interface[s][r2]=1
+        
         
