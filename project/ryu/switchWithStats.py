@@ -40,7 +40,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.monitor = hub.spawn(self._get_stats)      
         self.in_mapping = pickle.load(open('/tmp/switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
-        print(self.packet_count)
+        self.stats = {}
 
     def _init_pckt_count(self):
         # inverting saved dict to have the following dict {rx:{sy:0,sz:0}}
@@ -158,20 +158,38 @@ class SimpleSwitch13(app_manager.RyuApp):
         msg = ev.msg
         datapath = msg.datapath
         body = ev.msg.body
-        flows = [datapath.id]
-        sw_mapping =  self.in_mapping['s' + str(datapath.id)]
-        for stat in body:
+        sw_name = 's' + str(datapath.id)
+        sw_mapping =  self.in_mapping[sw_name]
+        
+        # saving the switch id in the flows
+        flows = [sw_name]
+        
+        for i,stat in enumerate(body):
             if 'in_port' in stat.match:
-                for router in sw_mapping: 
+                # for the first time when there are no old statistics
+                if sw_name not in self.stats:
+                    self.stats[sw_name]=body 
+
+                for router in sw_mapping:
                     # checking if the port is the incoming port for that router
                     if sw_mapping[router] == stat.match['in_port']:
-                        #update count
-                        self.packet_count[router] += stat.packet_count # - self.packet_count[router]
-
+                        #update count : current stats - previous stats for the specific router,switch,port triple
+                        print('{:} new: port {:} count {:} -- old: port {:} count {:}'.format(sw_name, stat.match['in_port'], stat.packet_count,
+                                                                                    self.stats[sw_name][i].match['in_port'], 
+                                                                                    self.stats[sw_name][i].packet_count))
+                        self.packet_count[router][sw_name] = stat.packet_count - self.stats[sw_name][i].packet_count
+                
                 flows.append('packet_count=%s in_port=%s'%(stat.packet_count, stat.match['in_port']))
-            else:
-                flows.append('packet_count=%s match=%s'% (stat.packet_count, stat.match))
-                # flows.append('datapath=%s packet_count=%d match=%s ' %
-               #      (datapath.id, stat.packet_count, stat.match))
-        self.logger.info(self.packet_count)
-        self.logger.info(flows)
+        
+        # only if the stats data structure has been already initialized
+        if sw_name in self.stats:
+            self.stats[sw_name]=body 
+        
+        self._print_packet_count()
+
+
+    def _print_packet_count(self):
+        for r in self.packet_count:
+            print(r, sum(self.packet_count[r].values()))
+        
+
