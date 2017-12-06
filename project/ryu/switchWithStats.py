@@ -42,6 +42,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.packet_count = self._init_pckt_count()
         self.stats = {}
 
+
     def _init_pckt_count(self):
         # inverting saved dict to have the following dict {rx:{sy:0,sz:0}}
         inverted = defaultdict(dict)
@@ -50,6 +51,7 @@ class SimpleSwitch13(app_manager.RyuApp):
                 inverted[r][k]=0
 
         return dict(inverted)
+
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -69,6 +71,7 @@ class SimpleSwitch13(app_manager.RyuApp):
                                           ofproto.OFPCML_NO_BUFFER)]
         self.add_flow(datapath, 0, match, actions)
 
+
     def add_flow(self, datapath, priority, match, actions, buffer_id=None):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
@@ -83,6 +86,7 @@ class SimpleSwitch13(app_manager.RyuApp):
             mod = parser.OFPFlowMod(datapath=datapath, priority=priority,
                                     match=match, instructions=inst)
         datapath.send_msg(mod)
+
 
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
     def _packet_in_handler(self, ev):
@@ -141,17 +145,20 @@ class SimpleSwitch13(app_manager.RyuApp):
         
         self.datapaths.add(datapath)
 
+
     def _get_stats(self):
         while True:
             for dp in self.datapaths:
                 self.switch_stats(dp)
             hub.sleep(POLLING_INTERVAL)
-    
+
+
     def switch_stats(self, datapath):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         req = parser.OFPFlowStatsRequest(datapath)
         datapath.send_msg(req)
+
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)
     def _stats_reply(self, ev):
