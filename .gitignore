@@ -1,0 +1,4 @@
+# python tmp file
+*.pyc
+# vim tmp file
+*.swp
