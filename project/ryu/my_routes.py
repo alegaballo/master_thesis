@@ -1,7 +1,8 @@
 from __future__ import print_function 
 import re
 import os
-import ipaddr as ip
+import itertools
+#import ipaddr as ip
 from collections import defaultdict
 
 
@@ -49,7 +50,7 @@ class Net:
 	self.routers = sorted(self.routers)
         #connected_routers = invert_dict(connected_networks, type='list')
         self.addr_rout=invert_dict(self.addresses)
-        self.get_path('r1', '172.168.4.2')
+        #self.get_path('r1', '172.168.4.2')
 	
 
     def get_path(self, src_router, dst_addr):
@@ -69,6 +70,30 @@ class Net:
         # returning path in terms of hop index
         return path
     
+    
+    def get_paths(self):
+        for src, dst in itertools.product(self.routers, self.destinations):
+            if self.is_valid_path(src, dst):
+                print(src, dst)
+                self.get_path(src, dst)
+
+
+    def is_valid_path(self, src, dst):
+        # check if the dst is on the same router
+        if self.addr_rout[dst] == src:
+            return False
+    
+        # checking if src is an inner router
+        # inner router ar named ri#
+        if 'i' in src:
+            return False
+
+        # checking if dst is an inner router
+        if 'i' in self.addr_rout[dst]:
+            return False
+
+        return True
+
 
     @staticmethod
     def _print_path(path):
@@ -117,4 +142,4 @@ def _invert_dict_list(dic):
 if __name__=='__main__':
     net = Net()
     net.parse_routes(ROUTES_FILE, ROUTER_CONF)
-
+    net.get_paths()
