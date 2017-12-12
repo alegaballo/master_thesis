@@ -72,10 +72,11 @@ class Net:
     
     
     def get_paths(self):
+        self.paths = []
         for src, dst in itertools.product(self.routers, self.destinations):
             if self.is_valid_path(src, dst):
-                print(src, dst)
-                self.get_path(src, dst)
+                self.paths.append(self.get_path(src, dst))
+        print(self.paths)
 
 
     def is_valid_path(self, src, dst):
