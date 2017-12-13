@@ -4,11 +4,11 @@ import os
 import itertools
 #import ipaddr as ip
 from collections import defaultdict
-
+import pickle
 
 ROUTES_FILE = '/home/mininet/miniNExT/util/routes.txt'
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
-
+OUT_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/'
 
 class Net:
 
@@ -25,7 +25,7 @@ class Net:
         self.routes = defaultdict(dict)
     
 
-    def parse_routes(self, routes_file, addr_file):
+    def parse_routes(self, routes_file, addr_file, save_mapping=False):
         # getting routers routing tables
         with open(routes_file, 'r') as f:
 	    for line in f:
@@ -51,7 +51,12 @@ class Net:
         #connected_routers = invert_dict(connected_networks, type='list')
         self.addr_rout=invert_dict(self.addresses)
         #self.get_path('r1', '172.168.4.2')
-	
+        if save_mapping:
+            with open(OUT_DIR + 'addresses.pkl', 'wb') as f:
+                pickle.dump(self.addresses, f)
+
+            with open(OUT_DIR + 'addr_rout.pkl', 'wb') as f:
+                pickle.dump(self.addr_rout, f)
 
     def get_path(self, src_router, dst_addr):
         next_hop = self.routes[src_router][Net._addr_to_net(dst_addr)]
