@@ -3,4 +3,4 @@
 # vim tmp file
 *.swp
 # quagga conf file
-./configs/
+configs/
