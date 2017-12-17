@@ -6,6 +6,8 @@ from mininext.services.quagga import QuaggaService
 from collections import namedtuple
 import pickle
 
+
+OUT_DIR='/home/mininet/miniNExT/examples/master_thesis/project/'
 QuaggaHost = namedtuple("QuaggaHost", "name ip loIP")
 net = None
 OUTER = 6
@@ -41,9 +43,9 @@ class MyTopo(Topo):
         self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("s15", protocols='OpenFlow13'))
         self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("s16", protocols='OpenFlow13'))
         
-        print(self.in_interface)
+        # print(self.in_interface)
         # saving mapping on file
-        with open('/tmp/switch_mapping.pkl', 'wb+') as f:
+        with open(OUT_DIR + 'switch_mapping.pkl', 'wb+') as f:
             pickle.dump(self.in_interface, f)
             
         
@@ -71,7 +73,9 @@ class MyTopo(Topo):
         return routers 
     
     def addLinkWithSwitch(self, r1, r2, s, bw=None):
-        bw=randint(5,200)
+        # from Ethernet 10Base-X to Gigabit Ethernet
+        bw=randint(10,1000)
+        # bw = None
         self.addLink(r1,s, bw=bw)
         self.addLink(s,r2, bw=bw)
         # saving the port on the switch for incoming traffic on the specific router
