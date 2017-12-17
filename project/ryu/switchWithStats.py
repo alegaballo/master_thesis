@@ -39,7 +39,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         # saving all switches
         self.datapaths = set()
         self.monitor = hub.spawn(self._get_stats)      
-        self.in_mapping = pickle.load(open('/tmp/switch_mapping.pkl','rb'))
+        self.in_mapping = pickle.load(open('/home/mininet/miniNExT/examples/master_thesis/project/switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
         self.stats = {}
 
@@ -170,17 +170,23 @@ class SimpleSwitch13(app_manager.RyuApp):
                 # for the first time when there are no old statistics
                 if sw_name not in self.stats:
                     self.stats[sw_name]=body 
-
+                
                 for router in sw_mapping:
                     # checking if the port is the incoming port for that router
                     if sw_mapping[router] == stat.match['in_port']:
                         #update count : current stats - previous stats for the specific router,switch,port triple
-                        self.packet_count[router][sw_name] = stat.packet_count - self.stats[sw_name][i].packet_count
-                
+                        try:
+                            self.packet_count[router][sw_name] = stat.packet_count - self.stats[sw_name][i].packet_count
+                        except IndexError:
+                            print_break_line()
+                            print(stat)
+                            print(router, sw_name, i)
+                            print(self.stats[sw_name])
+                            print_break_line()
                 flows.append('packet_count=%s in_port=%s'%(stat.packet_count, stat.match['in_port']))
         
-        # only if the stats data structure has been already initialized
-        if sw_name in self.stats:
+        # only if the stats data structure has been already initialized and contains alle the information
+        if sw_name in self.stats and len(body)==3:
             self.stats[sw_name]=body 
         
         self._print_packet_count()
@@ -193,3 +199,6 @@ class SimpleSwitch13(app_manager.RyuApp):
             # print(t, r, sum(self.packet_count[r].values()))
             counter.append(sum(self.packet_count[r].values()))
         print(counter) 
+
+def print_break_line(char='*'):
+    print(char*75)
