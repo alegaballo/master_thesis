@@ -8,6 +8,7 @@ import sys
 import atexit
 import itertools
 # patch isShellBuiltin
+import re
 import time
 import mininet.util
 import mininext.util
@@ -24,7 +25,12 @@ from mininext.cli import CLI
 from mininext.net import MiniNExT
 
 from topology import MyTopo
+import random
+import pickle
 
+
+REF_BANDWIDTH = 500
+blacklist = [('r3', 'r6'), ('r6', 'r3'), ('r4', 'r1')]
 net = None
 
 
@@ -44,34 +50,79 @@ def startNetwork():
     info('** Configuring addresses on interfaces\n')
     setInterfaces(net, "configs/interfaces")
     net.start()
-    #waiting for OSPF to converge
- #   time.sleep(90)
-  #  simulateTraffic(net,topo.hosts())
-#    info("** Enabling spanning tree on switches\n")
     for sw in net.switches:
-#        sw.sendCmd('ovs-vsctl set bridge {:}  stp-enable=true'.format(sw))
         sw.start([c])    
+    
+    # waiting for ospf to converge
+    info('\n** Waiting for OSPF to converge\n')
+    time.sleep(60)
+    simulateTraffic(net)
 
-    info('** Dumping host connections\n')
-    dumpNodeConnections(net.hosts)
+#    info("** Enabling spanning tree on switches\n")
+    
+    #info('** Dumping host connections\n')
+    #dumpNodeConnections(net.hosts)
 
-    info('** Testing network connectivity\n')
+    #info('** Testing network connectivity\n')
     # net.ping(net.hosts)
+    
+    #info('** Dumping host processes\n')
+    #for host in net.hosts:
+    #    host.cmdPrint("ps aux")
 
-    info('** Dumping host processes\n')
+    #info('** Running CLI\n')
+    #CLI(net)
+
+
+def simulateTraffic(net):
+
+    #print(hosts)
+    valid = []
+    with open('addresses.pkl', 'rb') as f:
+        rout_addr = pickle.load(f)
+    
+    with open('addr_rout.pkl', 'rb') as f:
+        addr_rout = pickle.load(f)
+
     for host in net.hosts:
-        host.cmdPrint("ps aux")
+        if 'i' not in host.name:
+            valid.append(host)
+            info('*** Starting iperf server on {:}\n'.format(host.name))
+            host.cmd('pkill iperf')
+            # using & allows to nonblocking cmd
+            host.cmd('iperf -s &', printPid=True)
+    
+    valid_addr = []
+    for host in valid:
+        valid_addr.extend(rout_addr[host.name])
 
-    info('** Running CLI\n')
-    CLI(net)
+    info('***Starting traffic simulation\n')
+    # list of (src_router, dst_ip)
+    combinations =  list(itertools.product(valid, valid_addr))
+    
+    while True:
+        random.shuffle(combinations)
+        #print(combinations)
+        for s, d in combinations:
+            d_name = addr_rout[d]
+            if is_valid_path(s.name,d_name):
+                s.cmd('iperf -t {:} -c {:} &'.format(random.randint(1,5),d))
 
+                    
+def is_valid_path(s,d):
+    if s==d:
+        return False
 
-def simulateTraffic(net, hosts):
-    print(hosts)
-    for s, d in itertools.product(hosts, hosts):
-        if s != d:
-            print(s, d)
-            net.iperf([net.get(s),net.get(d)])
+    #if 'i' in s or 'i' in d:
+    #    return False
+
+    #if s == 'r5' or d == 'r5':
+    #    return False
+
+    if (s,d) in blacklist:
+        return False
+
+    return True
 
 def setInterfaces(net, confFile):
     # conf file: router interface address
@@ -99,18 +150,16 @@ def createQuaggaConfig(networks):
     for router in networks:
         with open(CONFIG_PATH+router+"/ospfd.conf", "w+") as conf:
             conf.write("hostname {:}\n".format(router))
-            # conf.write("password {:}\n".format(router))
-            # conf.write("enable password {:}\n".format(router))
             conf.write("\nlog file /var/log/quagga/{:}.log\n".format(router))
             conf.write("\nrouter ospf\n")
+            conf.write("auto-cost reference-bandwidth {:}\n".format(REF_BANDWIDTH))
             for network in networks[router]:
                 conf.write("  network {:}\n".format(network))
 
 
 # get network address from host, to be implemented
 def getNetwork(address, prefix):
-    return address[:-1]+"0"
-
+    return re.sub("([0-9]+\.[0-9]+\.[0-9]+)\.[0-9]+", "\\1.0", address)
 
 def stopNetwork():
     "stops a network (only called on a forced cleanup)"
