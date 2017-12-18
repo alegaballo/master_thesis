@@ -28,9 +28,10 @@ from topology import MyTopo
 import random
 import pickle
 
+blacklist = [('r2', 'ri3'), ('r2', 'ri4'), ('r3', 'r6'), ('r4', 'r1'), ('r4', 'ri3'), ('r5', 'ri2'), ('r6', 'r3'), ('ri3', 'r5')]
 
 REF_BANDWIDTH = 500
-blacklist = [('r3', 'r6'), ('r6', 'r3'), ('r4', 'r1')]
+TRAFFIC_PROB = 0.7
 net = None
 
 
@@ -85,12 +86,12 @@ def simulateTraffic(net):
         addr_rout = pickle.load(f)
 
     for host in net.hosts:
-        if 'i' not in host.name:
-            valid.append(host)
-            info('*** Starting iperf server on {:}\n'.format(host.name))
-            host.cmd('pkill iperf')
-            # using & allows to nonblocking cmd
-            host.cmd('iperf -s &', printPid=True)
+        # if 'i' not in host.name:
+        valid.append(host)
+        info('*** Starting iperf server on {:}\n'.format(host.name))
+        host.cmd('pkill iperf')
+        # using & allows to nonblocking cmd
+        host.cmd('iperf -s &', printPid=True)
     
     valid_addr = []
     for host in valid:
@@ -105,8 +106,9 @@ def simulateTraffic(net):
         #print(combinations)
         for s, d in combinations:
             d_name = addr_rout[d]
-            if is_valid_path(s.name,d_name):
-                s.cmd('iperf -t {:} -c {:} &'.format(random.randint(1,5),d))
+            p = random.random()
+            if is_valid_path(s.name,d_name) and p > TRAFFIC_PROB:
+                s.cmd('iperf -t {:} -c {:} &'.format(random.randint(1,10),d))
 
                     
 def is_valid_path(s,d):
