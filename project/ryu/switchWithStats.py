@@ -39,6 +39,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         # saving all switches
         self.datapaths = set()
         self.monitor = hub.spawn(self._get_stats)      
+        self.collector = hub.spawn(self.counter)
         self.in_mapping = pickle.load(open('/home/mininet/miniNExT/examples/master_thesis/project/switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
         self.stats = {}
@@ -189,8 +190,13 @@ class SimpleSwitch13(app_manager.RyuApp):
         if sw_name in self.stats and len(body)==3:
             self.stats[sw_name]=body 
         
-        self._print_packet_count()
+        #self._print_packet_count()
 
+    
+    def counter(self):
+        while True:
+            self._print_packet_count()
+            time.sleep(POLLING_INTERVAL)
 
     def _print_packet_count(self):
         t = time.time()
