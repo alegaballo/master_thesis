@@ -12,6 +12,7 @@ QuaggaHost = namedtuple("QuaggaHost", "name ip loIP")
 net = None
 OUTER = 6
 INNER = 4
+IN_BW = 1000
 
 class MyTopo(Topo):
     def __init__(self):
@@ -36,12 +37,13 @@ class MyTopo(Topo):
         inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", count=OUTER)
         
         # creating custom connections between inner and outer rings
-        self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("s11",protocols='OpenFlow13'))       
-        self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("s12", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("s13", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[3], inner[3], self.addSwitch("s14", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("s15", protocols='OpenFlow13'))
-        self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("s16", protocols='OpenFlow13'))
+        # link in the inner ring will be faster because that's common in networks
+        self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("s11",protocols='OpenFlow13'), bw=IN_BW)
+        self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("s12", protocols='OpenFlow13'), bw=IN_BW)
+        self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("s13", protocols='OpenFlow13'), bw=IN_BW)
+        self.addLinkWithSwitch(outer[3], inner[3], self.addSwitch("s14", protocols='OpenFlow13'), bw=IN_BW)
+        self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("s15", protocols='OpenFlow13'), bw=IN_BW)
+        self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("s16", protocols='OpenFlow13'), bw=IN_BW)
         
         # print(self.in_interface)
         # saving mapping on file
@@ -73,14 +75,15 @@ class MyTopo(Topo):
         return routers 
     
     def addLinkWithSwitch(self, r1, r2, s, bw=None):
-        # from Ethernet 10Base-X to Gigabit Ethernet
-        bw=randint(10,1000)
-        # bw = None
+        if not bw:
+            # from Ethernet 10Base-X to Gigabit Ethernet
+            bw=randint(100, 800)
         self.addLink(r1,s, bw=bw)
         self.addLink(s,r2, bw=bw)
         # saving the port on the switch for incoming traffic on the specific router
         #self.in_interface.append("{:} {:} 2".format(r1, s))
         #self.in_interface.append("{:} {:} 1".format(r2, s))
+        
         if s not in self.in_interface:
             self.in_interface[s]={}
         self.in_interface[s][r1]=2
