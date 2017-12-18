@@ -29,6 +29,7 @@ import pickle
 import time
 
 POLLING_INTERVAL = 2
+OUT_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/'
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -40,7 +41,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.datapaths = set()
         self.monitor = hub.spawn(self._get_stats)      
         self.collector = hub.spawn(self.counter)
-        self.in_mapping = pickle.load(open('/home/mininet/miniNExT/examples/master_thesis/project/switch_mapping.pkl','rb'))
+        self.in_mapping = pickle.load(open(OUT_DIR + 'switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
         self.stats = {}
 
@@ -194,17 +195,23 @@ class SimpleSwitch13(app_manager.RyuApp):
 
     
     def counter(self):
-        while True:
-            self._print_packet_count()
-            time.sleep(POLLING_INTERVAL)
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+        with open(OUT_DIR + 'capture/' + timestr + '_capture', 'w+') as f:
+            while True:
+                self._print_packet_count(file=f)
+                time.sleep(POLLING_INTERVAL)
 
-    def _print_packet_count(self):
+    def _print_packet_count(self, file=None):
         t = time.time()
         counter = [t]
         for r in sorted(self.packet_count):
             # print(t, r, sum(self.packet_count[r].values()))
             counter.append(sum(self.packet_count[r].values()))
         print(counter) 
+
+        if file:
+            line = ' '.join(str(e) for e in counter)
+            file.write(line + '\n') 
 
 def print_break_line(char='*'):
     print(char*75)
