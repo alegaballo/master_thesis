@@ -4,3 +4,5 @@
 *.swp
 # quagga conf file
 configs/
+# capture files
+capture/
