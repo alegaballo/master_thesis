@@ -29,15 +29,15 @@ class MyTopo(Topo):
         
         # Initialize data structure to map each router with the port on the switch corresponding to incoming traffic
         self.in_interface = {}
-        
-        outer = self.createQuaggRing(OUTER, quaggaSvc, quaggaBaseConfigPath)
+        # saving speed of each interface
+        self.intf_speed = {}
+        outer = self.createQuaggRing(OUTER, quaggaSvc, quaggaBaseConfigPath, bw=10)
         
         # inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", s_name="si{:d}")
         # test with different naming because of problem with contorller
-        inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", count=OUTER)
+        inner = self.createQuaggRing(INNER, quaggaSvc, quaggaBaseConfigPath, r_name="ri{:d}", count=OUTER, bw=IN_BW)
         
         # creating custom connections between inner and outer rings
-        # link in the inner ring will be faster because that's common in networks
         self.addLinkWithSwitch(outer[0], inner[1], self.addSwitch("s11",protocols='OpenFlow13'), bw=IN_BW)
         self.addLinkWithSwitch(outer[2], inner[1], self.addSwitch("s12", protocols='OpenFlow13'), bw=IN_BW)
         self.addLinkWithSwitch(outer[2], inner[2], self.addSwitch("s13", protocols='OpenFlow13'), bw=IN_BW)
@@ -45,12 +45,14 @@ class MyTopo(Topo):
         self.addLinkWithSwitch(outer[5], inner[3], self.addSwitch("s15", protocols='OpenFlow13'), bw=IN_BW)
         self.addLinkWithSwitch(outer[5], inner[0], self.addSwitch("s16", protocols='OpenFlow13'), bw=IN_BW)
         
-        # print(self.in_interface)
         # saving mapping on file
         with open(OUT_DIR + 'switch_mapping.pkl', 'wb+') as f:
             pickle.dump(self.in_interface, f)
             
-        
+        # saving intf speed on file
+        with open(OUT_DIR + 'intf_speed.pkl', 'wb+') as f:
+            pickle.dump(self.intf_speed, f)
+
     def createQuaggRing(self, n, quaggaSvc, quaggaBaseConfigPath, r_name="r{:d}", s_name="s{:d}", count=0, bw=None):
         routers = []
         switches = []
@@ -83,10 +85,21 @@ class MyTopo(Topo):
         # saving the port on the switch for incoming traffic on the specific router
         #self.in_interface.append("{:} {:} 2".format(r1, s))
         #self.in_interface.append("{:} {:} 1".format(r2, s))
-        
+        self.addIntfSpeed(r1, bw)
+        self.addIntfSpeed(r2, bw)
+
         if s not in self.in_interface:
             self.in_interface[s]={}
         self.in_interface[s][r1]=2
         self.in_interface[s][r2]=1
         
-        
+
+    def addIntfSpeed(self, router, bw):
+        i = 0
+        while True:
+            intf = '{:}-eth{:d}'.format(router, i)
+            if intf.format(router, i) not in self.intf_speed:
+                self.intf_speed[intf] = bw * 1000
+                break
+            i += 1
+
