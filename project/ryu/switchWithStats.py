@@ -31,9 +31,9 @@ import os
 
 
 EMPTY_COUNTER = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
-POLLING_INTERVAL = 2
+POLLING_INTERVAL = 1
 OUT_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/'
-ITERATION = 2
+ITERATION = 15
 
 
 class SimpleSwitch13(app_manager.RyuApp):
@@ -210,18 +210,22 @@ class SimpleSwitch13(app_manager.RyuApp):
         while True and i < ITERATION:
             timestr = time.strftime("%Y%m%d-%H%M%S")
             old = EMPTY_COUNTER
-            
+            cnt = 0
             # letting mininet creating the folders
             try:
                 with open(OUT_DIR + 'dataset/run' +str(i)+ '/' + timestr + '_capture', 'w+') as f:
         	    print('run {:} Capture file {:}_capture'.format(i, timestr))
                     while True:
-	                new = self._print_packet_count(file=None)
-	                if new[1:] == old[1:] and sum(new[1:]) > 100:
-	                    print('Waiting for new run to start...')
-                            time.sleep(70)
-                            i += 1
-	                    break
+	                new = self._print_packet_count(file=f)
+	                # checking if simulation has ended
+                        if new[1:] == old[1:] and sum(new[1:]) > 100:
+	                    cnt +=1
+                            if cnt > 2:
+                                print('Waiting for new run to start...')
+                                i += 1
+                                if i < ITERATION:
+                                    time.sleep(70)
+                                break
 	
 	                old = new
 	                time.sleep(POLLING_INTERVAL)
