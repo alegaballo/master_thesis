@@ -111,8 +111,12 @@ class Net:
         with open(file_path, 'w+') as f:
             for path in self.paths:
                 f.write(' '.join(str(hop) for hop in path) + '\n')
-    
+        os.chmod(file_path, 0777)
 
+
+    def reset(self):
+        self.__init__()
+    
     @staticmethod
     def _print_path(path):
         print(path[0], end=' ')
