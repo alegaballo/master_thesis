@@ -29,6 +29,7 @@ import random
 import pickle
 import os
 import stat
+import ryu.my_routes as routes
 
 blacklist = [('r2', 'ri3'), ('r2', 'ri4'), ('r3', 'r6'), ('r4', 'r1'), ('r4', 'ri3'), ('r5', 'ri2'), ('r6', 'r3'), ('ri3', 'r5')]
 
@@ -60,6 +61,8 @@ def startNetwork():
     #info('** Dumping host processes\n')
     #for host in net.hosts:
     #    host.cmdPrint("ps aux")
+    paths = routes.Net()
+   
     for i in range(2):
         try:
             os.mkdir('dataset/run{:}'.format(i))
@@ -81,12 +84,13 @@ def startNetwork():
         info('** Configuring addresses on interfaces\n')
         setInterfaces(net, "configs/interfaces")
     
-        net.run(simulateTraffic, net, SIM_DURATION, i)
+        net.run(simulateTraffic, net, SIM_DURATION, i, paths)
+        paths.reset()
     #info('** Running CLI\n')
     #CLI(net)
 
 
-def simulateTraffic(net, duration, iteration):
+def simulateTraffic(net, duration, iteration, paths):
     info('***RUN {:}'.format(iteration))
     info('\n** Waiting for OSPF to converge\n')
     time.sleep(60)
@@ -94,7 +98,9 @@ def simulateTraffic(net, duration, iteration):
     if os.system('cd ~mininet/miniNExT/util/ && bash getRoutingTable.sh && cd - > /dev/null') != 0:
         error('Can\'t dump routing table, exiting...')
         exit(-1)
-    #print(hosts)
+    paths.parse_routes(routes.ROUTES_FILE, routes.ROUTER_CONF)
+    paths.get_paths()
+    paths.save_paths('dataset/run{:}/paths.txt'.format(iteration))
     valid = []
     with open('addresses.pkl', 'rb') as f:
         rout_addr = pickle.load(f)
