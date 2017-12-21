@@ -62,6 +62,7 @@ class Net:
     def get_path(self, src_router, dst_addr):
         next_hop = self.routes[src_router][Net._addr_to_net(dst_addr)]
         path = [src_router]
+        target = '{:} {:}:'.format(src_router, dst_addr)
         while next_hop!='0.0.0.0':
                 src_router=self.addr_rout[next_hop]
                 next_hop = self.routes[src_router][Net._addr_to_net(dst_addr)]
@@ -71,10 +72,13 @@ class Net:
         last = self.addr_rout[dst_addr]
         if last != path[-1]:
             path.append(self.addr_rout[dst_addr])
+        
         #Net._print_path(path)
         path = [self.routers.index(hop)  for hop in path]
+        path.insert(0, target)
+        #print('{:} to {:} : {:}'.format(src_router, dst_addr, path))
         # returning path in terms of hop index
-        return path
+        return path 
     
     
     def get_paths(self):
@@ -82,8 +86,8 @@ class Net:
         for src, dst in itertools.product(self.routers, self.destinations):
             if self.is_valid_path(src, dst):
                 self.paths.append(self.get_path(src, dst))
-        for path in self.paths:
-            print(path)
+        #for path in self.paths:
+        #    print(path)
 
 
     def is_valid_path(self, src, dst):
@@ -102,6 +106,12 @@ class Net:
 
         return True
 
+
+    def save_paths(self, file_path):
+        with open(file_path, 'w+') as f:
+            for path in self.paths:
+                f.write(' '.join(str(hop) for hop in path) + '\n')
+    
 
     @staticmethod
     def _print_path(path):
@@ -151,3 +161,4 @@ if __name__=='__main__':
     net = Net()
     net.parse_routes(ROUTES_FILE, ROUTER_CONF)
     net.get_paths()
+    net.save_paths('test')
