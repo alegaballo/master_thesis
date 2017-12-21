@@ -27,13 +27,19 @@ from ryu.app.ofctl import api
 from collections import defaultdict
 import pickle
 import time
+import os
 
+
+EMPTY_COUNTER = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
 POLLING_INTERVAL = 2
 OUT_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/'
+ITERATION = 2
+
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
 
+    
     def __init__(self, *args, **kwargs):
         super(SimpleSwitch13, self).__init__(*args, **kwargs)
         self.mac_to_port = {}
@@ -45,6 +51,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.packet_count = self._init_pckt_count()
         self.stats = {}
 
+    
     def _init_pckt_count(self):
         # inverting saved dict to have the following dict {rx:{sy:0,sz:0}}
         inverted = defaultdict(dict)
@@ -54,6 +61,7 @@ class SimpleSwitch13(app_manager.RyuApp):
 
         return dict(inverted)
 
+    
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
         datapath = ev.msg.datapath
@@ -72,6 +80,7 @@ class SimpleSwitch13(app_manager.RyuApp):
                                           ofproto.OFPCML_NO_BUFFER)]
         self.add_flow(datapath, 0, match, actions)
 
+    
     def add_flow(self, datapath, priority, match, actions, buffer_id=None):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
@@ -87,6 +96,7 @@ class SimpleSwitch13(app_manager.RyuApp):
                                     match=match, instructions=inst)
         datapath.send_msg(mod)
 
+    
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
     def _packet_in_handler(self, ev):
         # If you hit this you might want to increase
@@ -144,17 +154,20 @@ class SimpleSwitch13(app_manager.RyuApp):
         
         self.datapaths.add(datapath)
 
+
     def _get_stats(self):
         while True:
             for dp in self.datapaths:
                 self.switch_stats(dp)
             hub.sleep(POLLING_INTERVAL)
-    
+
+
     def switch_stats(self, datapath):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         req = parser.OFPFlowStatsRequest(datapath)
         datapath.send_msg(req)
+
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)
     def _stats_reply(self, ev):
@@ -191,16 +204,32 @@ class SimpleSwitch13(app_manager.RyuApp):
         if sw_name in self.stats and len(body)==3:
             self.stats[sw_name]=body 
         
-        #self._print_packet_count()
-
     
     def counter(self):
-        timestr = time.strftime("%Y%m%d-%H%M%S")
-        with open(OUT_DIR + 'capture/' + timestr + '_capture', 'w+') as f:
-            while True:
-                self._print_packet_count(file=f)
-                time.sleep(POLLING_INTERVAL)
-
+        i = 0
+        while True and i < ITERATION:
+            timestr = time.strftime("%Y%m%d-%H%M%S")
+            old = EMPTY_COUNTER
+            
+            # letting mininet creating the folders
+            try:
+                with open(OUT_DIR + 'dataset/run' +str(i)+ '/' + timestr + '_capture', 'w+') as f:
+        	    print('run {:} Capture file {:}_capture'.format(i, timestr))
+                    while True:
+	                new = self._print_packet_count(file=None)
+	                if new[1:] == old[1:] and sum(new[1:]) > 100:
+	                    print('Waiting for new run to start...')
+                            time.sleep(70)
+                            i += 1
+	                    break
+	
+	                old = new
+	                time.sleep(POLLING_INTERVAL)
+	    except IOError:
+                time.sleep(1)
+                continue
+        print('capture ended')
+    
     def _print_packet_count(self, file=None):
         t = time.time()
         counter = [t]
@@ -209,9 +238,11 @@ class SimpleSwitch13(app_manager.RyuApp):
             counter.append(sum(self.packet_count[r].values()))
         print(counter) 
 
-        if file:
+        if file and sum(counter[1:]) > 100:
             line = ' '.join(str(e) for e in counter)
             file.write(line + '\n') 
+        return counter
+
 
 def print_break_line(char='*'):
     print(char*75)
