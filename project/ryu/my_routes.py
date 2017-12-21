@@ -5,6 +5,7 @@ import itertools
 #import ipaddr as ip
 from collections import defaultdict
 import pickle
+import os
 
 ROUTES_FILE = '/home/mininet/miniNExT/util/routes.txt'
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
@@ -23,7 +24,7 @@ class Net:
         self.addr_rout = defaultdict()
         # contains the routing information: dst->next_hop
         self.routes = defaultdict(dict)
-    
+        #os.system('cd ~mininet/miniNExT/util && bash ./getRoutingTable.sh && cd -')
 
     def parse_routes(self, routes_file, addr_file, save_mapping=False):
         # getting routers routing tables
@@ -70,7 +71,7 @@ class Net:
         last = self.addr_rout[dst_addr]
         if last != path[-1]:
             path.append(self.addr_rout[dst_addr])
-        Net._print_path(path)
+        #Net._print_path(path)
         path = [self.routers.index(hop)  for hop in path]
         # returning path in terms of hop index
         return path
@@ -81,7 +82,8 @@ class Net:
         for src, dst in itertools.product(self.routers, self.destinations):
             if self.is_valid_path(src, dst):
                 self.paths.append(self.get_path(src, dst))
-        print(self.paths)
+        for path in self.paths:
+            print(path)
 
 
     def is_valid_path(self, src, dst):
