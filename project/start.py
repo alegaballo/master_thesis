@@ -35,8 +35,9 @@ blacklist = [('r2', 'ri3'), ('r2', 'ri4'), ('r3', 'r6'), ('r4', 'r1'), ('r4', 'r
 
 DEF_PSW = 'zebra'
 REF_BANDWIDTH = 1000
-SIM_DURATION = 10 # seconds of traffic simulation duration
+SIM_DURATION = 1200 # seconds of traffic simulation duration
 TRAFFIC_PROB = 0.65
+ITERATION = 15
 net = None
 
 
@@ -63,7 +64,7 @@ def startNetwork():
     #    host.cmdPrint("ps aux")
     paths = routes.Net()
    
-    for i in range(2):
+    for i in range(ITERATION):
         try:
             os.mkdir('dataset/run{:}'.format(i))
             print(os.chmod('dataset/run{:}/'.format(i), 0777))
@@ -159,11 +160,8 @@ def is_valid_path(s,d):
     if 'i' in s or 'i' in d:
         return False
 
-    #if s == 'r5' or d == 'r5':
+    #if (s,d) in blacklist:
     #    return False
-
-    if (s,d) in blacklist:
-        return False
 
     return True
 
