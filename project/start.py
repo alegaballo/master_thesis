@@ -160,8 +160,8 @@ def is_valid_path(s,d):
     if 'i' in s or 'i' in d:
         return False
 
-    #if (s,d) in blacklist:
-    #    return False
+    if (s,d) in blacklist:
+        return False
 
     return True
 
