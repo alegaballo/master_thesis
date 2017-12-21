@@ -28,12 +28,13 @@ from topology import MyTopo
 import random
 import pickle
 import os
+import stat
 
 blacklist = [('r2', 'ri3'), ('r2', 'ri4'), ('r3', 'r6'), ('r4', 'r1'), ('r4', 'ri3'), ('r5', 'ri2'), ('r6', 'r3'), ('ri3', 'r5')]
 
 DEF_PSW = 'zebra'
 REF_BANDWIDTH = 1000
-SIM_DURATION = 30 # seconds of traffic simulation duration
+SIM_DURATION = 10 # seconds of traffic simulation duration
 TRAFFIC_PROB = 0.65
 net = None
 
@@ -59,8 +60,14 @@ def startNetwork():
     #info('** Dumping host processes\n')
     #for host in net.hosts:
     #    host.cmdPrint("ps aux")
-    for i in range(5):
+    for i in range(2):
+        try:
+            os.mkdir('dataset/run{:}'.format(i))
+            print(os.chmod('dataset/run{:}/'.format(i), 0777))
+        except OSError:
+            pass
         
+
         info('** Creating Quagga network topology\n')
         topo = MyTopo()
 
@@ -74,18 +81,19 @@ def startNetwork():
         info('** Configuring addresses on interfaces\n')
         setInterfaces(net, "configs/interfaces")
     
-        net.run(simulateTraffic, net, SIM_DURATION)
+        net.run(simulateTraffic, net, SIM_DURATION, i)
     #info('** Running CLI\n')
     #CLI(net)
 
 
-def simulateTraffic(net, duration):
+def simulateTraffic(net, duration, iteration):
+    info('***RUN {:}'.format(iteration))
     info('\n** Waiting for OSPF to converge\n')
     time.sleep(60)
-    #info('** Dumping routing table\n')
-    #if os.system('cd ~mininet/miniNExT/util/ && bash getRoutingTable.sh && cd - > /dev/null') != 0:
-     #   error('Can\'t dump routing table, exiting...')
-     #   exit(-1)
+    info('** Dumping routing table\n')
+    if os.system('cd ~mininet/miniNExT/util/ && bash getRoutingTable.sh && cd - > /dev/null') != 0:
+        error('Can\'t dump routing table, exiting...')
+        exit(-1)
     #print(hosts)
     valid = []
     with open('addresses.pkl', 'rb') as f:
