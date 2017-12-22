@@ -1,26 +1,24 @@
 import protobuf.messages_pb2 as msg_pb2
-import sys
 import socketserver
 
 
-MESSAGE_TYPES = {'offload_request': msg_pb2.OffloadRequest()}
 RESPONSES = {'OK': msg_pb2.Response.OK, 'INVALID_SIZE': msg_pb2.Response.INVALID_MSG_SIZE,
              'INVALID_REQUEST': msg_pb2.Response.INVALID_REQUEST}
 
-
 class MyTCPHandler(socketserver.StreamRequestHandler):
     def setup(self):
+        # setting timeout on recv
+        self.timeout = 5
         # calling superclass method which initialize rfile
         super(MyTCPHandler, self).setup()
-        self.SEND_MSGS = {'response': self.send_response}
+        self.SEND_MSGS = {'response': self.send_response, 'task': self.send_task}
 
     def handle(self, *args):
         message = self.read_message()
-        if message:
-            print("{} wrote:".format(self.client_address[0]))
-            print(message)
-
-            # need to scan msg content
+        print(message.Type.Name(message.type))
+        assert message.type == msg_pb2.Message.OFFLOAD_REQUEST
+        self.parse_request(message)
+        # need to scan msg content
 
     def send_message(self, MESSAGE_TYPE, **kwargs):
         self.SEND_MSGS[MESSAGE_TYPE](**kwargs)
@@ -31,6 +29,9 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
         msg.response.result = kwargs['response']
         msg.response.msg = kwargs['msg']
         self.request.sendall(msg.SerializeToString())
+
+    def send_task(self, **kwargs):
+        pass
 
     def receive_message(self, msg_size):
         received = 0
@@ -53,7 +54,8 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
             msg_size = int(self.data)
         except ValueError:
             print('not a valid message size')
-            self.send_message('response', response=RESPONSES['INVALID_SIZE'], msg='{:} is not a valid msg size'.format(self.data))
+            self.send_message('response', response=RESPONSES['INVALID_SIZE'],
+                              msg='{:} is not a valid msg size'.format(self.data))
             return
             # send error message
         message = msg_pb2.Message()
@@ -61,6 +63,9 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
         self.send_message('response', response=RESPONSES['OK'], msg='OK')
 
         return self.receive_message(msg_size)
+
+    def parse_request(self, request):
+        print(request.HasField("off_req"))
 
 
 def main():
