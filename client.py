@@ -6,15 +6,15 @@ import time
 HOST, PORT = "localhost", 9999
 data = " ".join(sys.argv[1:])
 
-message = msg_pb2.OffloadRequest()
-message.type = msg_pb2.OffloadRequest.STANDARD
-message.requirements.cpu = 0.5
-message.requirements.memory = 50
-message.requirements.latency = msg_pb2.OffloadRequest.Requirements.URGENT
-message.task.wrapper.name = 'task 1'
-message.task.wrapper.type = msg_pb2.OffloadRequest.Task.TaskWrapper.JAR
+message = msg_pb2.Message()
+message.off_req.type = msg_pb2.OffloadRequest.STANDARD
+message.off_req.requirements.cpu = 0.5
+message.off_req.requirements.memory = 50
+message.off_req.requirements.latency = msg_pb2.OffloadRequest.Requirements.URGENT
+message.off_req.task.wrapper.name = 'task 1'
+message.off_req.task.wrapper.type = msg_pb2.OffloadRequest.Task.TaskWrapper.JAR
 with open('test.pdf','rb') as f:
-    message.task.wrapper.task = f.read()
+    message.off_req.task.wrapper.task = f.read()
 size = message.ByteSize()
 print('Message size: {:} bytes'.format(size))
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
