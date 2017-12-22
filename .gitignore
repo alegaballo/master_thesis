@@ -2,3 +2,7 @@
 *.pyc
 # vim tmp file
 *.swp
+# ide files
+.idea/
+#ipynb checkpoints
+.ipynb_checkpoints/
