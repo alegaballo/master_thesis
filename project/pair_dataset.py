@@ -16,17 +16,21 @@ for run in os.listdir(DATASET):
     for content in dir_content:
         if 'capture' in content:
             capture = content
-    with open(os.path.join(DATASET, run, capture), 'r')as cap_f:
+            break
+
+    cap_file = os.path.join(DATASET, run, capture)
+    print(cap_file)
+    with open(cap_file, 'r') as cap_f:
         #do something
         counters = cap_f.readlines()
         # reading all the paths associated to that run
-        with open(os.path.join(DATASET, run, 'paths.txt'), 'r') as f:
+        with open(os.path.join(DATASET, run, 'paths.txt'), 'r') as path_f:
             # creating a folder for every src,dst pair
-            for line in f:
+            for line in path_f:
                 target, path = line.strip().split(':')
                 target = re.sub('[ .]+', '_', target)
                 folder = os.path.join('./models', target)
-            
+
                 make_dir(folder)
                 # creating a folder for each router traversed in the path between src,dst without considering the last hop
                 path = [int(hop) for hop in path.split()]
