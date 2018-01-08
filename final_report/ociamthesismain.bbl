@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{karpathy}
+Andrej Karpathy.
+\newblock Software 2.0.
+\newblock \url{https://medium.com/@karpathy/software-2-0-a64152b37c35}.
+
+\bibitem{5392560}
+A.~L. Samuel.
+\newblock Some studies in machine learning using the game of checkers.
+\newblock {\em IBM Journal of Research and Development}, 3(3):210--229, July
+  1959.
+
+\bibitem{facebook_LB}
+Patrick Shuff.
+\newblock Building a billion user load balancer.
+\newblock Dublin, 2015. {USENIX} Association.
+
+\end{thebibliography}
