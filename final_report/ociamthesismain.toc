@@ -1,6 +1,9 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Overview}{1}
+\contentsline {section}{\numberline {1.2}Structure}{1}
 \contentsline {chapter}{\numberline {2}Background}{3}
-\contentsline {chapter}{\numberline {3}Conclusions and Results}{5}
-\contentsline {chapter}{\numberline {A}Sample Title}{7}
-\contentsline {chapter}{\numberline {B}Sample Title}{9}
-\contentsline {chapter}{Bibliography}{10}
+\contentsline {chapter}{\numberline {3}Contribution}{5}
+\contentsline {chapter}{\numberline {4}Conclusions and Results}{7}
+\contentsline {chapter}{\numberline {A}Sample Title}{9}
+\contentsline {chapter}{\numberline {B}Sample Title}{11}
+\contentsline {chapter}{Bibliography}{12}
