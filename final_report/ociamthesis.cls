@@ -21,7 +21,8 @@
 \raggedbottom
 
 %define the default submitted text
-\newcommand{\submittedtext}{{Professional Thesis Report (confidential)}}
+%\newcommand{\submittedtext}{{Professional Thesis Report (confidential)}}
+\newcommand{\submittedtext}{{MONTHLY REPORT}}
 
 %
 % DECLARATIONS
