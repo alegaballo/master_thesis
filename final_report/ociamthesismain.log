@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  8 JAN 2018 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  8 JAN 2018 19:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -235,76 +235,79 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  (./Introduction.tex
 Chapter 1.
-) [1
+[1
 
 
 ]
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no © in font cmr12!
+ [2]) [3]
 \openout2 = `Background.aux'.
 
- (./Background.tex [2
+ (./Background.tex [4
 
 
 
 ]
 Chapter 2.
-) [3]
+) [5]
 \openout2 = `Contribution.aux'.
 
- (./Contribution.tex [4
+ (./Contribution.tex [6
 
 
 
 ]
 Chapter 3.
-) [5]
+) [7]
 \openout2 = `Conclusions.aux'.
 
- (./Conclusions.tex [6
+ (./Conclusions.tex [8
 
 
 
 ]
 Chapter 4.
-) [7]
+) [9]
 \openout2 = `appendix1.aux'.
 
- (./appendix1.tex [8
+ (./appendix1.tex [10
 
 
 
 ]
 Appendix A.
-) [9]
+) [11]
 \openout2 = `appendix2.aux'.
 
- (./appendix2.tex [10
+ (./appendix2.tex [12
 
 
 
 ]
 Appendix B.
-) [11] (./ociamthesismain.bbl [12
+) [13] (./ociamthesismain.bbl [14
 
 
 ]
 ! Undefined control sequence.
-l.6 \newblock \url
-                  {https://medium.com/@karpathy/software-2-0-a64152b37c35}.
+l.27 \newblock \url
+                   {https://medium.com/@karpathy/software-2-0-a64152b37c35}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-) [13] (./ociamthesismain.aux (./dedication.aux) (./acknowlegements.aux)
+[15]) [16] (./ociamthesismain.aux (./dedication.aux) (./acknowlegements.aux)
 (./abstract.aux) (./abstract_fr.aux) (./Introduction.aux) (./Background.aux)
 (./Contribution.aux) (./Conclusions.aux) (./appendix1.aux) (./appendix2.aux)) )
  
 Here is how much of TeX's memory you used:
- 1993 strings out of 493029
- 27291 string characters out of 6136234
- 88114 words of memory out of 5000000
- 5423 multiletter control sequences out of 15000+600000
+ 1999 strings out of 493029
+ 27419 string characters out of 6136234
+ 88133 words of memory out of 5000000
+ 5429 multiletter control sequences out of 15000+600000
  11095 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,4n,26p,2413b,253s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -312,10 +315,10 @@ Here is how much of TeX's memory you used:
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ociamthesismain.pdf (27 pages, 86916 bytes).
+Output written on ociamthesismain.pdf (30 pages, 99869 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 121 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
