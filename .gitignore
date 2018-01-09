@@ -6,3 +6,8 @@
 .idea/
 #ipynb checkpoints
 .ipynb_checkpoints/
+#texmaker files
+final_report/*.aux
+final_report/*.log
+final_report/*.gz
+final_report/*.toc
