@@ -94,3 +94,4 @@ hidden layers: 8, neurons: 128, epochs: 16, time: 228.45493125915527 loss: 0.512
 hidden layers: 8, neurons: 128, epochs: 32, time: 294.63626623153687 loss: 0.498037278652 categorical_accuracy: 0.82654494382
 hidden layers: 8, neurons: 128, epochs: 64, time: 496.3162145614624 loss: 0.474816512526 categorical_accuracy: 0.82654494382
 hidden layers: 8, neurons: 128, epochs: 128, time: 861.4376440048218 loss: 0.46184958032 categorical_accuracy: 0.82654494382
+hidden layers: 2, neurons: 128, epochs: 200, time: 289.3242781162262 loss: 0.0544077022671 categorical_accuracy: 0.981741573034
