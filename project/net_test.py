@@ -35,7 +35,7 @@ blacklist = [('r2', 'ri3'), ('r2', 'ri4'), ('r3', 'r6'), ('r4', 'r1'), ('r4', 'r
 
 DEF_PSW = 'zebra'
 REF_BANDWIDTH = 1000
-SIM_DURATION = 1200 # seconds of traffic simulation duration
+SIM_DURATION = 12000000000000000000000000000000000000000000000 # seconds of traffic simulation duration
 TRAFFIC_PROB = 0.65
 ITERATION = 15
 net = None
@@ -43,52 +43,19 @@ net = None
 
 def startNetwork():
     "instantiates a topo, then starts the network and prints debug information"
-
-    
-   
-    # waiting for ospf to converge
-    #info('\n** Waiting for OSPF to converge\n')
-    #time.sleep(60)
-    #simulateTraffic(net, 30)
-
-#    info("** Enabling spanning tree on switches\n")
-    
-    #info('** Dumping host connections\n')
-    #dumpNodeConnections(net.hosts)
-
-    #info('** Testing network connectivity\n')
-    # net.ping(net.hosts)
-    
-    #info('** Dumping host processes\n')
-    #for host in net.hosts:
-    #    host.cmdPrint("ps aux")
     paths = routes.Net()
    
-    for i in range(ITERATION):
-        try:
-            os.mkdir('dataset_final/run{:}'.format(i))
-            print(os.chmod('dataset_final/run{:}/'.format(i), 0777))
-        except OSError:
-            pass
-        
-
-        info('** Creating Quagga network topology\n')
-        topo = MyTopo()
-
-        info('** Starting the network\n')
-        global net
-        net = MiniNExT(topo, controller=None, link=TCLink)
-        c=net.addController('c0', controller=RemoteController, ip='127.0.0.1', port=6633) 
-
-    #net = MiniNExT(topo, controller=Ryu) 
-
-        info('** Configuring addresses on interfaces\n')
-        setInterfaces(net, "configs/interfaces")
+    info('** Creating Quagga network topology\n')
+    topo = MyTopo()
+    info('** Starting the network\n')
+    global net
+    net = MiniNExT(topo, controller=None, link=TCLink)
+    c=net.addController('c0', controller=RemoteController, ip='127.0.0.1', port=6633) 
+    info('** Configuring addresses on interfaces\n')
+    setInterfaces(net, "configs/interfaces")
     
-        net.run(simulateTraffic, net, SIM_DURATION, i, paths)
-        paths.reset()
-    #info('** Running CLI\n')
-    #CLI(net)
+    net.run(simulateTraffic, net, SIM_DURATION, 0, paths)
+    paths.reset()
 
 
 def simulateTraffic(net, duration, iteration, paths):
@@ -101,7 +68,7 @@ def simulateTraffic(net, duration, iteration, paths):
         exit(-1)
     paths.parse_routes(routes.ROUTES_FILE, routes.ROUTER_CONF)
     paths.get_paths()
-    paths.save_paths('dataset_final/run{:}/paths.txt'.format(iteration))
+    paths.save_paths('testing/run{:}/paths.txt'.format(iteration))
     valid = []
     with open('addresses.pkl', 'rb') as f:
         rout_addr = pickle.load(f)
@@ -109,14 +76,6 @@ def simulateTraffic(net, duration, iteration, paths):
     with open('addr_rout.pkl', 'rb') as f:
         addr_rout = pickle.load(f)
 
-#    for host in net.hosts:
-#        # if 'i' not in host.name:
-#        valid.append(host)
-#        info('*** Starting iperf server on {:}\n'.format(host.name))
-#        host.cmd('pkill iperf')
-#        # using & allows to nonblocking cmd
-#        host.cmd('iperf -s &')
-#   
     start_iperf(net.hosts)
 
     valid_addr = []

@@ -97,8 +97,8 @@ class Net:
     
         # checking if src is an inner router
         # inner router ar named ri#
-        if 'i' in src:
-            return False
+        #if 'i' in src:
+        #    return False
 
         # checking if dst is an inner router
         if 'i' in self.addr_rout[dst]:

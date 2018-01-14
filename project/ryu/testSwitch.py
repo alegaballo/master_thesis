@@ -46,7 +46,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         # saving all switches
         self.datapaths = set()
         self.monitor = hub.spawn(self._get_stats)      
-        self.collector = hub.spawn(self.counter)
+        self.collector = hub.spawn(self.predictor)
         self.in_mapping = pickle.load(open(OUT_DIR + 'switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
         self.stats = {}
@@ -205,35 +205,12 @@ class SimpleSwitch13(app_manager.RyuApp):
             self.stats[sw_name]=body 
         
     
-    def counter(self):
-        i = 0
-        while True and i < ITERATION:
-            timestr = time.strftime("%Y%m%d-%H%M%S")
-            old = EMPTY_COUNTER
-            cnt = 0
-            # letting mininet creating the folders
-            try:
-                with open(OUT_DIR + 'dataset_final/run' +str(i)+ '/' + timestr + '_capture', 'w+') as f:
-        	    print('run {:} Capture file {:}_capture'.format(i, timestr))
-                    while True:
-	                new = self._print_packet_count(file=f)
-	                # checking if simulation has ended
-                        if new[1:] == old[1:] and sum(new[1:]) > 100:
-	                    cnt +=1
-                            if cnt > 5:
-                                print('Waiting for new run to start...')
-                                i += 1
-                                if i < ITERATION:
-                                    time.sleep(70)
-                                break
-	                else:
-                            cnt=0
-	                old = new
-	                time.sleep(POLLING_INTERVAL)
-	    except IOError:
-                time.sleep(1)
-                continue
-        print('capture ended')
+    def predictor(self):
+        print('predictor daemon started')
+        while True:
+           self._print_packet_count()
+           time.sleep(5)
+
     
     def _print_packet_count(self, file=None):
         t = time.time()
