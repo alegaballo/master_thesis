@@ -220,13 +220,14 @@ class SimpleSwitch13(app_manager.RyuApp):
 	                # checking if simulation has ended
                         if new[1:] == old[1:] and sum(new[1:]) > 100:
 	                    cnt +=1
-                            if cnt > 2:
+                            if cnt > 5:
                                 print('Waiting for new run to start...')
                                 i += 1
                                 if i < ITERATION:
                                     time.sleep(70)
                                 break
-	
+	                else:
+                            cnt=0
 	                old = new
 	                time.sleep(POLLING_INTERVAL)
 	    except IOError:
