@@ -66,8 +66,8 @@ def startNetwork():
    
     for i in range(ITERATION):
         try:
-            os.mkdir('dataset/run{:}'.format(i))
-            print(os.chmod('dataset/run{:}/'.format(i), 0777))
+            os.mkdir('dataset_final/run{:}'.format(i))
+            print(os.chmod('dataset_final/run{:}/'.format(i), 0777))
         except OSError:
             pass
         
@@ -101,7 +101,7 @@ def simulateTraffic(net, duration, iteration, paths):
         exit(-1)
     paths.parse_routes(routes.ROUTES_FILE, routes.ROUTER_CONF)
     paths.get_paths()
-    paths.save_paths('dataset/run{:}/paths.txt'.format(iteration))
+    paths.save_paths('dataset_final/run{:}/paths.txt'.format(iteration))
     valid = []
     with open('addresses.pkl', 'rb') as f:
         rout_addr = pickle.load(f)

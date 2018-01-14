@@ -213,7 +213,7 @@ class SimpleSwitch13(app_manager.RyuApp):
             cnt = 0
             # letting mininet creating the folders
             try:
-                with open(OUT_DIR + 'dataset/run' +str(i)+ '/' + timestr + '_capture', 'w+') as f:
+                with open(OUT_DIR + 'dataset_final/run' +str(i)+ '/' + timestr + '_capture', 'w+') as f:
         	    print('run {:} Capture file {:}_capture'.format(i, timestr))
                     while True:
 	                new = self._print_packet_count(file=f)
