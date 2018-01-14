@@ -2,7 +2,7 @@ import os
 import re
 import numpy as np
 
-DATASET = './dataset/'
+DATASET = './dataset_final/'
 
 def make_dir(directory):
     if not os.path.isdir(directory):
@@ -29,21 +29,21 @@ for run in os.listdir(DATASET):
             for line in path_f:
                 target, path = line.strip().split(':')
                 target = re.sub('[ .]+', '_', target)
-                folder = os.path.join('./models', target)
+                folder = os.path.join('./models_final', target)
 
                 make_dir(folder)
                 # creating a folder for each router traversed in the path between src,dst without considering the last hop
-                path = [int(hop) for hop in path.split()]
-                for i,router in enumerate(path[:-1]):
-                    model_folder = os.path.join(folder, 'r{:}'.format(router+1))
-                    make_dir(model_folder)
-                    label = np.zeros(10, dtype=np.int)
-                    label[path[i+1]]=1
-                    dataset_file = 'dataset_{:}'.format(run)
-                    with open(os.path.join(model_folder, dataset_file), 'w+') as f:
-                        label = ' '.join(str(i) for i in label)+'\n'
-                        for counter in counters:
-                            line = counter.strip() + ', ' + label
-                            f.write(line)
+                # WRONG, THERE'S ONLY ONE MODEL PER TARGET
 
+                path = [int(hop) for hop in path.split()]
+                next_hop = path[1]
+                label = np.zeros(10, dtype=np.int)
+                label[next_hop] = 1
+
+                dataset_file = 'dataset_{:}'.format(run)
+                with open(os.path.join(folder, dataset_file), 'w+') as f:
+                    label = ' '.join(str(i) for i in label)+'\n'
+                    for counter in counters:
+                        line = counter.strip() + ', ' + label
+                        f.write(line)
 
