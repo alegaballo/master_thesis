@@ -40,7 +40,7 @@ for run in os.listdir(DATASET):
                 label = np.zeros(10, dtype=np.int)
                 label[next_hop] = 1
 
-                dataset_file = 'dataset_{:}'.format(run)
+                dataset_file = 'dataset_final{:}'.format(run)
                 with open(os.path.join(folder, dataset_file), 'w+') as f:
                     label = ' '.join(str(i) for i in label)+'\n'
                     for counter in counters:
