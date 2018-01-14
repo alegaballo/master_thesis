@@ -54,7 +54,7 @@ def startNetwork():
     info('** Configuring addresses on interfaces\n')
     setInterfaces(net, "configs/interfaces")
     
-    net.run(simulateTraffic, net, SIM_DURATION, i, paths)
+    net.run(simulateTraffic, net, SIM_DURATION, 0, paths)
     paths.reset()
 
 
