@@ -16,15 +16,15 @@ MODEL_DIR = './project/models_final/'
 def print_samples(x, y, n=10):
     higher = len(x)
     print(higher)
-        for i in range(n):
-            j = np.random.randint(0, higher)
-            print(x[j], y[j])
+    for i in range(n):
+        j = np.random.randint(0, higher)
+        print(x[j], y[j])
 
 class TestCallback(Callback):
     def __init__(self, test_data):
-            self.test_data = test_data[:2]
-            self.net_params = test_data[2:]
-            self.epochs = [16, 32, 64, 128]
+        self.test_data = test_data[:2]
+        self.net_params = test_data[2:]
+        self.epochs = [16, 32, 64, 128]
 
     def on_epoch_end(self, epoch, logs={}):
         if epoch in self.epochs:
@@ -100,7 +100,7 @@ def build_model(x_train, y_train, x_test, y_test, target, hidden_layers=2, neuro
         plt.ylabel('loss')
         plt.xlabel('epoch')
         plt.legend(['Training data', 'Validation data'], loc='upper right')
-        plt.savefig('plots_final/{:}/plot_{:}_{:}_{:}.pdf'.format(target, hidden_layers, neurons, epochs))
+        plt.savefig('plots_final/plot_{:}.pdf'.format(target))
         plt.close()
         
     loss, acc = model.evaluate(x_test.reshape(len(x_test), 1,10), y_test, verbose=0)
@@ -112,19 +112,25 @@ def build_model(x_train, y_train, x_test, y_test, target, hidden_layers=2, neuro
     return history.history, [loss, acc]
 
 
-layers = 4
-neurons = 32
+layers = 2
+neurons = 128
 train_epochs = 150
 
 for target in os.listdir(MODEL_DIR):
     path = os.path.join(MODEL_DIR, target)
-    print(target)
     train_hist = []
     test_metrics = []
     x = []
     y = []
+    if not target.endswith('_3_2'):
+        continue
+   
+    data = os.listdir(path)
+    if '{:}_model.h5'.format(target) in data:
+        continue
 
-    for dataset in os.listdir(path):
+    print('training {:}'.format(target))
+    for dataset in data:
         file = os.path.join(path, dataset)
         with open(file, 'r') as f:
             lines = f.readlines()
@@ -137,8 +143,8 @@ for target in os.listdir(MODEL_DIR):
         
     x_t, y_t, x_ts, y_ts = split_data(x, y)
     h, m = build_model(x_t, y_t, x_ts, y_ts, target, neurons=neurons, hidden_layers=layers, epochs=train_epochs,
-                           plot=False, model_path=os.path.join(model,'{:}_model.h5'.format(router)), arch_test=True)
-    print(model, m)
+                           plot=True, model_path=os.path.join(path,'{:}_model.h5'.format(target)))
+    print(target, m)
     train_hist.append(h)
     test_metrics.append(m)
      
