@@ -15,6 +15,7 @@
 # limitations under the License.
 
 from keras.models import load_model
+from keras import backend as K
 from ryu.controller.dpset import DPSet
 from ryu.base import app_manager
 from ryu.controller import ofp_event
@@ -31,7 +32,7 @@ import pickle
 import time
 import os
 import numpy as np
-
+from multiprocessing.connection import Client
 
 EMPTY_COUNTER = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
@@ -51,7 +52,8 @@ class SimpleSwitch13(app_manager.RyuApp):
         # saving all switches
         self.datapaths = set()
         self.monitor = hub.spawn(self._get_stats)      
-        self.collector = hub.spawn(self.predictor)
+        #self.load_models()
+        self.collector = hub.spawn(self.counter)
         self.in_mapping = pickle.load(open(OUT_DIR + 'switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
         self.addresses = defaultdict(list)
@@ -219,22 +221,31 @@ class SimpleSwitch13(app_manager.RyuApp):
         
     
     def predictor(self):
+     
         self.getAddresses(ROUTER_CONF)
         print('predictor daemon started')
         while True:
            cnt = self._print_packet_count()
+           print(cnt)
            self.predict('r1', '172.168.3.2', cnt)
-           time.sleep(1)
+           hub.sleep(10)
 
     
+    def load_models(self):
+        target = [t for t in os.listdir(MODELS_DIR) if t.endswith('_3_2')]
+        self.models = {t:self.get_model(t) for t in target if t=='r1_172_168_3_2'}
+        print(self.models)
+
+
     def predict(self, src, dst_addr, counter):
         path = [src]
         counter = np.array(counter[1:]).reshape(1,1,10)
+   
         while True:
             if dst_addr in self.addresses[src]:
                 break
             target = '{:}_{:}'.format(src, dst_addr.replace('.', '_'))
-            model = self.get_model(target)
+            model = self.models[target]
             predictions = model.predict(counter)
             next_router = ROUTERS_NAMING[np.argmax(predictions)]
             path.append(next_router)
@@ -246,9 +257,22 @@ class SimpleSwitch13(app_manager.RyuApp):
         model_dir = os.path.join(MODELS_DIR, target)
         t0 = time.time()
         model = load_model(model_dir + '/{:}_model.h5'.format(target))
+        model._make_predict_function()
         t1=time.time()
         print('Loading time: {:}'.format(t1-t0))
         return model
+    
+
+    def counter(self):
+        #hub.sleep(70)
+        address = ('localhost', 6000)
+        print('connecting to server')
+        conn = Client(address, authkey='hola')
+        while True:
+            counter = self._print_packet_count()
+            conn.send(counter)
+            hub.sleep(5)
+        conn.close()
     
     def _print_packet_count(self, file=None):
         t = time.time()
