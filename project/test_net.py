@@ -158,12 +158,14 @@ def setInterfaces(net, confFile):
     #createOSPFConfig(networks)
 
 
-def createOSPFConfing(networks):
+def createOSPFConfig(networks):
     CONFIG_PATH = "./configs/"
     for router in networks:
         with open(CONFIG_PATH+router+"/ospfd.conf", "w+") as conf:
             conf.write("hostname {:}\n".format(router))
-            conf.write("\nlog file /var/log/quagga/{:}.log\n".format(router))
+            conf.write("password ospfd\n")
+            conf.write("enable password ospfd\n")
+            conf.write("!\nlog file /var/log/quagga/{:}.log\n".format(router))
             conf.write("\nrouter ospf\n")
             conf.write("auto-cost reference-bandwidth {:}\n".format(REF_BANDWIDTH))
             for network in networks[router]:
