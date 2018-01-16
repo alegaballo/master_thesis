@@ -24,7 +24,7 @@ from mininet.link import TCLink
 from mininext.cli import CLI
 from mininext.net import MiniNExT
 
-from topology import MyTopo
+from test_topology import MyTopo
 import random
 import pickle
 import os
