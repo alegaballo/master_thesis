@@ -1,3 +1,4 @@
+#!/usr/bin/python3.4
 # Copyright (C) 2011 Nippon Telegraph and Telephone Corporation.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from keras.models import load_model
 from ryu.controller.dpset import DPSet
 from ryu.base import app_manager
 from ryu.controller import ofp_event
@@ -28,13 +30,16 @@ from collections import defaultdict
 import pickle
 import time
 import os
+import numpy as np
 
 
 EMPTY_COUNTER = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
 POLLING_INTERVAL = 1
 OUT_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/'
+MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final/'
 ITERATION = 15
-
+ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -49,8 +54,16 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.collector = hub.spawn(self.predictor)
         self.in_mapping = pickle.load(open(OUT_DIR + 'switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
+        self.addresses = defaultdict(list)
         self.stats = {}
 
+    def getAddresses(self, conf_file):
+        with open(conf_file, 'r') as f:
+            for line in f:
+	        line = line.strip()
+	        if line:
+                    router, interface, address = line.split()
+                    self.addresses[router].append(address)
     
     def _init_pckt_count(self):
         # inverting saved dict to have the following dict {rx:{sy:0,sz:0}}
@@ -206,11 +219,36 @@ class SimpleSwitch13(app_manager.RyuApp):
         
     
     def predictor(self):
+        self.getAddresses(ROUTER_CONF)
         print('predictor daemon started')
         while True:
-           self._print_packet_count()
-           time.sleep(5)
+           cnt = self._print_packet_count()
+           self.predict('r1', '172.168.3.2', cnt)
+           time.sleep(1)
 
+    
+    def predict(self, src, dst_addr, counter):
+        path = [src]
+        counter = np.array(counter[1:]).reshape(1,1,10)
+        while True:
+            if dst_addr in self.addresses[src]:
+                break
+            target = '{:}_{:}'.format(src, dst_addr.replace('.', '_'))
+            model = self.get_model(target)
+            predictions = model.predict(counter)
+            next_router = ROUTERS_NAMING[np.argmax(predictions)]
+            path.append(next_router)
+            src = next_router
+        print(path)
+
+
+    def get_model(self, target):
+        model_dir = os.path.join(MODELS_DIR, target)
+        t0 = time.time()
+        model = load_model(model_dir + '/{:}_model.h5'.format(target))
+        t1=time.time()
+        print('Loading time: {:}'.format(t1-t0))
+        return model
     
     def _print_packet_count(self, file=None):
         t = time.time()
