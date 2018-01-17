@@ -10,8 +10,9 @@ MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
 
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
-TARGET = 'r1_172_168_4_1'
-PATH = 'r1 172.168.4.1:'
+#TARGET = 'r1_172_168_4_1'
+#PATH = 'r1 172.168.4.1:'
+DST_INTF = '_2_2'
 ROUTES = '/home/mininet/miniNExT/examples/master_thesis/project/testing/run0/paths.txt'
 
 TARGETS = os.listdir(MODELS_DIR)
@@ -23,7 +24,7 @@ class Predictor(object):
 
     def _load_models(self):
         print('Loading models')
-        target = [t for t in os.listdir(MODELS_DIR) if t.endswith('_3_2')]
+        target = [t for t in os.listdir(MODELS_DIR) if t.endswith(DST_INTF)]
         self.models = {t:get_model(t) for t in target }
         print('Models loaded')
 
@@ -40,8 +41,8 @@ class Predictor(object):
     
     def predict(self, src, dst_addr, counter):
         path = [src]
-        counter = np.zeros((1,1,10))
-
+        counter = np.array(counter).reshape((1,1,10))
+        print(counter)
         while True:
             if dst_addr in self.addresses[src]:
                 break
@@ -101,7 +102,7 @@ if __name__=='__main__':
         cnt = np.array(msg[1:]).reshape(1,1,10)
         #src, dst = get_target()
         src = 'r1'
-        dst = '172.168.3.2'
+        dst = '172.168.2.2'
         pr.predict(src, dst, cnt)
         get_ospf(paths, src, dst)
     
