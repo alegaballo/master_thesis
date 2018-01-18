@@ -12,7 +12,7 @@ QuaggaHost = namedtuple("QuaggaHost", "name ip loIP")
 net = None
 OUTER = 6
 INNER = 4
-IN_BW = 1000
+IN_BW = 300
 
 class MyTopo(Topo):
     def __init__(self):
@@ -72,8 +72,8 @@ class MyTopo(Topo):
 
         num_routers = len(routers)
         for i in range(num_routers):
-            if (i == 0 or i==1)  and count==0:
-                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw, loss=15)
+            if (i == 0)  and count==0:
+                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw, loss=10)
             #self.addLink(routers[i], routers[(i+1)%num_routers])
             else:
                 self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw)
@@ -84,7 +84,7 @@ class MyTopo(Topo):
         if not bw:
             # from Ethernet 10Base-X to Gigabit Ethernet
             #bw=randint(100, 800)
-            bw = 1000
+            bw = 300
         self.addLink(r1,s, bw=bw, loss=loss)
         self.addLink(s,r2, bw=bw, loss=loss)
         # saving the port on the switch for incoming traffic on the specific router
