@@ -268,7 +268,8 @@ class SimpleSwitch13(app_manager.RyuApp):
         address = ('localhost', 6000)
         print('connecting to server')
         conn = Client(address, authkey='hola')
-        while True:
+        t0 = time.time()
+        while True: 
             counter = self._print_packet_count()
             conn.send(counter)
             hub.sleep(5)
