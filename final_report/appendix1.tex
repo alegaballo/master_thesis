@@ -1,0 +1,15 @@
+\chapter{Configure mininet to run the Quagga routing suite}
+
+In the course of these six months of work, I have been slowed down by numerous issues that came up as my reasearch was proceeding; these issues were due to my inexperience with the software and its complexity. To implement the deep learning model, I needed a functional network with running routing algorithms. At first the solution looked simple, I just had to run the Quagga routing suite on the mininet nodes. Accomplishing this result took me away a lot of time, so I have decided to highlight here the problems I have faced. Here's the list:
+\begin{itemize}
+\item by default, mininet doesn't support loops in a topology: if you want to have a complex closed topology you need to manually enable the spanning tree protcol on every switch
+\item when you build Quagga from source, the link to the dynamic libraries are not automatically created, to solve the problem run:
+\begin{lstlisting}
+sudo ldconfig
+\end{lstlisting}
+\item the Quagga service config in mininext relies on init.d scripts which are not installed when you build it from source, the quickest solution is to install quagga from the distribution repositories
+\item in mininet, the default ovs-controller doesn't support more than sixteen switches; if you need a bigger network you need to install the mininet patched version of the openflow controller (\url{https://github.com/mininet/mininet/wiki/FAQ#ovs-controller})
+\item in miniNext, it is not possible to capture traffic directly on the hosts (in my case quagga routers) because they’re in a different namespace. The workaround is to set up a switch on every link (between each pair of routers) and analyze the traffic on its interfaces; for the problem described in the previous point, the number of switch limits the network size
+\item ryu is not able to talk with the mininet switches that do not have the canonical name (s1, s2, ...)
+\item the output of OSPF depends on the nominal speed interface declared in the Zebra configuration file, changing the link speed through mininet doesn't affect the algorithm
+\end{itemize}

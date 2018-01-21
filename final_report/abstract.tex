@@ -1,0 +1,11 @@
+\begin{abstract}
+\vspace{-2mm}
+The diffusion of smart mobile devices and the development of Internet of Things (IoT) has brought computation power in everyone's pocket, allowing people to perform simple tasks with their smartphones. There are some tasks, however, that are computationally  expensive and therefore cannot be performed on a mobile device (e.g., a fleet of drones capturing multi-layered images to be processed with machine learning operations such as plate or face recognition); for these delay-sensitive applications, computation offloading represents a valid solution.
+
+Computation offloading is the process of delegating computationally expensive tasks to servers located at the edge of the network; offloading is useful to minimize response time or energy consumption, crucial constraints in mobile and IoT devices. Offloading such tasks to the cloud is ineffective since cloud infrastructure servers are too distant from from the IoT devices. %Edge computing moves the processing from the core to the edge of the network, improving user experience by reducing the perceived latency. 
+One of the fundamental mechanisms to reduce latency via edge computing is to chose a proper path to the destination; commonly used shortest path algorithms are performance (and so latency) agnostic: they ignore network conditions. One of the hypothesis that we validate in this work is that cooperative routing-based methods can steer (i.e. route or forward), edge traffic with (statistically) lower end-to-end delays than reaction-based methods, such as load balancers~\cite{facebook_LB}.
+
+To forecast path metrics, we use machine learning techniques, which in the last few years have affected the way we make software~\cite{karpathy}. 
+In particular, in this project, we present an architecture for edge offloading orchestration: the architecture design is modular  so that the offloading policies could be easily plugged into the system. One effective path prediction policy for the offloading mechanisms that we have implemented is Long Short Term Memory (LSTM), a deep learning approach. Our evaluation shows that our method performs better than the traditional routing policies in terms of throughput.
+
+\end{abstract}

@@ -1,0 +1,15 @@
+\select@language {american}
+\select@language {french}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Dataset generation parameters\relax }}{18}{table.caption.21}
+\contentsline {table}{\numberline {3.2}{\ignorespaces LSTM architectures comparison\relax }}{22}{table.caption.24}
+\contentsline {table}{\numberline {3.3}{\ignorespaces LSTM architectures average training time\relax }}{22}{table.caption.25}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Path predictions different and equal to OSPF\relax }}{30}{table.caption.29}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Routing strategies retransmission rate\relax }}{31}{table.caption.30}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
