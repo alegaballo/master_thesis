@@ -103,8 +103,9 @@ if __name__=='__main__':
     listener = Listener(adr, authkey='hola')
     conn = listener.accept()
     print('new connection from {:}'.format(listener.last_accepted))
+    k = 0
     with open( sys.argv[1], 'w+') as f:
-        while True:
+        while k < 200:
             msg=conn.recv()
             cnt = np.array(msg[1:]).reshape(1,1,10)
             #src, dst = get_target()
@@ -118,6 +119,8 @@ if __name__=='__main__':
                 f.write(str(cnt[0][0])+'\n')
                 f.write('prediction:'+str(predicted)+'\n')
                 f.write('ospf:'+str(ospf)+'\n')
+                k += 1
+                print('{:}/200'.format(k))
     listener.close()
 
 
