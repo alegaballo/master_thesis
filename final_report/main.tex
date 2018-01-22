@@ -1,0 +1,97 @@
+\documentclass[12pt,twoside,openright]{ociamthesis}  % default square logo 
+%\documentclass[12pt,beltcrest]{ociamthesis} % use old belt crest logo
+%\documentclass[12pt,shieldcrest]{ociamthesis} % use older shield crest logo
+
+%load any additional packages
+\usepackage{amssymb}
+\usepackage{nomencl}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+\usepackage{hyperref}
+\usepackage{abntex2cite}
+\usepackage{listings} % for code snippets
+\usepackage[utf8]{inputenc}
+\usepackage[french, american]{babel}
+\usepackage{afterpage}
+\usepackage[T1]{fontenc}
+
+ %remove headers and footers from empty pages
+%input macros (i.e. write your own macros file called mymacros.tex 
+%and uncomment the next line)
+%\include{mymacros}
+
+\setlength{\headheight}{14.5pt} %suppress warning
+
+\title{An Architecture for Task and Traffic Offloading in Edge Computing via Deep Learning\\[1ex]     %your thesis title,
+}   %note \\[1ex] is a line break in the title
+
+\author{Alessandro Gaballo}             %your name
+%\college{Politecnico di Torino}  %your college
+\college{EURECOM - Data Science and Engineering}  %your college
+
+%\renewcommand{\submittedtext}{change the default text here if needed}
+\degree{Research carried out at Saint Louis University under the supervision of Dr. Flavio Esposito}     %the degree
+\degreedate{January 2018}         %the degree date
+
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+\makenomenclature
+%end the preamble and start the document
+\begin{document}
+\pagenumbering{gobble} 
+%this baselineskip gives sufficient line spacing for an examiner to easily
+%markup the thesis with comments
+\baselineskip=18pt plus1pt
+
+%set the number of sectioning levels that get number and appear in the contents
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\maketitle                  % create a title page from the preamble info
+\include{dedication}        % include a dedication.tex file
+\include{acknowlegements}   % include an acknowledgements.tex file
+\include{abstract}          % include the abstract
+\include{abstract_fr}          % include the abstract
+\pagestyle{fancy}
+\renewcommand\chaptermark[1]{\markboth{\thechapter\ #1}{}}
+\fancyhf{}
+
+\fancyhead[LE,RO]{\bfseries\leftmark}
+\fancyhead[RE,LO]{\rightmark}
+\begin{romanpages}          % start roman page numbering
+\tableofcontents            % generate and include a table of contents
+\listoffigures              % generate and include a list of figures
+\listoftables
+\printnomenclature[3cm]
+\end{romanpages}% end roman page numbering
+\pagenumbering{arabic}
+\afterpage{\cfoot{\thepage}} %start regular page numbering
+%now include the files of latex for each of the chapters etc
+\include{Introduction}
+\include{Background}
+\include{Contribution}
+\include{RelatedWork}
+\include{Results}
+\include{Conclusions}
+\include{glossary}
+%now enable appendix numbering format and include any appendices
+\appendix
+\include{appendix2}
+\include{appendix1}
+
+%next line adds the Bibliography to the contents page
+\addcontentsline{toc}{chapter}{Bibliography}
+%uncomment next line to change bibliography name to references
+%\renewcommand{\bibname}{References}
+\bibliography{refs}        %use a bibtex bibliography file refs.bib
+%\bibliographystyle{plain}  %use the plain bibliography style
+%\bibliographystyle{abbrvnat}
+\cleardoublepage
+\end{document}
+
