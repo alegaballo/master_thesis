@@ -73,7 +73,7 @@ class MyTopo(Topo):
         num_routers = len(routers)
         for i in range(num_routers):
             if (i == 0)  and count==0:
-                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw, loss=10)
+                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw, loss=20)
             #self.addLink(routers[i], routers[(i+1)%num_routers])
             else:
                 self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw)
