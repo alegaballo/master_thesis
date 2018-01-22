@@ -6,12 +6,14 @@ import numpy as np
 import my_routes as routes
 import time
 import random 
+import sys
 MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final/'
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
 
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
-TARGET = 'r1_172_168_4_1'
-PATH = 'r1 172.168.4.1:'
+#TARGET = 'r1_172_168_4_1'
+#PATH = 'r1 172.168.4.1:'
+DST_INTF = '_3_1'
 ROUTES = '/home/mininet/miniNExT/examples/master_thesis/project/testing/run0/paths.txt'
 
 TARGETS = os.listdir(MODELS_DIR)
@@ -23,7 +25,7 @@ class Predictor(object):
 
     def _load_models(self):
         print('Loading models')
-        target = [t for t in os.listdir(MODELS_DIR) if t.endswith('_3_2')]
+        target = [t for t in os.listdir(MODELS_DIR) if t.endswith(DST_INTF)]
         self.models = {t:get_model(t) for t in target }
         print('Models loaded')
 
@@ -40,8 +42,8 @@ class Predictor(object):
     
     def predict(self, src, dst_addr, counter):
         path = [src]
-        counter = np.zeros((1,1,10))
-
+        counter = np.array(counter).reshape((1,1,10))
+        print(counter)
         while True:
             if dst_addr in self.addresses[src]:
                 break
@@ -52,12 +54,15 @@ class Predictor(object):
             path.append(next_router)
             src = next_router
         print('Predicted path:\t{:}'.format(path))
+        return path
+
 
 def get_model(target):
     model_dir = os.path.join(MODELS_DIR, target)
     model = load_model(model_dir + '/{:}_model.h5'.format(target))
     #model._make_predict_function()
     return model
+
 
 def get_ospf(paths, src, dst):
     if not paths:
@@ -68,13 +73,15 @@ def get_ospf(paths, src, dst):
     else:
         route = [p for p in paths if '{:} {:}:'.format(src, dst) in p][0]
         print_route(route)
+        return route
+
 
 def print_route(route):
     target, hops = route.split(':')
     hops = hops.strip().split()
     path = [ROUTERS_NAMING[int(h)] for h in hops]
     print('OSPF path:\t{:}'.format(path))
-
+    
 
 def get_target():
     target = TARGETS[random.randint(0, len(TARGETS))]
@@ -96,15 +103,21 @@ if __name__=='__main__':
     listener = Listener(adr, authkey='hola')
     conn = listener.accept()
     print('new connection from {:}'.format(listener.last_accepted))
-    while True:
-        msg=conn.recv()
-        cnt = np.array(msg[1:]).reshape(1,1,10)
-        #src, dst = get_target()
-        src = 'r1'
-        dst = '172.168.3.2'
-        pr.predict(src, dst, cnt)
-        get_ospf(paths, src, dst)
-    
+    with open( sys.argv[1], 'w+') as f:
+        while True:
+            msg=conn.recv()
+            cnt = np.array(msg[1:]).reshape(1,1,10)
+            #src, dst = get_target()
+            src = 'r1'
+            dst = '172.168.3.1'
+            predicted = pr.predict(src, dst, cnt)
+            ospf = get_ospf(paths, src, dst)
+            if predicted and ospf:
+                ospf = ospf.split(':')[1].strip().split()
+                ospf = [ROUTERS_NAMING[int(h)] for h in ospf]
+                f.write(str(cnt[0][0])+'\n')
+                f.write('prediction:'+str(predicted)+'\n')
+                f.write('ospf:'+str(ospf)+'\n')
     listener.close()
 
 

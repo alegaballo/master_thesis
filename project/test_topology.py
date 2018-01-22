@@ -12,7 +12,7 @@ QuaggaHost = namedtuple("QuaggaHost", "name ip loIP")
 net = None
 OUTER = 6
 INNER = 4
-IN_BW = 1000
+IN_BW = 300
 
 class MyTopo(Topo):
     def __init__(self):
@@ -53,7 +53,7 @@ class MyTopo(Topo):
         with open(OUT_DIR + 'intf_speed.pkl', 'wb+') as f:
             pickle.dump(self.intf_speed, f)
 
-    def createQuaggRing(self, n, quaggaSvc, quaggaBaseConfigPath, r_name="r{:d}", s_name="s{:d}", count=0, bw=None):
+    def createQuaggRing(self, n, quaggaSvc, quaggaBaseConfigPath, r_name="r{:d}", s_name="s{:d}", count=0, bw=None, loss=0):
         routers = []
         switches = []
         for i in range(n): 
@@ -72,17 +72,21 @@ class MyTopo(Topo):
 
         num_routers = len(routers)
         for i in range(num_routers):
-            self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw)
+            if (i == 0)  and count==0:
+                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw, loss=10)
             #self.addLink(routers[i], routers[(i+1)%num_routers])
+            else:
+                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw)
         return routers 
     
-    def addLinkWithSwitch(self, r1, r2, s, bw=None):
+
+    def addLinkWithSwitch(self, r1, r2, s, bw=None, loss=0):
         if not bw:
             # from Ethernet 10Base-X to Gigabit Ethernet
-            # bw=randint(100, 800)
+            #bw=randint(100, 800)
             bw = 300
-        self.addLink(r1,s, bw=bw)
-        self.addLink(s,r2, bw=bw)
+        self.addLink(r1,s, bw=bw, loss=loss)
+        self.addLink(s,r2, bw=bw, loss=loss)
         # saving the port on the switch for incoming traffic on the specific router
         #self.in_interface.append("{:} {:} 2".format(r1, s))
         #self.in_interface.append("{:} {:} 1".format(r2, s))
