@@ -115,21 +115,22 @@ def build_model(x_train, y_train, x_test, y_test, target, hidden_layers=2, neuro
 layers = 2
 neurons = 128
 train_epochs = 150
-
-for target in os.listdir(MODEL_DIR):
+targets = os.listdir(MODEL_DIR)
+total = len(targets)
+counter = 0
+for target in targets:
     path = os.path.join(MODEL_DIR, target)
     train_hist = []
     test_metrics = []
     x = []
     y = []
-    if not target.endswith('_3_2'):
-        continue
    
     data = os.listdir(path)
     if '{:}_model.h5'.format(target) in data:
+        counter+=1
         continue
 
-    print('training {:}'.format(target))
+    print('training {:} {:}/{:}'.format(target, counter, total))
     for dataset in data:
         file = os.path.join(path, dataset)
         with open(file, 'r') as f:
@@ -144,6 +145,7 @@ for target in os.listdir(MODEL_DIR):
     x_t, y_t, x_ts, y_ts = split_data(x, y)
     h, m = build_model(x_t, y_t, x_ts, y_ts, target, neurons=neurons, hidden_layers=layers, epochs=train_epochs,
                            plot=True, model_path=os.path.join(path,'{:}_model.h5'.format(target)))
+    counter +=1
     print(target, m)
     train_hist.append(h)
     test_metrics.append(m)
