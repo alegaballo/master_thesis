@@ -1,3 +1,4 @@
+from __future__ import print_function
 from keras.models import load_model
 from collections import defaultdict
 from multiprocessing.connection import Listener
@@ -7,13 +8,15 @@ import my_routes as routes
 import time
 import random 
 import sys
+
+
 MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final/'
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
 
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
-#TARGET = 'r1_172_168_4_1'
-#PATH = 'r1 172.168.4.1:'
-DST_INTF = '_3_1'
+SELECTED_T = ['r1_172_168_32_1','r1_172_168_4_1', 'r1_172_168_4_2', 'r2_172_168_4_2', 'r3_172_168_35_1',
+            'r4_172_168_6_2', 'r4_172_168_35_1', 'r6_172_168_2_1', 'r6_172_168_32_1', 'r6_172_168_3_2']
+
 ROUTES = '/home/mininet/miniNExT/examples/master_thesis/project/testing/run0/paths.txt'
 
 TARGETS = os.listdir(MODELS_DIR)
@@ -25,9 +28,18 @@ class Predictor(object):
 
     def _load_models(self):
         print('Loading models')
-        target = [t for t in os.listdir(MODELS_DIR) if t.endswith(DST_INTF)]
-        self.models = {t:get_model(t) for t in target }
-        print('Models loaded')
+        target = [] 
+        for i,s in enumerate(SELECTED_T):
+            # selecting all the models that take you to that destination
+            dst_intf = '_' + '_'.join(s.split('_')[-2:])
+            target.extend([t for t in os.listdir(MODELS_DIR) if t.endswith(dst_intf)])
+        print(len(target))
+        target = set(target)
+        print(len(target))
+        t0=time.time()
+        self.models = {t:get_model(t) for t in target}
+        t1=time.time()
+        print('Models loaded: loading time {:} s'.format(t1-t0))
 
 
     def getAddresses(self, conf_file):
@@ -59,7 +71,10 @@ class Predictor(object):
 
 def get_model(target):
     model_dir = os.path.join(MODELS_DIR, target)
+    
+    print('Loading model: {:} ...'.format(target), end='\t')
     model = load_model(model_dir + '/{:}_model.h5'.format(target))
+    print('[DONE]')
     #model._make_predict_function()
     return model
 
@@ -83,6 +98,7 @@ def print_route(route):
     print('OSPF path:\t{:}'.format(path))
     
 
+# select a random target
 def get_target():
     target = TARGETS[random.randint(0, len(TARGETS))]
     print(target)
@@ -108,19 +124,20 @@ if __name__=='__main__':
         while k < 200:
             msg=conn.recv()
             cnt = np.array(msg[1:]).reshape(1,1,10)
-            #src, dst = get_target()
-            src = 'r1'
-            dst = '172.168.3.1'
-            predicted = pr.predict(src, dst, cnt)
-            ospf = get_ospf(paths, src, dst)
-            if predicted and ospf:
-                ospf = ospf.split(':')[1].strip().split()
-                ospf = [ROUTERS_NAMING[int(h)] for h in ospf]
-                f.write(str(cnt[0][0])+'\n')
-                f.write('prediction:'+str(predicted)+'\n')
-                f.write('ospf:'+str(ospf)+'\n')
-                k += 1
-                print('{:}/200'.format(k))
+            for t in SELECTED_T:
+                t = target.split('_')
+                src = t[0]
+                dst = '.'.join(t[1:])
+                predicted = pr.predict(src, dst, cnt)
+                ospf = get_ospf(paths, src, dst)
+                if predicted and ospf:
+                    ospf = ospf.split(':')[1].strip().split()
+                    ospf = [ROUTERS_NAMING[int(h)] for h in ospf]
+                    f.write(str(cnt[0][0])+'\n')
+                    f.write('prediction:'+str(predicted)+'\n')
+                    f.write('ospf:'+str(ospf)+'\n')
+            k += 1
+            print('{:}/200'.format(k))
     listener.close()
 
 
