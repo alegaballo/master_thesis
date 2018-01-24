@@ -1,6 +1,6 @@
 import inspect
 import os
-from random import randint 
+from random import randint, random
 from mininext.topo import Topo
 from mininext.services.quagga import QuaggaService
 from collections import namedtuple
@@ -13,6 +13,8 @@ net = None
 OUTER = 6
 INNER = 4
 IN_BW = 300
+LOSS_PROB = 0.5
+LOSS = 10
 
 class MyTopo(Topo):
     def __init__(self):
@@ -72,11 +74,7 @@ class MyTopo(Topo):
 
         num_routers = len(routers)
         for i in range(num_routers):
-            if (i == 0)  and count==0:
-                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw, loss=20)
-            #self.addLink(routers[i], routers[(i+1)%num_routers])
-            else:
-                self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw)
+            self.addLinkWithSwitch(routers[i], routers[(i+1)%num_routers], switches[i], bw)
         return routers 
     
 
@@ -85,6 +83,8 @@ class MyTopo(Topo):
             # from Ethernet 10Base-X to Gigabit Ethernet
             #bw=randint(100, 800)
             bw = 300
+        if random() >= LOSS_PROB:
+            loss = LOSS
         self.addLink(r1,s, bw=bw, loss=loss)
         self.addLink(s,r2, bw=bw, loss=loss)
         # saving the port on the switch for incoming traffic on the specific router
