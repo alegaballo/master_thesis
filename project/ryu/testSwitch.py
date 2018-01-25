@@ -18,6 +18,7 @@ from keras.models import load_model
 from keras import backend as K
 from ryu.controller.dpset import DPSet
 from ryu.base import app_manager
+from ryu.controller import event
 from ryu.controller import ofp_event
 from ryu.controller.handler import CONFIG_DISPATCHER, MAIN_DISPATCHER
 from ryu.controller.handler import set_ev_cls
@@ -42,9 +43,15 @@ MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final
 ITERATION = 15
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
 
+class EventMsg(event.EventBase):
+    def __init__(self, msg):
+        super(EventMsg, self).__init__()
+        self.msg =  msg
+
+
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
-
+    _EVENT = [EventMsg]
     
     def __init__(self, *args, **kwargs):
         super(SimpleSwitch13, self).__init__(*args, **kwargs)
@@ -54,6 +61,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.monitor = hub.spawn(self._get_stats)      
         #self.load_models()
         self.collector = hub.spawn(self.counter)
+
         self.in_mapping = pickle.load(open(OUT_DIR + 'switch_mapping.pkl','rb'))
         self.packet_count = self._init_pckt_count()
         self.addresses = defaultdict(list)
@@ -263,6 +271,12 @@ class SimpleSwitch13(app_manager.RyuApp):
         return model
     
 
+    def counter_2(self):
+        counter = self._print_packet_count()
+        #self.send_event_to_observers(EventMsg(str(counter)))
+        #print('event sent')
+        #hub.sleep(10)
+    
     def counter(self):
         #hub.sleep(70)
         address = ('localhost', 6000)
