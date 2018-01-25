@@ -14,16 +14,15 @@ MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
 
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
-SELECTED_T = ['r1_172_168_32_1','r1_172_168_4_1', 'r1_172_168_4_2', 'r2_172_168_4_2', 'r3_172_168_35_1',
-            'r4_172_168_6_2', 'r4_172_168_35_1', 'r6_172_168_2_1', 'r6_172_168_32_1', 'r6_172_168_3_2']
+SELECTED_T = ['r1_172_168_4_1']#, 'r2_172_168_4_2', 'r3_172_168_35_1','r4_172_168_35_1', 'r6_172_168_32_1']
 
 ROUTES = '/home/mininet/miniNExT/examples/master_thesis/project/testing/run0/paths.txt'
-
+ITERATIONS = 2
 TARGETS = os.listdir(MODELS_DIR)
 class Predictor(object):
     def __init__(self, *args, **kwargs):
         self.getAddresses(ROUTER_CONF)
-        #self._load_models()
+        self._load_models()
 
 
     def _load_models(self):
@@ -33,9 +32,7 @@ class Predictor(object):
             # selecting all the models that take you to that destination
             dst_intf = '_' + '_'.join(s.split('_')[-2:])
             target.extend([t for t in os.listdir(MODELS_DIR) if t.endswith(dst_intf)])
-        print(len(target))
         target = set(target)
-        print(len(target))
         t0=time.time()
         self.models = {t:get_model(t) for t in target}
         t1=time.time()
@@ -121,16 +118,16 @@ if __name__=='__main__':
     print('waiting for connections')
     conn = listener.accept()
     print('new connection from {:}'.format(listener.last_accepted))
-    Popen(['sudo','python', 'test_net.py'], cwd='/home/mininet/miniNExT/examples/master_thesis/project/')
+    Popen(['python', 'test_net.py'], cwd='/home/mininet/miniNExT/examples/master_thesis/project/')
     k = 0
     iteration = 0
     with open(sys.argv[1], 'w+') as f:
-        while iteration < 10:
+        while iteration < ITERATIONS:
             if os.path.isfile(ROUTES):
                 with open(ROUTES, 'r') as r:
                     routes = r.readlines()
                 paths = [line.strip() for line in routes]
-                while k < 200:
+                while k < 2:
                     msg = conn.recv()
                     cnt = np.array(msg[1:]).reshape(1,1,10)
                 
@@ -150,6 +147,7 @@ if __name__=='__main__':
                             f.write('ospf:'+str(ospf)+'\n')
                     k += 1
                 os.remove(ROUTES)
+                k = 0
                 iteration +=1
                 
             else:
