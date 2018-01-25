@@ -133,9 +133,9 @@ if __name__=='__main__':
                 
                     # predicting all the paths
                     for t in SELECTED_T:
-                        t = target.split('_')
-                        src = t[0]
-                        dst = '.'.join(t[1:])
+                        target= t.split('_')
+                        src = target[0]
+                        dst = '.'.join(target[1:])
                         predicted = pr.predict(src, dst, cnt)
                         ospf = get_ospf(paths, src, dst)
                         if predicted and ospf:
@@ -146,6 +146,7 @@ if __name__=='__main__':
                             f.write('prediction:'+str(predicted)+'\n')
                             f.write('ospf:'+str(ospf)+'\n')
                     k += 1
+                print('*****************FINISH RUN******************')
                 os.remove(ROUTES)
                 k = 0
                 iteration +=1
