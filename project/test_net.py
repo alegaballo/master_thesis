@@ -44,18 +44,18 @@ net = None
 def startNetwork():
     "instantiates a topo, then starts the network and prints debug information"
     paths = routes.Net()
-   
-    info('** Creating Quagga network topology\n')
-    topo = MyTopo()
-    info('** Starting the network\n')
-    global net
-    net = MiniNExT(topo, controller=None, link=TCLink)
-    c=net.addController('c0', controller=RemoteController, ip='127.0.0.1', port=6633) 
-    info('** Configuring addresses on interfaces\n')
-    setInterfaces(net, "configs/interfaces")
-    
-    net.run(simulateTraffic, net, SIM_DURATION, 0, paths)
-    paths.reset()
+    for i in range(ITERATION)
+        info('** Creating Quagga network topology\n')
+        topo = MyTopo()
+        info('** Starting the network\n')
+        global net
+        net = MiniNExT(topo, controller=None, link=TCLink)
+        c=net.addController('c0', controller=RemoteController, ip='127.0.0.1', port=6633) 
+        info('** Configuring addresses on interfaces\n')
+        setInterfaces(net, "configs/interfaces")
+        
+        net.run(simulateTraffic, net, SIM_DURATION, i, paths)
+        paths.reset()
 
 
 def simulateTraffic(net, duration, iteration, paths):
