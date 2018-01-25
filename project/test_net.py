@@ -44,7 +44,7 @@ net = None
 def startNetwork():
     "instantiates a topo, then starts the network and prints debug information"
     paths = routes.Net()
-    for i in range(ITERATION)
+    for i in range(ITERATION):
         info('** Creating Quagga network topology\n')
         topo = MyTopo()
         info('** Starting the network\n')
@@ -68,7 +68,8 @@ def simulateTraffic(net, duration, iteration, paths):
         exit(-1)
     paths.parse_routes(routes.ROUTES_FILE, routes.ROUTER_CONF)
     paths.get_paths()
-    paths.save_paths('testing/run{:}/paths.txt'.format(iteration))
+    #paths.save_paths('testing/run{:}/paths.txt'.format(iteration))
+    paths.save_paths('testing/run0/paths.txt')
     valid = []
     with open('addresses.pkl', 'rb') as f:
         rout_addr = pickle.load(f)
