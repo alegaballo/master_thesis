@@ -17,7 +17,8 @@ ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/int
 SELECTED_T = ['r1_172_168_4_1']#, 'r2_172_168_4_2', 'r3_172_168_35_1','r4_172_168_35_1', 'r6_172_168_32_1']
 
 ROUTES = '/home/mininet/miniNExT/examples/master_thesis/project/testing/run0/paths.txt'
-ITERATIONS = 2
+ITERATIONS = 20
+SAMPLES = 200
 TARGETS = os.listdir(MODELS_DIR)
 class Predictor(object):
     def __init__(self, *args, **kwargs):
@@ -129,7 +130,7 @@ if __name__=='__main__':
                     with open(ROUTES, 'r') as r:
                         routes = r.readlines()
                     paths = [line.strip() for line in routes]
-                    while k < 2:
+                    while k < SAMPLES:
                         msg = conn.recv()
                         cnt = np.array(msg[1:]).reshape(1,1,10)
                         if sum(cnt[0][0] > 10):

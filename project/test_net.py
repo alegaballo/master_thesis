@@ -37,7 +37,7 @@ DEF_PSW = 'zebra'
 REF_BANDWIDTH = 1000
 SIM_DURATION = 12 #seconds of traffic simulation duration
 TRAFFIC_PROB = 0.65
-ITERATION = 2
+ITERATION = 20
 net = None
 
 

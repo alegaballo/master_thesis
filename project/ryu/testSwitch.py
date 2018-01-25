@@ -14,8 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from keras.models import load_model
-from keras import backend as K
+#from keras.models import load_model
+#from keras import backend as K
 from ryu.controller.dpset import DPSet
 from ryu.base import app_manager
 from ryu.controller import event
@@ -278,7 +278,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         #hub.sleep(10)
     
     def counter(self):
-        #hub.sleep(70)
+        hub.sleep(5)
         address = ('localhost', 6000)
         print('connecting to server')
         conn = Client(address, authkey='hola')
@@ -295,7 +295,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         for r in sorted(self.packet_count):
             # print(t, r, sum(self.packet_count[r].values()))
             counter.append(sum(self.packet_count[r].values()))
-        print(counter) 
+        #print(counter) 
 
         if file and sum(counter[1:]) > 100:
             line = ' '.join(str(e) for e in counter)
