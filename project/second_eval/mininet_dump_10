@@ -1,0 +1,1209 @@
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 0
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 1
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 2
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 3
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 4
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 5
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 6
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 7
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 8
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 9
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 10
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s11 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 11
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 12
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 13
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 14
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 15
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s2 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 16
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s14 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 17
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s2) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r5, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s6) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s15) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s16) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s3 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s6 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s7 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s10 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s11 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s12 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s16 (300.00Mbit 10% loss) (300.00Mbit 10% loss) 
+*** Running test
+***RUN 18
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Creating Quagga network topology
+** Starting the network
+** Using Mininet Extended (MiniNExT) Handler
+*** Creating network
+*** Adding hosts:
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Adding switches:
+s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 
+*** Adding links:
+(300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r1, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r1, s11) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r2, s1) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r2, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s2) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s3) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r3, s13) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s3) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r4, s4) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s4) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r5, s5) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s5) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (r6, s6) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s15) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (r6, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri1, s7) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s10) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri1, s16) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s7) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri2, s11) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri2, s12) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s8) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri3, s9) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri3, s13) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s9) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s10) (300.00Mbit 10% loss) (300.00Mbit 10% loss) (ri4, s14) (300.00Mbit 0% loss) (300.00Mbit 0% loss) (ri4, s15) 
+*** Configuring hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Starting host services
+r1: Quagga (OK) 
+r2: Quagga (OK) 
+r3: Quagga (OK) 
+r4: Quagga (OK) 
+r5: Quagga (OK) 
+r6: Quagga (OK) 
+ri1: Quagga (OK) 
+ri2: Quagga (OK) 
+ri3: Quagga (OK) 
+ri4: Quagga (OK) 
+** Configuring addresses on interfaces
+*** Starting controller
+*** Starting 16 switches
+s1 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s2 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s3 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s4 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s5 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s6 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s7 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s8 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s9 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s10 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s11 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s12 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s13 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s14 (300.00Mbit 10% loss) (300.00Mbit 10% loss) s15 (300.00Mbit 0% loss) (300.00Mbit 0% loss) s16 (300.00Mbit 0% loss) (300.00Mbit 0% loss) 
+*** Running test
+***RUN 19
+** Waiting for OSPF to converge
+** Dumping routing table
+*** Starting iperf server on r1
+*** Starting iperf server on r2
+*** Starting iperf server on r3
+*** Starting iperf server on r4
+*** Starting iperf server on r5
+*** Starting iperf server on r6
+*** Starting iperf server on ri1
+*** Starting iperf server on ri2
+*** Starting iperf server on ri3
+*** Starting iperf server on ri4
+***Starting traffic simulation
+*** Stopping iperf server on r1
+*** Stopping iperf server on r2
+*** Stopping iperf server on r3
+*** Stopping iperf server on r4
+*** Stopping iperf server on r5
+*** Stopping iperf server on r6
+*** Stopping iperf server on ri1
+*** Stopping iperf server on ri2
+*** Stopping iperf server on ri3
+*** Stopping iperf server on ri4
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
+** Tearing down Quagga network
+*** Stopping host services
+*** Stopping 16 switches
+s1 ..s2 ..s3 ..s4 ..s5 ..s6 ..s7 ..s8 ..s9 ..s10 ..s11 ..s12 ..s13 ..s14 ..s15 ..s16 ..
+*** Stopping 10 hosts
+r1 r2 r3 r4 r5 r6 ri1 ri2 ri3 ri4 
+*** Stopping 1 controllers
+c0 
+*** Done
