@@ -8,7 +8,7 @@ import my_routes as routes
 import time
 import random 
 import sys
-
+from subprocess import Popen
 
 MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final/'
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
@@ -23,7 +23,7 @@ TARGETS = os.listdir(MODELS_DIR)
 class Predictor(object):
     def __init__(self, *args, **kwargs):
         self.getAddresses(ROUTER_CONF)
-        self._load_models()
+        #self._load_models()
 
 
     def _load_models(self):
@@ -117,27 +117,63 @@ if __name__=='__main__':
     pr = Predictor()
     adr = ('localhost', 6000)
     listener = Listener(adr, authkey='hola')
+    Popen(['ryu-manager', 'testSwitch.py'])
+    print('waiting for connections')
     conn = listener.accept()
     print('new connection from {:}'.format(listener.last_accepted))
+    Popen(['sudo','python', 'test_net.py'], cwd='/home/mininet/miniNExT/examples/master_thesis/project/')
     k = 0
-    with open( sys.argv[1], 'w+') as f:
-        while k < 200:
-            msg=conn.recv()
-            cnt = np.array(msg[1:]).reshape(1,1,10)
-            for t in SELECTED_T:
-                t = target.split('_')
-                src = t[0]
-                dst = '.'.join(t[1:])
-                predicted = pr.predict(src, dst, cnt)
-                ospf = get_ospf(paths, src, dst)
-                if predicted and ospf:
-                    ospf = ospf.split(':')[1].strip().split()
-                    ospf = [ROUTERS_NAMING[int(h)] for h in ospf]
-                    f.write(str(cnt[0][0])+'\n')
-                    f.write('prediction:'+str(predicted)+'\n')
-                    f.write('ospf:'+str(ospf)+'\n')
-            k += 1
-            print('{:}/200'.format(k))
+    iteration = 0
+    with open(sys.argv[1], 'w+') as f:
+        while iteration < 10:
+            if os.path.isfile(ROUTES):
+                with open(ROUTES, 'r') as r:
+                    routes = r.readlines()
+                paths = [line.strip() for line in routes]
+                while k < 200:
+                    msg = conn.recv()
+                    cnt = np.array(msg[1:]).reshape(1,1,10)
+                
+                    # predicting all the paths
+                    for t in SELECTED_T:
+                        t = target.split('_')
+                        src = t[0]
+                        dst = '.'.join(t[1:])
+                        predicted = pr.predict(src, dst, cnt)
+                        ospf = get_ospf(paths, src, dst)
+                        if predicted and ospf:
+                            ospf = ospf.split(':')[1].strip().split()
+                            ospf = [ROUTERS_NAMING[int(h)] for h in ospf]
+                            f.write(t)
+                            f.write(str(cnt[0][0])+'\n')
+                            f.write('prediction:'+str(predicted)+'\n')
+                            f.write('ospf:'+str(ospf)+'\n')
+                    k += 1
+                os.remove(ROUTES)
+                iteration +=1
+                
+            else:
+                time.sleep(2)
+                
+
+#    with open( sys.argv[1], 'w+') as f:
+#        while k < 200:
+#            msg=conn.recv()
+#            cnt = np.array(msg[1:]).reshape(1,1,10)
+#            for t in SELECTED_T:
+#                t = target.split('_')
+#                src = t[0]
+#                dst = '.'.join(t[1:])
+#                predicted = pr.predict(src, dst, cnt)
+#                ospf = get_ospf(paths, src, dst)
+#                if predicted and ospf:
+#                    ospf = ospf.split(':')[1].strip().split()
+#                    ospf = [ROUTERS_NAMING[int(h)] for h in ospf]
+#                    f.write(str(cnt[0][0])+'\n')
+#                    f.write('prediction:'+str(predicted)+'\n')
+#                    f.write('ospf:'+str(ospf)+'\n')
+#            k += 1
+#            print('{:}/200'.format(k))
     listener.close()
 
 
