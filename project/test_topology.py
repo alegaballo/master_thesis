@@ -14,7 +14,7 @@ OUTER = 6
 INNER = 4
 IN_BW = 300
 LOSS_PROB = 0.5
-LOSS = 10
+LOSS = 5
 
 class MyTopo(Topo):
     def __init__(self):

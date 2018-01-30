@@ -35,9 +35,9 @@ blacklist = [('r2', 'ri3'), ('r2', 'ri4'), ('r3', 'r6'), ('r4', 'r1'), ('r4', 'r
 
 DEF_PSW = 'zebra'
 REF_BANDWIDTH = 1000
-SIM_DURATION = 12 #seconds of traffic simulation duration
+SIM_DURATION = 110000 #seconds of traffic simulation duration
 TRAFFIC_PROB = 0.65
-ITERATION = 20
+ITERATION = 1 
 net = None
 
 
