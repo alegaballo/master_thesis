@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {2}{Offloading Architecture}{6}{0}{1}
+\beamer@subsectionintoc {2}{1}{Abstraction}{6}{0}{1}
+\beamer@subsectionintoc {2}{2}{Task Offloading Protocol}{8}{0}{1}
+\beamer@subsectionintoc {2}{3}{Path Prediction via LSTM}{10}{0}{1}
+\beamer@subsubsectionintoc {2}{3}{1}{Overview}{10}{0}{1}
+\beamer@subsubsectionintoc {2}{3}{2}{Dataset}{18}{0}{1}
+\beamer@subsubsectionintoc {2}{3}{3}{LSTM Architecture}{24}{0}{1}
+\beamer@sectionintoc {3}{Results}{29}{0}{2}
+\beamer@sectionintoc {4}{Limitations}{34}{0}{3}
