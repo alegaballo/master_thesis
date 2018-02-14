@@ -1,0 +1,108 @@
+# COUNTER OF THE NUMBER OF TIMES THAT "BROKEN" LINKS HAVE BEEN USED BY THE 2 APPROACHES
+
+loss_05
+
+Link with loss traversed:
+OSPF:1200 LSTM:901
+------------------------------
+Link with loss traversed:
+OSPF:800 LSTM:837
+------------------------------
+Link with loss traversed:
+OSPF:1000 LSTM:1090
+------------------------------
+Link with loss traversed:
+OSPF:1600 LSTM:1400
+------------------------------
+Link with loss traversed:
+OSPF:1800 LSTM:1626
+------------------------------
+Link with loss traversed:
+OSPF:1000 LSTM:1210
+------------------------------
+Link with loss traversed:
+OSPF:2000 LSTM:2080
+------------------------------
+Link with loss traversed:
+OSPF:2000 LSTM:1916
+------------------------------
+Link with loss traversed:
+OSPF:2400 LSTM:2430
+------------------------------
+Link with loss traversed:
+OSPF:1800 LSTM:1896
+------------------------------
+TOTAL link with loss traversed:
+OSPF:15600 LSTM:15386
+******************************
+loss_10
+
+Link with loss traversed:
+OSPF:800 LSTM:637
+------------------------------
+Link with loss traversed:
+OSPF:2000 LSTM:2583
+------------------------------
+Link with loss traversed:
+OSPF:1000 LSTM:1214
+------------------------------
+Link with loss traversed:
+OSPF:800 LSTM:974
+------------------------------
+Link with loss traversed:
+OSPF:1000 LSTM:948
+------------------------------
+Link with loss traversed:
+OSPF:2200 LSTM:1618
+------------------------------
+Link with loss traversed:
+OSPF:1400 LSTM:1780
+------------------------------
+Link with loss traversed:
+OSPF:1400 LSTM:1041
+------------------------------
+Link with loss traversed:
+OSPF:400 LSTM:507
+------------------------------
+Link with loss traversed:
+OSPF:2000 LSTM:2135
+------------------------------
+TOTAL link with loss traversed:
+OSPF:13000 LSTM:13437
+******************************
+loss_15
+
+Link with loss traversed:
+OSPF:1000 LSTM:811
+------------------------------
+Link with loss traversed:
+OSPF:1600 LSTM:1661
+------------------------------
+Link with loss traversed:
+OSPF:600 LSTM:634
+------------------------------
+Link with loss traversed:
+OSPF:2200 LSTM:1792
+------------------------------
+Link with loss traversed:
+OSPF:1200 LSTM:1386
+------------------------------
+Link with loss traversed:
+OSPF:1600 LSTM:1433
+------------------------------
+Link with loss traversed:
+OSPF:1000 LSTM:1015
+------------------------------
+Link with loss traversed:
+OSPF:1000 LSTM:848
+------------------------------
+Link with loss traversed:
+OSPF:800 LSTM:1033
+------------------------------
+Link with loss traversed:
+OSPF:2000 LSTM:2394
+------------------------------
+TOTAL link with loss traversed:
+OSPF:13000 LSTM:13007
+******************************
+
