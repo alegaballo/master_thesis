@@ -20,6 +20,7 @@ class TCPHandler(socketserver.StreamRequestHandler):
 
         try:
             msg_size = int(self.data)
+
         except ValueError:
             print('not a valid message size')
             self.send_message('response', response=RESPONSES['INVALID_SIZE'], msg='{:} is not a valid msg size'.format(self.data))
@@ -27,11 +28,14 @@ class TCPHandler(socketserver.StreamRequestHandler):
             # send error message
         message = msg_pb2.Message()
         print('Expected message size', msg_size)
+		# sending confirmation of the message receipt, necessary for some troubles with python sockets
         self.send_message('response', response=RESPONSES['OK'], msg='OK')
 
         return self.receive_message(msg_size)
 
-    def receive_message(self, msg_size):
+    
+	# receives a message of the specified size	
+	def receive_message(self, msg_size):
         received = 0
         message_s = bytes()
         while received != msg_size:
@@ -47,6 +51,14 @@ class TCPHandler(socketserver.StreamRequestHandler):
 
     def send_message(self, MESSAGE_TYPE, **kwargs):
         self.SEND_MSGS[MESSAGE_TYPE](**kwargs)
+    
+
+	def send_response(self, **kwargs):
+        msg = msg_pb2.Message()
+        msg.type = msg_pb2.Message.RESPONSE
+        msg.response.result = kwargs['response']
+        msg.response.msg = kwargs['msg']
+        self.request.sendall(msg.SerializeToString())
 
 
 if __name__ == "__main__":
