@@ -125,7 +125,7 @@ class Net:
         print()
 
 
-    # all my networks are /24, not a proper implementet method, just putting a 0 instead of the host
+    # all my networks are /24, not a proper implemented method, just putting a 0 instead of the host
     @staticmethod 
     def _addr_to_net(addr, prefix=24):
         return re.sub("([0-9]+\.[0-9]+\.[0-9]+)\.[0-9]+", "\\1.0", addr)
