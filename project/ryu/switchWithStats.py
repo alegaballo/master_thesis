@@ -31,9 +31,10 @@ import os
 
 
 EMPTY_COUNTER = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
-POLLING_INTERVAL = 1
+POLLING_INTERVAL = 1 # frequency of the packet count retrieval
 OUT_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/'
-ITERATION = 15
+DATASET_DIR = 'dataset_final'
+ITERATION = 15 # number of iteration for the dataset generation
 
 
 class SimpleSwitch13(app_manager.RyuApp):
@@ -155,13 +156,15 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.datapaths.add(datapath)
 
 
+    # function responsible of the polling for the couter
     def _get_stats(self):
         while True:
             for dp in self.datapaths:
                 self.switch_stats(dp)
             hub.sleep(POLLING_INTERVAL)
 
-
+    
+    # sending the openflow request for the stats
     def switch_stats(self, datapath):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
@@ -169,6 +172,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         datapath.send_msg(req)
 
 
+    # handling the reply to the stats request
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)
     def _stats_reply(self, ev):
         msg = ev.msg
@@ -200,7 +204,8 @@ class SimpleSwitch13(app_manager.RyuApp):
                             print_break_line()
                 flows.append('packet_count=%s in_port=%s'%(stat.packet_count, stat.match['in_port']))
         
-        # only if the stats data structure has been already initialized and contains alle the information
+        # only if the stats data structure has been already initialized and contains all the information
+        # if a switch has more than 2 connections the check on the lenght of the body needs to be updated (not 100% sure)
         if sw_name in self.stats and len(body)==3:
             self.stats[sw_name]=body 
         
@@ -213,24 +218,26 @@ class SimpleSwitch13(app_manager.RyuApp):
             cnt = 0
             # letting mininet creating the folders
             try:
-                with open(OUT_DIR + 'dataset_final/run' +str(i)+ '/' + timestr + '_capture', 'w+') as f:
-        	    print('run {:} Capture file {:}_capture'.format(i, timestr))
+                with open(OUT_DIR + DATASET_DIR + '/run' +str(i)+ '/' + timestr + '_capture', 'w+') as f:
+        	        print('run {:} Capture file {:}_capture'.format(i, timestr))
                     while True:
-	                new = self._print_packet_count(file=f)
-	                # checking if simulation has ended
+	                    new = self._print_packet_count(file=f)
+	                    # checking if simulation has ended
                         if new[1:] == old[1:] and sum(new[1:]) > 100:
-	                    cnt +=1
+	                        cnt +=1
+                            # if the counter stays the same for several times, the simulation has ended
                             if cnt > 5:
                                 print('Waiting for new run to start...')
                                 i += 1
                                 if i < ITERATION:
                                     time.sleep(70)
                                 break
-	                else:
+	                    else:
                             cnt=0
-	                old = new
-	                time.sleep(POLLING_INTERVAL)
-	    except IOError:
+	                    old = new
+	                    time.sleep(POLLING_INTERVAL)
+	        
+            except IOError:
                 time.sleep(1)
                 continue
         print('capture ended')

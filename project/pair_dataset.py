@@ -32,14 +32,11 @@ for run in os.listdir(DATASET):
                 folder = os.path.join('./models_final', target)
 
                 make_dir(folder)
-                # creating a folder for each router traversed in the path between src,dst without considering the last hop
-                # WRONG, THERE'S ONLY ONE MODEL PER TARGET
-
                 path = [int(hop) for hop in path.split()]
                 next_hop = path[1]
                 label = np.zeros(10, dtype=np.int)
                 label[next_hop] = 1
-
+				# writing the dataset in the final form: packet_counter, next_hop
                 dataset_file = 'dataset_final{:}'.format(run)
                 with open(os.path.join(folder, dataset_file), 'w+') as f:
                     label = ' '.join(str(i) for i in label)+'\n'

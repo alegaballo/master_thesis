@@ -31,44 +31,29 @@ import os
 import stat
 import ryu.my_routes as routes
 
+# list of target for which iperf doesn't work (don't know the reason)
 blacklist = [('r2', 'ri3'), ('r2', 'ri4'), ('r3', 'r6'), ('r4', 'r1'), ('r4', 'ri3'), ('r5', 'ri2'), ('r6', 'r3'), ('ri3', 'r5')]
 
 DEF_PSW = 'zebra'
-REF_BANDWIDTH = 1000
+REF_BANDWIDTH = 1000 # bw for OSPF cost calculation, goes in the ospf conf file
 SIM_DURATION = 1200 # seconds of traffic simulation duration
-TRAFFIC_PROB = 0.65
-ITERATION = 15
+TRAFFIC_PROB = 0.65 # probability of sending traffic between a pair of routers
+ITERATION = 15 # number of iteration for the dataset generation
+DATASET_DIR = 'dataset_final'
 net = None
 
 
 def startNetwork():
     "instantiates a topo, then starts the network and prints debug information"
 
-    
-   
-    # waiting for ospf to converge
-    #info('\n** Waiting for OSPF to converge\n')
-    #time.sleep(60)
-    #simulateTraffic(net, 30)
-
-#    info("** Enabling spanning tree on switches\n")
-    
-    #info('** Dumping host connections\n')
-    #dumpNodeConnections(net.hosts)
-
-    #info('** Testing network connectivity\n')
-    # net.ping(net.hosts)
-    
-    #info('** Dumping host processes\n')
-    #for host in net.hosts:
-    #    host.cmdPrint("ps aux")
-    paths = routes.Net()
+   	paths = routes.Net()
    
     for i in range(ITERATION):
         try:
-            os.mkdir('dataset_final/run{:}'.format(i))
-            print(os.chmod('dataset_final/run{:}/'.format(i), 0777))
-        except OSError:
+            os.mkdir(DATASET_DIR + '/run{:}'.format(i))
+            print(os.chmod(DATASET_DIR + '/run{:}/'.format(i), 0777))
+        
+		except OSError:
             pass
         
 
@@ -80,46 +65,45 @@ def startNetwork():
         net = MiniNExT(topo, controller=None, link=TCLink)
         c=net.addController('c0', controller=RemoteController, ip='127.0.0.1', port=6633) 
 
-    #net = MiniNExT(topo, controller=Ryu) 
 
         info('** Configuring addresses on interfaces\n')
         setInterfaces(net, "configs/interfaces")
     
         net.run(simulateTraffic, net, SIM_DURATION, i, paths)
-        paths.reset()
-    #info('** Running CLI\n')
-    #CLI(net)
+		# cleaning the paths object for the next run        
+		paths.reset()
+
 
 
 def simulateTraffic(net, duration, iteration, paths):
     info('***RUN {:}'.format(iteration))
     info('\n** Waiting for OSPF to converge\n')
     time.sleep(60)
-    info('** Dumping routing table\n')
-    if os.system('cd ~mininet/miniNExT/util/ && bash getRoutingTable.sh && cd - > /dev/null') != 0:
+	# saving the routing table corresponding to the current run	    
+	info('** Dumping routing table\n')
+    
+	if os.system('cd ~mininet/miniNExT/util/ && bash getRoutingTable.sh && cd - > /dev/null') != 0:
         error('Can\'t dump routing table, exiting...')
         exit(-1)
+
+	# the paths obj contains all the newtork information, including all the available paths and the routers configuration
     paths.parse_routes(routes.ROUTES_FILE, routes.ROUTER_CONF)
     paths.get_paths()
-    paths.save_paths('dataset_final/run{:}/paths.txt'.format(iteration))
+    paths.save_paths(DATASET_DIR + '/run{:}/paths.txt'.format(iteration))
     valid = []
     with open('addresses.pkl', 'rb') as f:
+		# contains the addresses of each router
         rout_addr = pickle.load(f)
     
     with open('addr_rout.pkl', 'rb') as f:
-        addr_rout = pickle.load(f)
+		# contains the router of each address        
+		addr_rout = pickle.load(f)
 
-#    for host in net.hosts:
-#        # if 'i' not in host.name:
-#        valid.append(host)
-#        info('*** Starting iperf server on {:}\n'.format(host.name))
-#        host.cmd('pkill iperf')
-#        # using & allows to nonblocking cmd
-#        host.cmd('iperf -s &')
-#   
+	# starting the iperf server on all the routers   
     start_iperf(net.hosts)
 
     valid_addr = []
+	# retrieving the hosts addresses
     for host in net.hosts:
         valid_addr.extend(rout_addr[host.name])
 
@@ -157,6 +141,7 @@ def is_valid_path(s,d):
     if s==d:
         return False
 
+	# not generating traffic from and to inner routers
     if 'i' in s or 'i' in d:
         return False
 
@@ -195,8 +180,10 @@ def setInterfaces(net, confFile):
                     zebra_conf[router]=[]
                 zebra_conf[router].append((interface, ip, bw))
     
+	# the zebra config needs to be recomputed because at each run we're changing the interface speed
     createZebraConfig(zebra_conf)
-    #createOSPFConfig(networks)
+	# the OSPF configuration doesn't need to be reconfigured every time unless you change the ip addresses or the reference bandwidth    
+	#createOSPFConfig(networks)
 
 
 def createOSPFConfing(networks):
