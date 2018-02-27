@@ -1,0 +1,188 @@
+% !TEX encoding = IsoLatin
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1.o Esempio con la classe toptesi
+%\documentclass[b5paper,10pt,twoside,cucitura]{toptesi}
+%\usepackage{lipsum}
+%\documentclass[twoside,cucitura,pdfa]{toptesi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2.o Esempio con la classe toptesi
+\documentclass[11pt,twoside,oldstyle,autoretitolo,classica,greek,evenboxes]{toptesi}
+\usepackage[or]{teubner}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commentare la riga seguente se si � specificata l'opzione "pdfa"
+\usepackage{hyperref}
+
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    bookmarksopen,
+    pdfstartview={FitH},
+    colorlinks,
+    linkcolor={blue},
+    citecolor={red},
+    urlcolor={blue}
+  }
+%
+% Esempio di composizione di tesi di laurea con PDFLATEX <---------------- !
+%
+% Questo esempio e' stato preparato inizialmente il 13-marzo-1989
+% e poi e' stato modificato via via che TOPtesi andava
+% arricchendosi di altre possibilit�.
+%
+% Per comporre con XeLaTeX, invece che con pdfLaTeX, vedere il file
+% toptesi-example-xetex.tex
+% A parte i font, bisogna specificare alcune cose dopo la fine del preambolo.
+%
+% Nel seguito laurea "quinquennale" sta anche per "specialistica" o "magistrale".
+%
+% Cambiare encoding a piacere; oppure non caricare nessun encoding se si usano
+% solo caratteri a 7 bit (ASCII) nei file d'entrata. La codifica utf8 sarebbe
+% quella maggiormente desiderabile; richiede per� un editor che sappia gestirla.
+%
+\usepackage[latin1]{inputenc}% per macchine Linux/Mac/UNIX/Windows; meglio utf8
+\usepackage[T1]{fontenc}\usepackage{lmodern}
+%
+\ateneo{Politecnico di Torino}
+%\nomeateneo{Castello di Miramare}
+%\FacoltaDi{}
+%\facolta[III]{Matematica, Fisica\\e Scienze Naturali}
+%\Materia{Remote sensing}
+%\monografia{La pressione barometrica di Giove}% per la laurea triennale
+\titolo{An Architecture for Task and Traffic Offloading in Edge Computing\\~via Deep Learning}% per la laurea quinquennale e il dottorato
+%\sottotitolo{Metodo dei satelliti medicei}% per la laurea quinquennale e il dottorato
+\corsodilaurea{Ingegneria Informatica}% per la laurea
+%\corsodidottorato{Meccanica}% per il dottorato
+
+%%%%%%% Trucco per inserire la matricola sotto il nome di ogni candidato
+\candidato{\tabular{@{}l@{}}Alessandro \textsc{Gaballo}\\matricola: 231587\endtabular}% per tutti i percorsi
+%\secondocandidato{\tabular{@{}l@{}}Evangelista \textsc{Torricelli}\\matricola: 123457\endtabular}% per la laurea magistrale solamente
+
+%%%%%%% 
+%\direttore{prof. Albert Einstein}% per il dottorato
+%\coordinatore{prof. Albert Einstein}% per il dottorato
+\relatore{prof.\ Flavio Esposito}% per la laurea e/o il dottorato
+\secondorelatore{prof.\ Guido Marchetto}% per la laurea magistrale
+%%%%%%%%%% Trucco per mettere il correlatore senza usare l'opzione classica
+%\relatore{\tabular{@{}l@{}}
+%prof.\ Albert Enstein\\[1.5ex]
+%\textbf{Correlatore:}\\
+%dipl.~ing.~Werner von Braun
+%\endtabular}
+%%%%%%%%%%
+%
+%%%%%%%%%% Trucco per far scrivere Laureando/a/i/e al posto di "Candidato/a/i/e"
+%\def\Candidato{Laureando:}
+%\def\Candidati{Laureandi:}
+%\def\Candidata{Laureanda:}
+%\def\Candidate{Laureande:}
+%%%%%%%%%%
+%\terzorelatore{{\tabular{@{}l}dott.\ Neil Armstrong\\prof. Maria Rossi\endtabular}}% per la laurea magistrale
+%\tutore{ing.~Karl Von Braun}% per il dottorato
+%\tutoreaziendale{dott.\ ing.\ Giovanni Giacosa}
+%\NomeTutoreAziendale{Supervisore aziendale\\Centro Ricerche FIAT}
+%\sedutadilaurea{Agosto 1615}% per la laurea quinquennale; oppure:
+\sedutadilaurea{\textsc{Anno~accademico} 2017-2018}% per la laurea magistrale
+%\esamedidottorato{Novembre 1610}% per il dottorato
+%\annoaccademico{1615-1616}% solo con l'opzione classica
+%\annoaccademico{2006-2007}% idem
+\ciclodidottorato{XV}% per il dottorato
+%\logosede{logotrieste}% questo e' ovviamente facoltativo, ma e' richiesto per
+% il dottorato al PoliTO; in questo calso si usa il "logopolito"
+\logosede[35mm]{img/politologo} % auxiliary ShareLaTeX logo
+%
+%\chapterbib %solo per vedere che cosa succede; e' preferibile comporre una sola bibliografia
+%\AdvisorName{Supervisors}
+\newtheorem{osservazione}{Osservazione}% Standard LaTeX
+
+%\setbindingcorrection{3mm}
+
+\begin{document}\errorcontextlines=9% debugging
+
+\english%  di default vale \italiano
+
+% Comment the following lines if you don't care about the title page in English
+% Change the strings if you want a title page and a copyright page in another language
+% Comment just the \iflanguage statement and the closing line of the language test
+%	 if you want to make a global change instead of a conditional one.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\iflanguage{english}{%
+	\retrofrontespizio{This work is subject to the Creative Commons Licence}
+	\DottoratoIn{PhD Course in\space}
+	\CorsoDiLaureaIn{Master degree course in\space}
+	\NomeMonografia{Bachelor Degree Thesis}
+	\TesiDiLaurea{Master Degree Thesis}
+	\NomeDissertazione{PhD Dissertation}
+	\InName{in}
+	\CandidateName{Candidate}% or Candidate
+	\AdvisorName{Supervisors}% or Supervisor
+	\TutorName{Tutor}
+	\NomeTutoreAziendale{Internship Tutor}
+	\CycleName{cycle}
+	\NomePrimoTomo{First volume}
+	\NomeSecondoTomo{Second Volume}
+	\NomeTerzoTomo{Third Volume}
+	\NomeQuartoTomo{Fourth Volume}
+	\logosede{img/politologo}% or comma separated list of logos
+	}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\expandafter\ifx\csname StileTrieste\endcsname\relax
+    \frontespizio
+\else
+    \paginavuota
+    \begin{dedica}
+        A mio padre
+
+        \textdagger\ A mio nonno Pino
+    \end{dedica}
+    \tomo
+\fi
+
+
+\sommario
+
+ La pressione barometrica di Giove viene misurata
+mediante un metodo originale  messo a punto dai candidati, che si basa
+sul rilevamento telescopico della pressione.
+
+\ringraziamenti
+
+I candidati ringraziano vivamente il Granduca di Toscana per i mezzi
+messi loro a disposizione, ed il signor Von Braun, assistente del
+prof.~Albert Einstein, per le informazioni riservate che egli ha
+gentilmente fornito loro, e per le utili discussioni che hanno permesso
+ai candidati di evitare di riscoprire l'acqua calda.
+
+\tablespagetrue\figurespagetrue % normalmente questa riga non serve ed e' commentata
+\indici
+
+\expandafter\ifx\csname StileTrieste\endcsname\relax
+\else
+    \begin{citazioni}
+        \textit{testo testo testo\\testo testo testo}
+
+        [\textsc{G.\ Leopardi}, Operette Morali]
+
+        \textgreek{>all'a p'anta <o k'eraunos d'' >oiak'izei}
+
+        [Eraclito, fr.\ D-K 134]
+    \end{citazioni}
+
+\fi
+
+\mainmatter
+
+
+\begin{thebibliography}{9}
+\bibitem{gal} G.~Galilei, {\em Nuovi studii sugli astri medicei}, Manunzio,
+        Venetia, 1612.
+\bibitem{tor1} E.~Torricelli, in ``La pressione barometrica'', {\em Strumenti
+        Moderni}, Il Porcellino, Firenze, 1606.
+\bibitem{tor2} E.~Torricelli e A.~Vasari, in ``Delle misure'', {\em Atti Nuovo
+        Cimento}, vol.~III, n.~2 (feb. 1607), p.~27--31.
+\end{thebibliography}
+
+
+
+
+\end{document}
