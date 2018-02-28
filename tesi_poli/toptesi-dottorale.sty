@@ -1,10 +1,10 @@
 %%
-%% This is file `topfront.sty',
+%% This is file `toptesi-dottorale.sty',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% toptesi.dtx  (with options: `topfrn')
+%% toptesi.dtx  (with options: `topdoc')
 %%   ______________________________________________________
 %%   The TOPtesi bundle
 %%   Copyright (C) 2015-2017 Claudio Beccari
@@ -12,10 +12,9 @@
 %% 
 %%   License information appended
 %% 
-\NeedsTeXFormat{LaTeX2e}[2016/01/01]
-\ProvidesPackage{topfront}[%
+\ProvidesPackage{toptesi-dottorale}[%
 2018/01/12 v.~6.1.12
-Title page for TOPtesi and other classes]
+Ph.D. degree title page]
 
 \@ifpackageloaded{etoolbox}{}{\RequirePackage{etoolbox}}
 \@ifpackageloaded{xspace}{}{\RequirePackage{xspace}}
@@ -25,17 +24,15 @@ Title page for TOPtesi and other classes]
 \ifcsundef{if@ldstyle}{\newif\if@ldstyle\@ldstylefalse}{}
 \ifcsundef{if@xivpt}{\newif\if@xivpt \@xivptfalse}{}
 \ifcsundef{if@binding}{\newif\if@binding\@bindingfalse}{}
-\ifcsundef{ifScuDo}{\newif\ifScuDo \ScuDofalse}{}
-\ifcsundef{ifmonografia}{\newif\ifmonografia\monografiafalse}{}
-\ifcsundef{iftriennale}{\newif\iftriennale\triennalefalse}{}
-\ifcsundef{ifmagistrale}{\newif\ifmagistrale\magistralefalse}{}
 \ifcsundef{ifdottorale}{\newif\ifdottorale\dottoralefalse}{}
-\ifcsundef{ifsecondaria}{\newif\ifsecondaria\secondariafalse}{}
-\ifcsundef{ifplurale}{\newif\ifplurale\pluralefalse}{}
+\ifcsundef{ifevenboxes}{\newif\ifevenboxes \evenboxesfalse}{}
+\ifcsundef{ifTOPfront}{\newif\ifTOPfront \TOPfrontfalse}{}
+\ifcsundef{ifT@Pfrontespizio}{\newif\ifT@Pfrontespiziofalse}{}
+\ifcsundef{c@tomo}{\newcounter{tomo}\setcounter{tomo}{0}}{}
+\newif\iffemminile\newif\ifplurale
+\newif\iftriennale\triennalefalse
+\newif\ifdottorato \dottoratotrue
 
-\ifcsundef{ifTOPfront}{\newif\ifTOPfront \TOPfronttrue
-\newif\ifevenboxes \evenboxesfalse}{}
-\ifcsundef{c@tomo}{\newcounter{tomo}}{}
 \DeclareOption{evenboxes}{\evenboxestrue}
 \DeclareOption{cucitura}{\@bindingtrue}
 \DeclareOption{14pt}{\@xivpttrue}
@@ -43,80 +40,104 @@ Title page for TOPtesi and other classes]
 \DeclareOption{autoretitolo}{\ifclassica\@utoretitolotrue\fi}
 \DeclareOption{oldstyle}{\ifclassica\@ldstyletrue\fi}
 \ProcessOptions*\relax
-
 \def\headstrut{\vrule \@depth4\p@ \@height\z@ \@width\z@}
 \def\ps@titlepage{\let\@mkboth\@gobbletwo
    \def\@oddfoot{\vbox to 0.05\paperheight{\vss
       \hbox to\hsize{\hfil{\Large{\@submitdate}}\hfil}}}%
    \let\@evenfoot\@oddfoot
    \def\@oddhead{%
-      \vbox to\headheight{\vss
-        \iftopTPTlogos
+      \vbox to\headheight{\vss\iftopTPTlogos
          \hbox to\textwidth{%
            \headstrut\hfil
            \raisebox{3\baselineskip}{\usebox\TPT@logobox}\hfil\null%
-           }
-         \fi\par
-         \ifcsvoid{@ateneo}{}{%
-         \hbox to\textwidth{\hss\LARGE\rule[-1ex]{0pt}{3.3ex}\MakeUppercase{\@ateneo}\hss}}
+         }\fi
+         \ifcsvoid{@ateneo}{}{\vskip\smallskipamount
+         \hbox to\textwidth{\hss\LARGE\MakeUppercase{\@ateneo}\hss}}
          \vss
       }%
    }%
    \let\@evenhead\@oddhead
    \def\chaptermark##1{}\def\sectionmark##1{}%
 }
-      \def\ps@classica{\let\@mkboth\markboth
-      \def\@oddhead{\vbox{%
-      \setbox256=\hbox{\LARGE\MakeUppercase{\@ateneo}}
-      \unless\ifdim\wd256<\textwidth
-         \setbox256=\hbox{\resizebox{\textwidth}{!}{\box256}}%
-       \fi
-      \hbox to \hsize{\hss\box256\hss}%
-      \ifclassica
-            \hbox to \hsize{\hfil\vrule\@width\z@
-        \@height2ex\vrule\@height1.4\p@\@depth-\p@\@width50mm\hfil}%
-      \fi
-      }}%
-      \def\@oddfoot{\vbox to \dimexpr\paperheight/20\relax{\vss
-     \ifclassica
-        \hbox to \hsize{\hfil\raisebox{-.3ex}[\z@][\z@]{%
-        \vrule\@height-2.6\p@\@depth3\p@\@width
-            \dimexpr\textwidth/3}\hfil}%
-      \fi
-      \hbox to\hsize{\hfill{\Large{\@submitdate}}\hfill}}%
-      }%
-      \let\@evenhead\@oddhead
-      \let\@evenfoot\@oddfoot
-      }%
-\newif\iffemminile
-\newif\ifdottorato \dottoratofalse
-\newif\iftriennale \triennalefalse
-\ifTOPfront
-\ifclassica
-\def\Candidato{Laureando}
-\def\Candidata{Laureanda}
-\def\Candidati{Laureandi}
-\def\Candidate{Laureande}
-\fi\fi
-\def\monografia#1{\global\triennaletrue
-      \global\dottoratofalse
-      \global\def\titolo##1{\PackageWarning{topfront}%
-      {Il titolo e' gia' stato impostato con
-            il comando \string\monografia}}%
-      \gdef\@titolo{#1}}
 
+  \def\ps@classica{\let\@mkboth\markboth
+  \def\@oddhead{\vbox{%
+  \setbox256=\hbox{\LARGE\MakeUppercase{\@ateneo}}
+  \unless\ifdim\wd256<\textwidth
+     \setbox256=\hbox{\resizebox{\textwidth}{!}{\box256}}%
+   \fi
+  \hbox to \hsize{\hss\box256\hss}%
+  \ifclassica
+        \hbox to \hsize{\hfil\vrule\@width\z@
+    \@height2ex\vrule\@height1.4\p@\@depth-\p@\@width50mm\hfil}%
+  \fi
+  }}%
+  \def\@oddfoot{\vbox to \dimexpr\paperheight/20\relax{\vss
+ \ifclassica
+    \hbox to \hsize{\hfil\raisebox{-.3ex}[\z@][\z@]{%
+    \vrule\@height-2.6\p@\@depth3\p@\@width
+        \dimexpr\textwidth/3}\hfil}%
+  \fi
+  \hbox to\hsize{\hfill{\Large{\@submitdate}}\hfill}}%
+  }%
+  \let\@evenhead\@oddhead
+  \let\@evenfoot\@oddfoot
+  }%
+\if@utoretitolo
+   \if@twoside
+       \renewcommand*{\ps@headings}{\let\@mkboth\markboth%
+       \def\@oddfoot{\null \hfill \textbf{\lapagina} \hfill \null}%
+       \let\@evenfoot\@oddfoot
+       \def\@evenhead{%
+           \setbox\@intesta\hbox{\ifPDFTeX\latintext\fi
+           \footnotesize\strut\textsc{%
+           \@@author\ifcsvoid{@secondauthor}{\ et al.}: \@stitle}%
+           }%
+       \ifdim\wd\@intesta>\textwidth\headwrn{\titolo}\fi
+       \underline{\makebox[\textwidth]{\box\@intesta}}}%
+       \def\@oddhead{\ifPDFTeX\latintext\fi
+           \setbox\@intesta\hbox{%
+               \footnotesize\strut\textsl{\rightmark}}%
+       \ifdim\wd\@intesta>\textwidth \headWarn{\section}\fi%
+       \underline{\makebox[\textwidth]{\box\@intesta}}}%
+       \def\chaptermark##1{\markright{\thechapter\ -- ##1}}%
+       \def\sectionmark##1{}}%
+   \else
+       \renewcommand*{\ps@headings}{\let\@mkboth\markboth
+           \def\@oddfoot{\null \hfill \textbf{\lapagina}\hfill \null}%
+           \let\@evenfoot\empty\let\@evenhead\empty
+           \def\@oddhead{{\setbox\z@\hbox{\ifPDFTeX\latintext\fi
+           \footnotesize\textsc{%
+           \@@author\ifcsvoid{@secondauthor}{}{\ et al.}: \@stitle}}%
+           \setbox\tw@\hbox{\ifPDFTeX\latintext\fi
+           \footnotesize\textsl{\rightmark}}%
+           \dimen@=\dimexpr2em + \wd\z@ + \wd\tw@\relax
+           \ifdim\dimen@<\textwidth \relax
+           \else
+             \setbox\z@\vbox{\hsize.48\textwidth\parindent\z@
+             \raggedright
+             \ifPDFTeX\latintext\fi\footnotesize\textsc{%
+             \@@author\ifcsvoid{@secondauthor}{}{\ et al.}: \@stitle
+             }}%
+             \setbox\tw@\vbox{\hsize.48\textwidth\parindent\z@
+             \raggedleft
+             \ifPDFTeX\latintext\fi\footnotesize
+                 \textsl{\rightmark}}%
+             \fi
+           \setbox\@intesta\vbox to\z@{%
+                \vss\hbox to\textwidth{\strut\box\z@\hfill\box\tw@}}%
+           \underline{\box\@intesta}}}%
+           \def\chaptermark##1{\markright{\thechapter\ -- ##1}}}
+   \fi
+\fi
 \let\@stitle\empty
 
 \newcommand*{\titolo}[2][]{%
-\ifbool{triennale}{%
-\PackageWarning{topfront}{Il titolo deve essere impostato con
-                               il comando \string\monografia}
-}{%
 \def\@tempA{#1}\ifdefempty{\@tempA}%
-     {\gdef\@stitle{#2}}{\gdef\@stitle{#1}}%
-     \gdef\@titolo{#2}%
-     }%
-}
+ {\gdef\@stitle{#2}}{\gdef\@stitle{#1}}%
+ \gdef\@titolo{#2}%
+}%
+
 \def\sottotitolo#1{\gdef\@subtitle{#1}}
 \let\@materia\empty
 \def\Materia#1{\def\@materia{#1}}\let\materia\Materia
@@ -128,7 +149,7 @@ Title page for TOPtesi and other classes]
 \def\relatore#1{\gdef\@principaladviser{#1}}
 \def\secondorelatore#1{\gdef\@secondadviser{#1}}
 \def\terzorelatore#1{\gdef\@thirdadviser{#1}}
-\def\sedutadilaurea#1{\getseduta#1 !}
+\def\esamedidottorato#1{\getseduta#1 !}
 \def\getseduta#1 #2!{%
     \def\@tempA{#2}%
     \ifx\@tempA\empty
@@ -142,23 +163,23 @@ Title page for TOPtesi and other classes]
     \fi
 }%
 \def\s@dutaclassica#1 #2!{%
-    \if@ldstyle
-        \s@paranumeri#2-!%
-        \ifx\2\empty
-            \edef\@submitdate{\noexpand#1 \noexpand\oldstylenums{#2}}%
-        \else
-            \s@paranumeri#2!%
-            \edef\@submitdate{\noexpand#1
-            \noexpand\oldstylenums{\1} -- \noexpand\oldstylenums{\2}}%
-        \fi
-        \let\1\undefined
-        \let\2\undefined
+  \if@ldstyle
+    \s@paranumeri#2-!%
+    \ifx\2\empty
+      \edef\@submitdate{\noexpand#1 \noexpand\oldstylenums{#2}}%
     \else
-        \def\@submitdate{#1 #2}%
+      \s@paranumeri#2!%
+      \edef\@submitdate{\noexpand#1
+      \noexpand\oldstylenums{\1} -- \noexpand\oldstylenums{\2}}%
     \fi
+      \let\1\undefined
+      \let\2\undefined
+  \else
+    \def\@submitdate{#1 #2}%
+  \fi
 }
 \def\s@paranumeri#1-#2!{\def\1{#1}\def\2{#2}}%
-\let\esamedidottorato\sedutadilaurea
+
 \newcommand*\NomeAnnoAccademico[1]{\gdef\AnnoAccademico{#1}}
 \@ifundefined{AnnoAccademico}{\gdef\AnnoAccademico{Anno accademico}}{}
 \def\annoaccademico#1{\ifclassica
@@ -178,16 +199,14 @@ Title page for TOPtesi and other classes]
 \makebox[1.5\dimen@]{%
     \vrule\@width\dimen@\@height\dimen4\@depth-\dimen\tw@}}}
 \def\ciclodidottorato#1{\gdef\@ciclo{#1 \@cyclename}}%
-\def\corsodilaurea#1{\global\dottoratofalse\gdef\@corso{#1}}
-\def\corsodidottorato#1{\global\dottoratotrue\global\triennalefalse
-    \gdef\@corso{#1}}
-\def\scuoladidottorato#1{\global\dottoratotrue\global\triennalefalse
-    \gdef\@phdschool{#1}}
+\def\corsodidottorato#1{\global\dottoratotrue
+  \global\gdef\@corso{#1}}
+\def\scuoladidottorato#1{\global\dottoratotrue
+  \gdef\@phdschool{#1}}
 \def\ateneo#1{\gdef\@ateneo{#1}}
 \def\nomeateneo#1{\gdef\@nomeat{\expandafter\uppercase{\expandafter #1}}}
 \newcommand\facolta[2][]{\gdef\@facname{#2}\gdef\@facnumber{#1}}
 \let\struttura\facolta
-
 \newlength{\TPT@logospace}\TPT@logospace=3em\relax
 \newsavebox{\TPT@logobox}
 \newdimen\TPT@logoheight
@@ -210,7 +229,6 @@ Title page for TOPtesi and other classes]
    \expandafter\fillup@TCP@logobox\@logosede,!}}
 
 \newcommand\printloghi{\unless\ifvoid\TPT@logobox\usebox{\TPT@logobox}\fi}
-
 \def\tutoreaziendale#1{\gdef\@tutoreaziendale{#1}}
 \newcommand\retrofrontespizio[1]{\long\gdef\@retrofrontespizio{#1}}
 \newcommand\FacoltaDi[1]{\gdef\@faculty{#1}}
@@ -231,13 +249,11 @@ Title page for TOPtesi and other classes]
 \newcommand\NomeSecondoTomo[1]{\gdef\SecondoTomo{#1}}
 \newcommand\NomeTerzoTomo[1]{\gdef\TerzoTomo{#1}}
 \newcommand\NomeQuartoTomo[1]{\gdef\QuartoTomo{#1}}
-\providecommand\IDlabel{\\\quad matricola\ }
+\newcommand\IDlabel{\\matricola:\xspace}
 \IfFileExists{\jobname.cfg}{\input{\jobname.cfg}}%
     {\IfFileExists{toptesi.cfg}{\input{toptesi.cfg}}{}}
 \@ifundefined{@cyclename}{\def\@cyclename{ciclo}}{}
 \@ifundefined{@titolo}{\def\@titolo{}}{}
-
-\providecommand\@author{}\providecommand\@@author{}
 \NewDocumentCommand\candidato{m o}{\gdef\@@author{#1}%
 \IfNoValueTF{#2}{\gdef\@author{#1}}%
                {\gdef\@author{#1\IDlabel#2}}
@@ -264,7 +280,6 @@ Title page for TOPtesi and other classes]
 \IfNoValueTF{#2}{\gdef\@thirdauthor{#1}}%
                 {\gdef\@thirdauthor{#1\IDlabel#2}}%
 \pluraletrue}
-\providecommand\IDlabel{matricola\ }
 
 \@ifundefined{@principaladviser}{\def\@principaladviser{}}{}
 \@ifundefined{@secondadviser}{\def\@secondadviser{}}{}
@@ -300,13 +315,6 @@ Title page for TOPtesi and other classes]
 \@ifundefined{SecondoTomo}{\def\SecondoTomo{Tomo secondo}}{}
 \@ifundefined{TerzoTomo}{\def\TerzoTomo{Tomo terzo}}{}
 \@ifundefined{QuartoTomo}{\def\QuartoTomo{Tomo quarto}}{}
-\ifTOPfront
-\ifclassica
-\def\Candidato{Laureando}
-\def\Candidata{Laureanda}
-\def\Candidati{Laureandi}
-\def\Candidate{Laureande}
-\fi\fi
 \@ifundefined{@submitdate}{\def\@submitdate{\ifcase\the\month\or%
   Gennaio\or Febbraio\or Marzo\or Aprile\or Maggio\or Giugno\or
   Luglio\or Agosto\or Settembre\or Ottobre\or Novembre\or Dicembre\fi
@@ -318,22 +326,16 @@ Title page for TOPtesi and other classes]
 \@ifundefined{@dissertazione}{\def\@dissertazione{Tesi di Dottorato}}{}
 \@ifundefined{@monografia}{\def\@monografia{Monografia di Laurea}}{}
 \@ifundefined{@InName}{\def\@InName{in}}{}
-\newbool{topTPTlogos} \booltrue{topTPTlogos}
+\newbool{topTPTlogos}\newbool{AteneoInHead}
 
-\newenvironment{frontespizio*}{\boolfalse{topTPTlogos}}{\fr@ntespizio}
-
-\newenvironment{frontespizio}{%
-    \ifdefstring{\@currenvir}{frontespizio}
-           {\booltrue{topTPTlogos}}{\TPTmaybestar}
- }{%
-     \fr@ntespizio
- }
-
-\newbool{AteneoInHead}\boolfalse{AteneoInHead}
-\newcommand\TPTmaybestar[1]{\def\@tempA{#1}%
-\ifdefstring{\@tempA}{*}%
-  {\boolfalse{topTPTlogos}\booltrue{AteneoInHead}\fr@ntespizio}
-  {\booltrue{topTPTlogos}\fr@ntespizio\@tempA}
+\DeclareDocumentEnvironment{ThesisTitlePage}{s}{%
+  \IfBooleanTF{#1}{\boolfalse{topTPTlogos}\booltrue{AteneoInHead}}%
+               {\booltrue{topTPTlogos}\boolfalse{AteneoInHead}}%
+  \IfFileExists{\jobname.cfg}{\input{\jobname.cfg}}{%
+    \PackageWarning{toptesi-dottorale}{%
+       No configuration file found\MessageBreak}}
+}{%
+  \fr@ntespizio
 }
 \def\fr@ntespizio{%
 \begingroup\par
@@ -357,7 +359,6 @@ Title page for TOPtesi and other classes]
 }{%
     \booltrue{AteneoInHead}%
 }
-
    \ifbool{AteneoInHead}{}{%
       {{\centering\LARGE \@ateneo\par}}
    }
@@ -387,16 +388,7 @@ Title page for TOPtesi and other classes]
       \end{center}
       \vspace{\stretch{0.2}}
       \begin{center}
-        \LARGE
-        \ifdottorato
-            \@dissertazione%
-        \else
-            \iftriennale
-                  \@monografia%
-            \else
-                  \@TesiDiLaurea%
-            \fi
-        \fi
+        \LARGE\@dissertazione%
         \unless\ifx\empty\@materia
             \\\@InName\\\@materia
         \fi
@@ -423,8 +415,7 @@ Title page for TOPtesi and other classes]
                         \or \QuartoTomo%
                         \else
                             \PackageWarning{toptesi}{%
-                            Counter tomo equals
-                               \the\c@tomo\MessageBreak
+                            Counter tomo equals \the\c@tomo\MessageBreak
                             We never considered a thesis might get
                             divided in more than four volumes}%
                         \fi}}%
@@ -610,4 +601,4 @@ Title page for TOPtesi and other classes]
 %% for the benefit of foreign students attending the Doctoral
 %% School of Turin.
 %%
-%% End of file `topfront.sty'.
+%% End of file `toptesi-dottorale.sty'.

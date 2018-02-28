@@ -1,54 +1,29 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX TS-program = pdflatex
 
-%%%%%%% La riga soprastante serve per configurare gli editor
-%%%%%%% TeXShop, TeXWorks e TeXstudio per gestire questo file
-%%%%%%% con la codifica UFF-8.
-%%%%%%% Se si vuole usare un'altra codifica si veda sotto.
+%%%%%%% La riga soprastante serve per configurare gli editor TeXShop, TeXWorks
+%%%%%%% e TeXstudio per gestire questo file con la codifica IsoLatin o Latin 1
+%%%%%%% o ISO 8859-1. Se si vuole usare un'altra codifica si veda sotto.
 %%%%%%%
 
-%%%%%%%  Esempio con molte opzioni
-%%%%%%% Le opzioni nella forma "chiave=valore" sono definite
-%%%%%%% perché la classe dalla versione 6.1.00 usa il pacchetto
-%%%%%%% xkeyval. Vedere sulla documentazione in inglese o
-%%%%%%% in italiano quali opzioni accettano un valore, e quali
-%%%%%%% opzioni accettano delle scelte.
-
-%%%%%%% L'opzione per il corpo accetta qualsiasi valore, anche fratto
-%%%%%%% (per esempio: corpo=11.5pt) e va sempre scritto con una
-%%%%%%% unità di misura fra quelle che vengono riconosciute dal
-%%%%%%% sistema TeX. L'utente è pregato di non esagerare con
-%%%%%%% corpi normali minori di 10pt o maggiori di 12pt.
-%%%%%%%
-%%%%%%% Le opzioni inputencoding e fontencoding vanno per prime,
-%%%%%%% comunque prima dell'opzione corpo. Vengono ignorate se
-%%%%%%% NON si compone con pdfLaTeX. Ma questo è un esempio per
-%%%%%%% pdfLaTeX.
-%%%%%%% Qui per i font si è indicata anche la codifica LGR per
-%%%%%%% il greco, ma non sarebbe necessario, visto che dopo c'è
-%%%%%%% l'opzione greek; lo si è fatto per mostrare che se si
-%%%%%%% usano più valori essi vanno separati da virgole e
-%%%%%%% racchiusi fra graffe. 
-%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Esempio con molte opzioni
  \documentclass[%
-    corpo=13pt,
+    corpo=11pt,
     twoside,
-%    stile=classica,
-    oldstyle,
-    autoretitolo,
     greek,
     evenboxes,
-%    tipotesi,
+    tipotesi=secondaria,
 ]{toptesi}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[utf8]{inputenc}% si può scegliere anche latin1, ma lo si sconsiglia fortemente
+\usepackage[utf8]{inputenc}% si può scegliere anche latin1,
+%                            ma lo si sconsiglia fortemente
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
-% Vedere la documentazione italiana o inglese di TOPtesi per le
-% attenzioni che bisogna usare al fine di ottenere un file
-% veramente conforme alle norme per l'archiviabilità.
+% Vedere la documentazione italiana o inglese di TOPtesi
+% per le attenzioni che bisogna usare al fine di ottenere
+% un file veramente conforme alle norme per l'archiviabilità.
 
 
 \usepackage{hyperref}
@@ -63,168 +38,38 @@
     urlcolor={blue}
   }
 %
-%%%%%%% Esempio di composizione di tesi di laurea con PDFLATEX 
+%%%%%%% Esempio di composizione di tesina con PDFLATEX 
 %
+\usepackage{newtxtext,newtxmath}
 %
 % Per scrivere testo fasullo in "latinorum"
 \usepackage{lipsum}
 %
 
 %%%%%%% Definizioni locali
+\newcounter{Osservazione}
 \newtheorem{osservazione}{Osservazione}% Standard LaTeX
 
 
-\begin{document}
-%%%%%%% Questi comandi è meglio metterli dentro l'ambiente
-%%%%%%% frontespizio o frontespizio*, oppure in un file di
-%%%%%%% configurazione personale. Si veda la documentazione
-%%%%%%% inglese o italiana.
-%%%%%%% Comunque i presenti comandi servono per comporre la
-%%%%%%% tesi con i moduli di estensione standard del pacchetto
-%%%%%%% TOPtesi.
+\begin{document}\errorcontextlines=9
 
-\ateneo{Universit\`a degli Studi di Marconia}
+
 %
-% Non tutte le università hanno un nome proprio
-\nomeateneo{Sede di Torre Elettra}
-%
-%\FacoltaDi{Facoltà di }% lo spazio finale correttamente sparisce
-\facolta[III]{Matematica, Fisica\\e Scienze Naturali}
-%\Materia{Remote sensing}
-\titolo{La pressione barometrica di~Giove}% per la laurea quinquennale e il dottorato
-\sottotitolo{Metodo dei satelliti medicei}% per la laurea quinquennale e il dottorato
-%
-%%%%%%% Corso degli studi
-\corsodilaurea{Astronomia Applicata}% per la laurea
-%\corsodidottorato{Meccanica}% per il dottorato
+\begin{FrontespizioTesina}
+\SSSLogo{logotre}
+\NomeTesina{Lavoro finale per l'esame di maturità}
+\IndirizzoMiur{Cesarea}\OpzioneMiur{Coreutica medio-orientale}
+\TipoScuola{Liceo coreutico}
+\NomeScuola{Salomè Erodiaca}
+\SedeScuola{Via Roma 123\\10000 Cesarea}
+\AnnoScolastico{32--33}
+\titolo{La danza dei sette veli}
+\sottotitolo{Esecuzione svolta nel~palazzo reale su~richiesta del~re~Erode}
+\studentessa{Maria Bianchi}[V sezione F]
+\Presidente{prof.\ Letizia Rossi}
+\NumeroCommissione{123456}
+\end{FrontespizioTesina}
 
-%%%%%%% Per inserire la matricola rientrato sotto il nome di ogni
-%%%%%%%  candidato. Questo comando non è predefinito secondo lo
-%%%%%%% standard; lo è, magari con un nome leggermente diverso
-%%%%%%% (per esempio \ID) e/o una sintassi diversa con i moduli
-%%%%%%% di estensione per titpi di tesi particolari.
-\renewcommand*\IDlabel{\\\quad matricola: }
-%
-\candidato{Galileo \textsc{Galilei}}[123456]% per tutti i percorsi
-\secondocandidato{Evangelista \textsc{Torricelli}}[123457]% per la laurea magistrale solamente
-
-%%%%%%% Relatori o supervisori
-\relatore{prof.~Albert Einstein}
-\secondorelatore{dipl.~ing.~Werner von Braun}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Per mettere 4 relatori con classica
-%\AdvisorName{Supervisors}% esempio per l'inglese
-%\direttore{prof. Albert Einstein}% per il dottorato
-%\coordinatore{prof. Albert Einstein}% per il dottorato
-%    \relatore{prof.~Albert Einstein}% per la laurea e/o il dottorato
-%    \secondorelatore{dipl.~ing.~Werner von Braun}
-%    \terzorelatore{\tabular[t]{@{}l}
-%    Mario Rossi\\[0.5ex]
-%    Piero Negri
-%    \endtabular}% per la laurea magistrale
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Alternativa senza opzione classica
-%    \AdvisorName{Relatore}
-%    \relatore{prof.~Giovanni Bianchi}
-%    \secondorelatore{\tabular{@{}l}%
-%    \bfseries Correlatori\\[0.5ex]
-%    ing.~Lucio Verdi\\[0.5ex]
-%    dott.~Mario Rossi\\[0.5ex]
-%    dott.~Piero Neri
-%    \endtabular}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Alternativa con 4 relatori senza
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% indicazione dei correlatori e senza
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% opzione classica
-%    \relatore{prof.~Giovanni Bianchi}
-%    \secondorelatore{ing.~Lucio Verdi}
-%    \terzorelatore{\tabular{@{}l}
-%    dott.~Mario Rossi\\[0.5ex]
-%    dott.~Piero Neri
-%    \endtabular}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Altro trucco per mettere il correlatore
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% senza usare l'opzione classica
-%\relatore{\tabular{@{}l@{}}
-%prof.\ Albert Enstein\\[1.5ex]
-%\textbf{Correlatore:}\\
-%dipl.~ing.~Werner von Braun
-%\endtabular}
-%%%%%%%%%%
-%
-%%%%%%%%%% Trucco per scrivere anche un quarto relatore
-%\terzorelatore{{\tabular{@{}l}dott.\ Neil Armstrong\\prof. Maria Rossi\endtabular}}
-
-%%%%%%% Tutore
-%\tutore{ing.~Karl Von Braun}% per il dottorato
-\tutoreaziendale{dott.\ ing.\ Giovanni Giacosa}
-\NomeTutoreAziendale{Supervisore aziendale\\Centro Ricerche FIAT}
-
-%%%%%%% Seduta dell'esame
-%\sedutadilaurea{Agosto 1615}% per la laurea quinquennale (obsoleta);
-%%%%%%% oppure:
-\sedutadilaurea{\textsc{Anno~accademico} 1615-1616}% per la laurea magistrale
-%\esamedidottorato{Novembre 1610}% per il dottorato
-%\annoaccademico{1615-1616}% solo con l'opzione classica
-%\annoaccademico{2006-2007}% idem
-\ciclodidottorato{XV}% solo per il dottorato
-
-%%%%%%% Logo della sede
-\logosede{logodue}% questo e' ovviamente facoltativo, ma e'
-% richiesto per il dottorato al PoliTO.
-% In questo esempio si usa un logo fasullo, e si specifica
-% il nome senza estensione del file che contiene in forma
-% grafica il logo.
-%
-
-%%%%%%% Per cambiare l'offset per la rilegatura; meno offset
-%%%%%%% c'e', meglio e'
-%\setbindingcorrection{3mm}
-
-
-%\english%  di default e' in vigore \italiano
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%% Change the strings if you want a title page and a
-%%%%%%% copyright page in another language
-%%%%%%% Comment just the \iflanguage statement and the
-%%%%%%% closing line of the language test if you want to
-%%%%%%% make a global change instead of a conditional one.
-%%%%%%% Comment the following indented lines if you don't
-%%%%%%% care about the title page in English
-\iflanguage{english}{%
-	\retrofrontespizio{This work is subject to the Creative Commons Licence}
-	\DottoratoIn{PhD Course in\space}
-	\CorsoDiLaureaIn{Master degree course in\space}
-	\NomeMonografia{Bachelor Degree Final Work}
-	\TesiDiLaurea{Master Degree Thesis}
-	\NomeDissertazione{PhD Dissertation}
-	\InName{in}
-	\CandidateName{Candidates}% or Candidate
-	\AdvisorName{Supervisors}% or Supervisor
-	\TutorName{Tutor}
-	\NomeTutoreAziendale{Internship Tutor}
-	\CycleName{cycle}
-	\NomePrimoTomo{First volume}
-	\NomeSecondoTomo{Second Volume}
-	\NomeTerzoTomo{Third Volume}
-	\NomeQuartoTomo{Fourth Volume}
-	\logosede{logouno,logodue}% or comma separated list of logos
-}{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%% Questo test è usato appunto per collaudare diversi stili,
-%%%%%%% non per comporre una vera tesi.
-%%%%%%% Non usarlo mai, solo perché qui è usato!
-\ifbool{classica}%
-{\tomo
-  \paginavuota
-    \begin{dedica}
-        A mio padre
-
-        \textdagger\ A mio nonno Pino
-    \end{dedica}
-}{%
-    \frontespizio % sarebbe meglio usare l'ambiente
-}
 %%%%%%% Fine esperimento
 
 \sommario
@@ -254,7 +99,7 @@ ai candidati di evitare di riscoprire l'acqua calda.
 \begin{citazioni}
         \textit{testo testo testo\\testo testo testo}
 
-        [\textsc{G.\ Leopardi}, Operette Morali]\vspace{1em}
+        [\textsc{G.\ Leopardi}, Operette Morali]
 
         \textgreek{>all'a p'anta <o k'eraunos d'' >oiak'izei}
 
@@ -300,7 +145,7 @@ $\Omega$ velocit\`a istantanea di rotazione; si ricorda che \`e $[\Omega]=%
 \end{enumerate}
 %
 
-Le grandezze in gioco sono evidenziate nella figura \ref{fig:orbita}.
+Le grandezze in gioco sono evidenziate nella figura \ref{fig1}.
 \begin{figure}[ht]\centering
 \setlength{\unitlength}{0.01\textwidth}
 \begin{picture}(40,30)(30,0)
@@ -311,7 +156,7 @@ Le grandezze in gioco sono evidenziate nella figura \ref{fig:orbita}.
 \put(70,30){\line(0,-1){30}}
 \put(70,0){\line(-1,0){40}}
 \end{picture}
-\caption{Orbita del generico satellite; si noti l'eccentricit\`a dell'orbita rispetto al pianeta.}\label{fig:orbita}
+\caption{Orbita del generico satellite; si noti l'eccentricit\`a dell'orbita rispetto al pianeta.\label{fig1}}
 \end{figure}
 
 Per misurare le grandezze che compaiono in questa formula \`e necessario
@@ -430,9 +275,8 @@ possa essere ruinato dal grande gelo e non indichi la pressione giusta, come
 invece deve sempre fare uno strumento di misura, quale \`e quello che \`e
 descritto cost\`i.\cite{duane1964}
 
-\chapter{Il listato del pacchetto \texttt{topcoman.sty}}
-\listing{topcoman.sty}
 
+\appendix
 
 \begin{thebibliography}{9}
 \bibitem{gal} G.~Galilei, {\em Nuovi studii sugli astri medicei}, Manuzio,
@@ -444,6 +288,12 @@ descritto cost\`i.\cite{duane1964}
 \bibitem{duane1964} Duane J.T., \emph{Learning Curve Approach To Reliability 
 		Monitoring}, IEEE Transactions on Aerospace, Vol. 2, pp. 563-566, 1964
 \end{thebibliography}
+
+
+
+\chapter{Il listato del pacchetto \texttt{topcoman.sty}}
+\listing{topcoman.sty}
+
 
 
 

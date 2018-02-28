@@ -1,7 +1,0 @@
-\select@language {italian}
-\select@language {italian}
-\select@language {italian}
-\select@language {english}
-\contentsline {chapter}{Summary}{\textlatin {iii}}{chapter*.1}
-\contentsline {chapter}{Acknowledgements}{\textlatin {iv}}{chapter*.2}
-\contentsline {chapter}{Bibliography}{1}{chapter*.6}

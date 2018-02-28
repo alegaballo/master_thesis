@@ -1,0 +1,206 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = pdflatex
+
+%%%%%%% La riga soprastante serve per configurare gli editor
+%%%%%%% TeXShop, TeXworks e TeXstudio per gestire questo file
+%%%%%%% con la codifica UFF-8.
+%%%%%%% Se si vuole usare un'altra codifica si veda sotto.
+%%%%%%%
+
+%%%%%%%  Esempio con molte opzioni
+%%%%%%% Le opzioni nella forma "chiave=valore" sono definite
+%%%%%%% perché la classe dalla versione 6.1.00 usa il pacchetto
+%%%%%%% xkeyval. Vedere sulla documentazione in inglese o
+%%%%%%% in italiano quali chiavi accettano valori.
+
+%%%%%%% L'opzione per il corpo accetta qualsiasi valore, anche fratto
+%%%%%%% (per esempio: corpo=11.5pt) e va sempre scritto con una
+%%%%%%% unità di misura. L'utente è pregato di non esagerare con
+%%%%%%% corpi normali minori di 9.5pt o maggiori di 13pt.
+%%%%%%%
+%%%%%%% Le opzioni per inputenc e fontenc vanno per prime.
+%%%%%%% Vengono ignorate se NON si compone con pdfLaTeX. Ma
+%%%%%%% questo è un esempio per pdfLaTeX.
+%%%%%%%
+
+ \documentclass[%
+    corpo=12pt,
+    twoside,
+    openright,
+    stile=classica,
+    oldstyle,
+    autoretitolo,
+    tipotesi=magistrale,
+    greek,
+    evenboxes,
+    numerazioneromana
+]{toptesi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Per la codifica d'entratasi può scegliere quella che si vuole,
+%%%%%% ma si consiglia di preferire utf8; in ogni caso non scegliere
+%%%%%% codifiche specifiche del sistema operativo.
+
+\usepackage[utf8]{inputenc}% codifica d'entrata
+\usepackage[T1]{fontenc}%    codifica dei font
+\usepackage{lmodern}%        scelta dei font
+
+% Vedere la documentazione toptesi-it.pdf per le
+% attenzioni che bisogna usare al fine di ottenere un file
+% veramente conforme alle norme per l'archiviabilità.
+
+
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{nomencl}
+\usepackage{listings} % for code snippets
+
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    bookmarksopen,
+    pdfstartview={FitH},
+    colorlinks,
+    linkcolor={blue},
+    citecolor={blue},
+    urlcolor={blue}
+  }
+%
+%%%%%%% Esempio di composizione di tesi di laurea con PDFLATEX 
+%
+%
+% Per scrivere testo fasullo in "latinorum"
+\usepackage{lipsum}
+%
+
+%%%%%%% Definizioni locali
+%\newtheorem{osservazione}{Osservazione}% Standard LaTeX
+
+
+\begin{document}\errorcontextlines=9
+\blankpagestyle{empty}
+
+%%%%%%% Questi comandi è meglio metterli dentro l'ambiente
+%%%%%%% frontespizio o frontespizio*, oppure in un file di
+%%%%%%% configurazione personale. Si veda la documentazione
+%%%%%%% inglese o italiana.
+%%%%%%% Comunque i presenti comandi servono per comporre la
+%%%%%%% tesi con i moduli di estensione standard del pacchetto
+%%%%%%% TOPtesi.
+\english
+\begin{ThesisTitlePage}
+\ateneo{Politecnico di Torino}
+%
+% Non tutte le università hanno un nome proprio
+%\nomeateneo{Sede di Torre Elettra}
+%
+%\struttura[III]{Matematica, Fisica e~Scienze Naturali}
+%\Materia{Remote sensing}
+\titolo{\LARGE An Architecture for\\Task and Traffic Offloading\\ in Edge Computing via Deep Learning}% per la laurea quinquennale e il dottorato
+%\titolo{ An Architecture for\\Task and Traffic Offloading\\ in Edge Computing via\\Deep Learning}% per la laurea quinquennale e il dottorato
+%\sottotitolo{via Deep Learning}% per la laurea quinquennale e il dottorato
+%
+%%%%%%% Corso degli studi
+\corsodilaurea{Ingegneria Informatica}% per la laurea
+%%%%%%% L'eventuale numero di matricola va fra parentesi quadre
+%\candidato{Alessandro \textsc{Gaballo}}[123456]
+\candidato{\tabular{@{}l@{}}Alessandro \textsc{Gaballo}\\matricola: 231587\endtabular}% per tutti i percorsi
+%\secondocandidato{Evangelista \textsc{Torricelli}}[123457]
+
+%%%%%%% Relatori o supervisori
+%
+    \relatore{prof. Flavio Esposito}
+    \secondorelatore{prof. Guido Marchetto}
+    %\terzorelatore{dott.~Mario Rossi}
+% 
+%%%%%%% Per mettere altri relatori consultare toptesi-it.pdf
+
+%%%%%%% Tutore
+%\tutoreaziendale{dott.\ ing.\ Giovanni Giacosa}
+%\NomeTutoreAziendale{Supervisore aziendale\\Centro Ricerche FIAT}
+
+%%%%%%% Seduta dell'esame
+%\sedutadilaurea{Agosto 1615}
+%%%%%%%% oppure:
+\sedutadilaurea{\textsc{Anno~accademico} 2017-2018}% 
+
+%%%%%%% Logo della sede
+\logosede{img/politologo}% 
+\end{ThesisTitlePage}
+
+
+%%%%%%% Per cambiare l'offset per la rilegatura; meno offset
+%%%%%%% c'e', meglio e'
+%\setbindingcorrection{3mm}
+
+
+
+
+%%%%%%% Questo test è usato appunto per collaudare diversi stili,
+%%%%%%% non per comporre una vera tesi.
+%%%%%%% Non usarlo mai, solo perché qui è usato!
+%\ifclassica%
+%{\begin{dedica}
+%    A mio padre
+%
+%    \textdagger\ A mio nonno Pino
+%\end{dedica}
+%%%%%%% Fine esperimento
+
+%\sommario
+%
+%La pressione barometrica di Giove viene misurata
+%mediante un metodo originale  messo a punto dai candidati, che si basa
+%sul rilevamento telescopico della pressione.
+
+\paginavuota % funziona anche senza specificare l'opzione classica
+\include{dedication}
+\paginavuota % funziona anche senza specificare l'opzione classica
+
+\include{acknowledgments}
+\paginavuota
+\include{abstract}
+\paginavuota
+%\ringraziamenti
+%
+%I candidati ringraziano vivamente il Granduca di Toscana per i mezzi
+%messi loro a disposizione, ed il signor Von Braun, assistente del
+%prof.~Albert Einstein, per le informazioni riservate che egli ha
+%gentilmente fornito loro, e per le utili discussioni che hanno permesso
+%ai candidati di evitare di riscoprire l'acqua calda.
+
+\tablespagetrue\figurespagetrue % normalmente questa riga non serve ed e' commentata
+\indici
+
+%%%%%%%% Altro esperimento con l'opzione classica
+%%%%%%%% Non usare mai anche se qui lo si è fatto!
+%%%%%%%% Oltretutto funziona solo se si è specificata la lingua greca fra le opzioni.
+%%%%%%%% Commentare fra \ifclassica fino a \fi compresi. 
+%\ifclassica   
+%\begin{citazioni}
+%    \textit{testo testo testo\\testo testo testo}
+%
+%    [\textsc{G.\ Leopardi}, Operette Morali]\vspace{1em}
+%
+%    \textgreek{>all'a p'anta <o k'eraunos d'' >oiak'izei}
+%
+%    [\textsc{Eraclito}, fr.\ D-K 134]
+%\end{citazioni}
+
+%\fi
+%%%%%%%% fine esperimento
+\mainmatter
+\include{Introduction}
+\include{Background}
+\include{Contribution}
+\include{RelatedWork}
+\include{Results}
+\include{Conclusions}
+\include{glossary}
+%now enable appendix numbering format and include any appendices
+\appendix
+\include{appendix2}
+\include{appendix1}
+
+\end{document}
+

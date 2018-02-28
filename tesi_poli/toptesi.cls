@@ -6,49 +6,42 @@
 %%
 %% toptesi.dtx  (with options: `class')
 %%   ______________________________________________________
-%%   The TOPtesi package
-%%   Copyright (C) 2013 Claudio Beccari
+%%   The TOPtesi bundle
+%%   Copyright (C) 2015-2017 Claudio Beccari
 %%   All rights reserved
 %% 
 %%   License information appended
 %% 
-%% \CharacterTable
-%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%%   Digits        \0\1\2\3\4\5\6\7\8\9
-%%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%%   Dollar        \$     Percent       \%     Ampersand     \&
-%%   Acute accent  \'     Left paren    \(     Right paren   \)
-%%   Asterisk      \*     Plus          \+     Comma         \,
-%%   Minus         \-     Point         \.     Solidus       \/
-%%   Colon         \:     Semicolon     \;     Less than     \<
-%%   Equals        \=     Greater than  \>     Question mark \?
-%%   Commercial at \@     Left bracket  \[     Backslash     \\
-%%   Right bracket \]     Circumflex    \^     Underscore    \_
-%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%%   Right brace   \}     Tilde         \~}
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{toptesi}%
-[2013/09/01 v.5.73 Class for typesetting university theses]
-\DeclareOption{a4paper}{\PassOptionsToClass{\CurrentOption}{report}}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
-\ExecuteOptions{a4paper}
-\ProcessOptions\relax
+\NeedsTeXFormat{LaTeX2e}[2016/01/01]
+\ProvidesClass{toptesi}[%
+2018/01/12 v.~6.1.12
+Class for typesetting university theses]
+
+\usepackage{trace}
+\RequirePackage{xkeyval}
+\DeclareOptionX{formato}[a4paper]{\PassOptionsToClass{#1}{report}}
+\DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{report}}
+\ExecuteOptionsX{formato}
+\ProcessOptionsX*\relax
 \LoadClass{report}
-\RequirePackage{ifxetex}
-\ifxetex
-  \RequirePackage{fontspec}
-  \RequirePackage{polyglossia}
+
+\RequirePackage{iftex}
+\ifPDFTeX
+  \usepackage[english,italian]{babel}
+\else
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+  \usepackage{polyglossia}
   \setmainlanguage{italian}
   \setotherlanguage{english}
-  \renewcommand*{\iflanguage}[1]{\ifnum\the\language=\csname l@#1\endcsname
-  \expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi}
-\else
-  \RequirePackage[english,italian]{babel}
+  \renewcommand*{\iflanguage}[1]{%
+  \ifnum\the\language=\csname l@#1\endcsname
+  \expandafter\@firstoftwo\else
+  \expandafter\@secondoftwo\fi}
 \fi
-\RequirePackage{toptesi}
+\usepackage{toptesi}
 %% 
-%% Copyright 2005-2013 Claudio Beccari
+%% Copyright 2005-2017 Claudio Beccari
 %% 
 %% Distributable under the LaTeX Project Public License,
 %% version 1.3c or higher (your choice). The latest version of
@@ -57,28 +50,56 @@
 %% This work is "author-maintained"
 %% 
 %% This work consists of this file toptesi.dtx, a README file
-%% and the derived files:
-%% 
-%% toptesi.cls, toptesi.sty, topfront.sty, topcommand.sty,
-%% toptesi.cfg, and the English documentation toptesi.pdf.
+%% the manifest.txt file, and the derived files:
+%%     toptesi.cls,
+%%     toptesi.sty,
+%%     topfront.sty,
+%%     topcommand.sty,
+%%     toptesi-scudo.sty,
+%%     toptesi.cfg,
+%%     toptesi-monografia.sty,
+%%     toptesi-sss.sty,
+%%     toptesi-magistrale.sty,
+%%     toptesi-dottorale.sty,
+%% and the English documentation toptesi.pdf.
 %% 
 %% Furthermore the bundle contains the documentation source
-%% file toptesi-doc-xetex.tex and the derived file
-%% toptesi-doc-xetex.pdf.
+%% file toptesi-it.tex and the derived file
+%% toptesi-it.pdf.
 %% 
 %% The toptesi-example.tex source file is just an example
 %% that shows how to use the various commands; by commenting
 %% or uncommenting certain source lines it is possible to
-%% typeset different kind of theses and their frontpages.
+%% typeset different kind of theses and their front pages.
+%% 
+%% The topfront-example.tex source file is an example of how
+%% to produce just the title page with TOPtesi and the external
+%% package frontespizio.
+%% 
+%% The toptesi-scudo-example.tex source file is an example
+%% that shows the particular features available with TOPtesi,
+%% when a doctoral thesis is produced for the Scuola di
+%% Dottorato (ScuDo) of Politecnico di Torino.
 %% 
 %% The toptesi.cfg file is a sample of a local configuration
-%% file that can be freely edited and modified.
+%% file that can be copied to another file and its copy freely
+%% edited and customised.
+%% 
+%% The other toptesi-*.sty files are extension modules for
+%% typesetting the specific thesis kinds described by the
+%% suffix that replaces the asterisk.
 %% 
 %% By running pdflatex on toptesi.dtx the user gets the class,
 %% sty and cfg files and the English documentation file in
-%%  pdf format.
+%% PDF format.
 %% 
-%% The documentation file toptesi-doc-xetex.pdf is in Italian;
-%% its source file is another example of how to use toptesi.
+%% The source file of the Italian documentation file
+%% toptesi-it.pdf is another example of how to use TOPtesi.
+%% This file toptesi-it.tex may be typeset with pdfLaTeX,
+%% XeLaTeX, and LuaLateX; see the first comment lines of
+%% the file for how-to information. In spite of being mainly
+%% written in Italian, it contains several sections in English
+%% for the benefit of foreign students attending the Doctoral
+%% School of Turin.
 %%
 %% End of file `toptesi.cls'.

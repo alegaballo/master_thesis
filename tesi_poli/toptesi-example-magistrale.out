@@ -1,0 +1,22 @@
+\BOOKMARK [0][]{chapter*.4}{List of Tables}{}% 1
+\BOOKMARK [0][]{chapter*.5}{List of Figures}{}% 2
+\BOOKMARK [0][]{chapter.1}{Introduction}{}% 3
+\BOOKMARK [0][]{chapter.2}{Background}{}% 4
+\BOOKMARK [1][]{section.2.1}{Software-Defined Networking}{chapter.2}% 5
+\BOOKMARK [1][]{section.2.2}{Knowledge-Defined Networking}{chapter.2}% 6
+\BOOKMARK [2][]{subsection.2.2.1}{LSTM}{section.2.2}% 7
+\BOOKMARK [0][]{chapter.3}{Offloading Architecture}{}% 8
+\BOOKMARK [1][]{section.3.1}{Task Offloading}{chapter.3}% 9
+\BOOKMARK [2][]{subsection.3.1.1}{Architecture}{section.3.1}% 10
+\BOOKMARK [2][]{subsection.3.1.2}{Offloading Protocol}{section.3.1}% 11
+\BOOKMARK [1][]{section.3.2}{Path prediction via Deep Learning}{chapter.3}% 12
+\BOOKMARK [2][]{subsection.3.2.1}{Dataset}{section.3.2}% 13
+\BOOKMARK [2][]{subsection.3.2.2}{Deep Learning Model}{section.3.2}% 14
+\BOOKMARK [1][]{section.3.3}{Implementation}{chapter.3}% 15
+\BOOKMARK [0][]{chapter.4}{Related Work}{}% 16
+\BOOKMARK [0][]{chapter.5}{Results}{}% 17
+\BOOKMARK [1][]{section.5.1}{Learning from OSPF}{chapter.5}% 18
+\BOOKMARK [1][]{section.5.2}{Replacing OSPF}{chapter.5}% 19
+\BOOKMARK [0][]{chapter.6}{Conclusions and future work}{}% 20
+\BOOKMARK [0][]{appendix.A}{Protocol messages implementation}{}% 21
+\BOOKMARK [0][]{appendix.B}{Configure mininet to run the Quagga routing suite}{}% 22
