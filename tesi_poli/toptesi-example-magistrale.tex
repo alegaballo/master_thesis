@@ -75,8 +75,8 @@
 
 %%%%%%% Definizioni locali
 %\newtheorem{osservazione}{Osservazione}% Standard LaTeX
-
-
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 \begin{document}\errorcontextlines=9
 \blankpagestyle{empty}
 
@@ -169,8 +169,14 @@
 %gentilmente fornito loro, e per le utili discussioni che hanno permesso
 %ai candidati di evitare di riscoprire l'acqua calda.
 
-\tablespagetrue\figurespagetrue % normalmente questa riga non serve ed e' commentata
-\indici
+\tableofcontents
+\listoftables
+\paginavuota
+\listoffigures
+\paginavuota
+%\tablespagetrue
+%\figurespagetrue % normalmente questa riga non serve ed e' commentata
+%\indici
 
 %%%%%%%% Altro esperimento con l'opzione classica
 %%%%%%%% Non usare mai anche se qui lo si è fatto!
@@ -189,7 +195,7 @@
 
 %\fi
 %%%%%%%% fine esperimento
-\mainmatter
+\mainmatter\setcounter{secnumdepth}{3}
 \include{Introduction}
 \include{Background}
 \include{Contribution}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  28 FEB 2018 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  2 MAR 2018 20:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1495,7 +1495,7 @@ LaTeX Info: Redefining \nameref on input line 80.
 \c@lstlisting=\count164
 Package toptesi-magistrale Info: No configuration file found on input line 91.
 
-<img/politologo.png, id=92, 376.40625pt x 376.40625pt>
+<img/politologo.png, id=116, 376.40625pt x 376.40625pt>
 File: img/politologo.png Graphic file (type png)
 
 <use img/politologo.png>
@@ -1595,27 +1595,31 @@ line 7.
 ] [8
 
 
-] (./toptesi-example-magistrale.toc)
+] (./toptesi-example-magistrale.toc [9
+
+
+])
 \tf@toc=\write5
 \openout5 = `toptesi-example-magistrale.toc'.
 
- [9
-
-
-]
+ [10]
 (./toptesi-example-magistrale.lot)
 \tf@lot=\write6
 \openout6 = `toptesi-example-magistrale.lot'.
 
- [10
+ [11
+
+] [12
 
 
 ] (./toptesi-example-magistrale.lof)
 \tf@lof=\write7
 \openout7 = `toptesi-example-magistrale.lof'.
 
+[13
 
-[11
+
+] [14
 
 
 ]
@@ -1635,16 +1639,15 @@ LaTeX Warning: Citation `end-to-end' on page 1 undefined on input line 4.
 
 
 
-
 ])
 LaTeX Font Info:    Calculating math sizes for size <10.00012> on input line 19
-3.
+9.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.00012> on input line 193.
+(Font)              <10.00012> on input line 199.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.00005> on input line 193.
+(Font)              <7.00005> on input line 199.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.00006> on input line 193.
+(Font)              <5.00006> on input line 199.
 
 Overfull \vbox (2.50012pt too high) has occurred while \output is active []
 
@@ -1711,7 +1714,7 @@ LaTeX Warning: Citation `alphago' on page 5 undefined on input line 30.
 
 LaTeX Warning: Citation `Greff2016' on page 5 undefined on input line 33.
 
-[5] <img/lstm.png, id=256, 806.89455pt x 303.17265pt>
+[5] <img/lstm.png, id=299, 806.89455pt x 303.17265pt>
 File: img/lstm.png Graphic file (type png)
  <use img/lstm.png>
 Package pdftex.def Info: img/lstm.png used on input line 39.
@@ -1753,7 +1756,7 @@ Overfull \vbox (2.50012pt too high) has occurred while \output is active []
 
 \include ...ot be nested}\@eha \else \@include #1 
                                                   \fi 
-l.194 \include{Background}
+l.200 \include{Background}
                            <./img/lstm.png>]
 \openout2 = `Contribution.aux'.
 
@@ -1763,7 +1766,7 @@ Chapter 3.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `htb') on input line 8.
 
-<img/off_sys_arch.pdf, id=272, 442.65375pt x 363.3575pt>
+<img/off_sys_arch.pdf, id=315, 442.65375pt x 363.3575pt>
 File: img/off_sys_arch.pdf Graphic file (type pdf)
 
 <use img/off_sys_arch.pdf>
@@ -1807,7 +1810,7 @@ l.33     \item o
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `htb') on input line 38.
 
-<img/protocol_sequence.pdf, id=290, 1041.8925pt x 289.08pt>
+<img/protocol_sequence.pdf, id=333, 1041.8925pt x 289.08pt>
 File: img/protocol_sequence.pdf Graphic file (type pdf)
 
 <use img/protocol_sequence.pdf>
@@ -1878,7 +1881,7 @@ LaTeX Warning: Citation `mininet' on page 12 undefined on input line 100.
 
 LaTeX Warning: Citation `openflow' on page 12 undefined on input line 100.
 
-<img/network_arch.pdf, id=320, 1196.47pt x 764.8575pt>
+<img/network_arch.pdf, id=363, 1196.47pt x 764.8575pt>
 File: img/network_arch.pdf Graphic file (type pdf)
 
 <use img/network_arch.pdf>
@@ -1895,7 +1898,7 @@ LaTeX Warning: Citation `mininext' on page 13 undefined on input line 111.
 
 LaTeX Warning: Citation `quagga' on page 13 undefined on input line 111.
 
-<img/quagga_mininext.pdf, id=328, 563.10374pt x 358.33875pt>
+<img/quagga_mininext.pdf, id=369, 563.10374pt x 358.33875pt>
 File: img/quagga_mininext.pdf Graphic file (type pdf)
 
 <use img/quagga_mininext.pdf>
@@ -1920,7 +1923,7 @@ l.118
 
 LaTeX Warning: Citation `ryu' on page 14 undefined on input line 123.
 
-<img/packet_counter.pdf, id=339, 628.3475pt x 206.7725pt>
+<img/packet_counter.pdf, id=379, 628.3475pt x 206.7725pt>
 File: img/packet_counter.pdf Graphic file (type pdf)
 
 <use img/packet_counter.pdf>
@@ -1975,7 +1978,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--167
 [][]
  []
 
-<img/rnn.jpg, id=361, 797.98125pt x 320.19624pt>
+<img/rnn.jpg, id=399, 797.98125pt x 320.19624pt>
 File: img/rnn.jpg Graphic file (type jpg)
  <use img/rnn.jpg>
 Package pdftex.def Info: img/rnn.jpg used on input line 179.
@@ -2047,7 +2050,7 @@ l.192
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `htb') on input line 201.
 
-<img/validation_target.pdf, id=386, 1301.86375pt x 764.8575pt>
+<img/validation_target.pdf, id=425, 1301.86375pt x 764.8575pt>
 File: img/validation_target.pdf Graphic file (type pdf)
 
 <use img/validation_target.pdf>
@@ -2097,7 +2100,7 @@ l.251
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `htb') on input line 261.
 
-<img/normalization_cmp.pdf, id=402, 1084.05pt x 361.35pt>
+<img/normalization_cmp.pdf, id=440, 1084.05pt x 361.35pt>
 File: img/normalization_cmp.pdf Graphic file (type pdf)
 
 <use img/normalization_cmp.pdf>
@@ -2227,7 +2230,7 @@ Chapter 5.
 
 
 
-] <img/avg_training_metrics.pdf, id=473, 1084.05pt x 361.35pt>
+] <img/avg_training_metrics.pdf, id=510, 1084.05pt x 361.35pt>
 File: img/avg_training_metrics.pdf Graphic file (type pdf)
 
 <use img/avg_training_metrics.pdf>
@@ -2264,7 +2267,7 @@ Overfull \vbox (2.50012pt too high) has occurred while \output is active []
                                                   \@startcolumn \@whilesw \i...
 l.21 
       <./img/avg_training_metrics.pdf>]
-<img/path_comparison.pdf, id=519, 1233.60875pt x 764.8575pt>
+<img/path_comparison.pdf, id=555, 1233.60875pt x 764.8575pt>
 File: img/path_comparison.pdf Graphic file (type pdf)
 
 <use img/path_comparison.pdf>
@@ -2290,7 +2293,7 @@ l.31
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `htb') on input line 53.
 
-<img/prediction_cmp_bar.pdf, id=532, 1084.05pt x 505.89pt>
+<img/prediction_cmp_bar.pdf, id=568, 1084.05pt x 505.89pt>
 File: img/prediction_cmp_bar.pdf Graphic file (type pdf)
 
 <use img/prediction_cmp_bar.pdf>
@@ -2329,7 +2332,7 @@ Overfull \vbox (2.50012pt too high) has occurred while \output is active []
 
 \include ...ot be nested}\@eha \else \@include #1 
                                                   \fi 
-l.197 \include{Results}
+l.203 \include{Results}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{table.5.2}) has been already used, duplicate ignored
 
@@ -2355,7 +2358,7 @@ ier (name{table.5.2}) has been already used, duplicate ignored
 
 \include ...ot be nested}\@eha \else \@include #1 
                                                   \fi 
-l.197 \include{Results}
+l.203 \include{Results}
                        ] [29pdfTeX warning (ext4): destination with the same id
 entifier (name{figure.5.3}) has been already used, duplicate ignored
 
@@ -2383,7 +2386,7 @@ entifier (name{figure.5.3}) has been already used, duplicate ignored
 \clearpage ...rite \m@ne {}\vbox {}\penalty -\@Mi 
                                                   
 ...
-l.197 \include{Results}
+l.203 \include{Results}
                         <./img/prediction_cmp_bar.pdf>]
 \openout2 = `Conclusions.aux'.
 
@@ -2446,27 +2449,27 @@ Overfull \vbox (2.50012pt too high) has occurred while \output is active []
 
 
 [38]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 205.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 205.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
  (./toptesi-example-magistrale.aux (./dedication.aux)
 (./acknowledgments.aux) (./abstract.aux) (./Introduction.aux) (./Background.aux
 ) (./Contribution.aux) (./RelatedWork.aux) (./Results.aux) (./Conclusions.aux)
 (./glossary.aux) (./appendix2.aux) (./appendix1.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 205.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 205.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
 Package rerunfilecheck Info: File `toptesi-example-magistrale.out' has not chan
 ged.
-(rerunfilecheck)             Checksum: A1547520C3F63EC68E91DA7FDDEF4D8A;1343.
+(rerunfilecheck)             Checksum: 036478BB15BBCA196CA0C5DFCE712992;1828.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19587 strings out of 493029
- 325515 string characters out of 6136234
- 499743 words of memory out of 5000000
- 22577 multiletter control sequences out of 15000+600000
+ 19596 strings out of 493029
+ 325728 string characters out of 6136234
+ 499777 words of memory out of 5000000
+ 22583 multiletter control sequences out of 15000+600000
  119407 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,20n,57p,10378b,1808s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2488,10 +2491,10 @@ ic/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
 o10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fo
 nts/type1/public/lm/lmtt12.pfb>
-Output written on toptesi-example-magistrale.pdf (49 pages, 959477 bytes).
+Output written on toptesi-example-magistrale.pdf (52 pages, 959680 bytes).
 PDF statistics:
- 791 PDF objects out of 1000 (max. 8388607)
- 604 compressed objects within 7 object streams
- 201 named destinations out of 1000 (max. 500000)
- 242 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 827 PDF objects out of 1000 (max. 8388607)
+ 637 compressed objects within 7 object streams
+ 204 named destinations out of 1000 (max. 500000)
+ 290 words of extra memory for PDF output out of 10000 (max. 10000000)
 
