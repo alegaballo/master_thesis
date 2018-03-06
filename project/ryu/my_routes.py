@@ -29,26 +29,26 @@ class Net:
     def parse_routes(self, routes_file, addr_file, save_mapping=False):
         # getting routers routing tables
         with open(routes_file, 'r') as f:
-	    for line in f:
-	        line = line.strip()
-	        if line:
-	            router, network, next_hop = line.split()
-	            self.routers.add(router)
-	               
-	            if Net._is_same_network(next_hop):
-	                self.connected_networks[router].append(network)
-	            self.routes[router][network] = next_hop
-	
-	# getting routers address configuration
+            for line in f:
+                line = line.strip()
+                if line:
+                    router, network, next_hop = line.split()
+                    self.routers.add(router)
+                       
+                    if Net._is_same_network(next_hop):
+                        self.connected_networks[router].append(network)
+                    self.routes[router][network] = next_hop
+        
+        # getting routers address configuration
         with open(addr_file, 'r') as f:
             for line in f:
-	        line = line.strip()
-	        if line:
+                line = line.strip()
+                if line:
                     router, interface, address = line.split()
                     self.addresses[router].append(address)
-	            self.destinations.add(address)
-	    
-	self.routers = sorted(self.routers)
+                    self.destinations.add(address)
+    
+        self.routers = sorted(self.routers)
         #connected_routers = invert_dict(connected_networks, type='list')
         self.addr_rout=invert_dict(self.addresses)
         #self.get_path('r1', '172.168.4.2')
@@ -112,7 +112,6 @@ class Net:
             for path in self.paths:
                 f.write(' '.join(str(hop) for hop in path) + '\n')
         os.chmod(file_path, 0777)
-
 
     def reset(self):
         self.__init__()

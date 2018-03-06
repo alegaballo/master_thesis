@@ -11,13 +11,15 @@ import sys
 from subprocess import Popen
 
 MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final/'
+#MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/trained_models/dnn/'
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
 
 ROUTER_CONF = '/home/mininet/miniNExT/examples/master_thesis/project/configs/interfaces'
 SELECTED_T = ['r1_172_168_4_1', 'r2_172_168_4_2', 'r3_172_168_35_1','r4_172_168_35_1', 'r6_172_168_32_1']
+SELECTED_T = ['r1_172_168_3_1']
 
 ROUTES = '/home/mininet/miniNExT/examples/master_thesis/project/testing/run0/paths.txt'
-ITERATIONS = 20
+ITERATIONS = 1
 SAMPLES = 200
 TARGETS = os.listdir(MODELS_DIR)
 class Predictor(object):
@@ -57,6 +59,10 @@ class Predictor(object):
         while True:
             if dst_addr in self.addresses[src]:
                 break
+            if len(path) > 10:
+                print('!!!DETECTED LOOP')
+                return -1
+            
             target = '{:}_{:}'.format(src, dst_addr.replace('.', '_'))
             model = self.models[target]
             predictions = model.predict(counter)
@@ -115,18 +121,19 @@ if __name__=='__main__':
     pr = Predictor()
     adr = ('localhost', 6000)
     listener = Listener(adr, authkey='hola')
-    ryu=Popen(['ryu-manager', 'testSwitch.py'])
+    #ryu=Popen(['ryu-manager', 'testSwitch.py'])
     print('waiting for connections')
     conn = listener.accept()
     print('new connection from {:}'.format(listener.last_accepted))
     with open('mininet_dump', 'w+') as mn:
 
-        mininet=Popen(['python', 'test_net.py'], cwd='/home/mininet/miniNExT/examples/master_thesis/project/', stdout=mn, stderr=mn)
+        #mininet=Popen(['python', 'test_net.py'], cwd='/home/mininet/miniNExT/examples/master_thesis/project/', stdout=mn, stderr=mn)
         k = 0
         iteration = 0
         with open(sys.argv[1], 'w+') as f:
             while iteration < ITERATIONS:
                 if os.path.isfile(ROUTES):
+                    print('Predictions started')
                     with open(ROUTES, 'r') as r:
                         routes = r.readlines()
                     paths = [line.strip() for line in routes]
@@ -148,7 +155,8 @@ if __name__=='__main__':
                                     f.write(str(cnt[0][0])+'\n')
                                     f.write('prediction:'+str(predicted)+'\n')
                                     f.write('ospf:'+str(ospf)+'\n')
-                            k += 1
+                                    k += 1
+                                    print('{:}/{:}'.format(k, 200*len(SELECTED_T)))
                     print('*****************FINISH RUN******************')
                     os.remove(ROUTES)
                     k = 0
@@ -156,28 +164,8 @@ if __name__=='__main__':
                     
                 else:
                     time.sleep(2)
-                
-
-#    with open( sys.argv[1], 'w+') as f:
-#        while k < 200:
-#            msg=conn.recv()
-#            cnt = np.array(msg[1:]).reshape(1,1,10)
-#            for t in SELECTED_T:
-#                t = target.split('_')
-#                src = t[0]
-#                dst = '.'.join(t[1:])
-#                predicted = pr.predict(src, dst, cnt)
-#                ospf = get_ospf(paths, src, dst)
-#                if predicted and ospf:
-#                    ospf = ospf.split(':')[1].strip().split()
-#                    ospf = [ROUTERS_NAMING[int(h)] for h in ospf]
-#                    f.write(str(cnt[0][0])+'\n')
-#                    f.write('prediction:'+str(predicted)+'\n')
-#                    f.write('ospf:'+str(ospf)+'\n')
-#            k += 1
-#            print('{:}/200'.format(k))
-    ryu.terminate()
-    mininet.terminate()
+#    ryu.terminate()
+#    mininet.terminate()
     listener.close()
 
 
