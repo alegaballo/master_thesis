@@ -13,7 +13,7 @@ net = None
 OUTER = 6
 INNER = 4
 IN_BW = 300
-LOSS_PROB = 0.5
+LOSS_PROB = 0
 LOSS = 5
 
 class MyTopo(Topo):
@@ -83,8 +83,13 @@ class MyTopo(Topo):
             # from Ethernet 10Base-X to Gigabit Ethernet
             #bw=randint(100, 800)
             bw = 300
-        if random() >= LOSS_PROB:
+        #if random() <= LOSS_PROB:
+        #    loss = LOSS
+        
+        # for the toy examle, loss on the link between r2 and r3
+        if r1=='r2' and r2=='r3':
             loss = LOSS
+        
         self.addLink(r1,s, bw=bw, loss=loss)
         self.addLink(s,r2, bw=bw, loss=loss)
         # saving the port on the switch for incoming traffic on the specific router
