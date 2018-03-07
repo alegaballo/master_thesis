@@ -11,7 +11,7 @@ import os
 from sklearn.model_selection import train_test_split
 
 
-MODEL_DIR = './project/models_final/'
+MODEL_DIR = './../trained_models/lstm/'
 STAT_FILE = 'arch_cmp.txt'
 
 def print_samples(x, y, n=10):
