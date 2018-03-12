@@ -10,7 +10,7 @@ import random
 import sys
 from subprocess import Popen
 
-MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/models_final/'
+MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/trained_models/lstm/'
 #MODELS_DIR = '/home/mininet/miniNExT/examples/master_thesis/project/trained_models/dnn/'
 ROUTERS_NAMING = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'ri1', 'ri2', 'ri3', 'ri4']
 
