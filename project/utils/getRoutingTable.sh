@@ -5,7 +5,9 @@ cmd="netstat -rn | sed -r \"s/ +/ /g\" | sed 1,2d | cut -f 1,2 -d \" \""
 
 
 for router in "${routers[@]}"
-do
-    echo $router
-    bash mx $router $cmd
-done
+do 
+    route=`bash mx $router $cmd`
+    echo $route | tr " " "\n" | xargs -n 2 echo $router
+    echo 
+done > routes.txt
+
