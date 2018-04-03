@@ -1,0 +1,179 @@
+% !TEX encoding = UTF-8 Unicode
+%% !TEX TS-program = pdflatexmk
+%% !TEX useTabs
+
+%%%%%%% La riga soprastante serve per configurare gli editor
+%%%%%%% TeXShop, TeXworks e TeXstudio per gestire questo file
+%%%%%%% con la codifica UFF-8.
+%%%%%%% Se si vuole usare un'altra codifica si veda sotto.
+%%%%%%%
+
+%%%%%%%  Esempio con molte opzioni
+%%%%%%% Le opzioni nella forma "chiave=valore" sono definite
+%%%%%%% perché la classe dalla versione 6.1.00 usa il pacchetto
+%%%%%%% xkeyval. Vedere sulla documentazione in inglese o
+%%%%%%% in italiano quali chiavi accettano valori.
+
+%%%%%%% L'opzione per il corpo accetta qualsiasi valore, anche fratto
+%%%%%%% (per esempio: corpo=11.5pt) e va sempre scritto con una
+%%%%%%% unità di misura. L'utente è pregato di non esagerare con
+%%%%%%% corpi normali minori di 9.5pt o maggiori di 13pt.
+%%%%%%%
+%%%%%%% Le opzioni per inputenc e fontenc vanno per prime.
+%%%%%%% Vengono ignorate se NON si compone con pdfLaTeX. Ma
+%%%%%%% questo è un esempio per pdfLaTeX.
+%%%%%%%
+
+\newcommand{\fe}[1]{{[\textcolor{red}{#1}]}}
+\newcommand{\fenote}[1]{{[\textcolor{red}{Flavio's Note: #1}]}}
+\newcommand{\ag}[1]{{[\textcolor{blue}{Ale's Note}: #1]}}
+
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
+
+ \documentclass[%
+    corpo=12.5pt,
+    twoside,
+    stile=classica,
+    oldstyle,
+    tipotesi=magistrale,
+    greek,
+    %cucitura=6mm,
+    openright,
+    evenboxes,
+    numerazioneromana,
+]{toptesi}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Per la codifica d'entratasi può scegliere quella che si vuole,
+%%%%%% ma si consiglia di preferire utf8; in ogni caso non scegliere
+%%%%%% codifiche specifiche del sistema operativo.
+
+\usepackage[utf8]{inputenc}% codifica d'entrata
+\usepackage[T1]{fontenc}%    codifica dei font
+\usepackage{lmodern}%        scelta dei font
+
+% Vedere la documentazione toptesi-it.pdf per le
+% attenzioni che bisogna usare al fine di ottenere un file
+% veramente conforme alle norme per l'archiviabilità.
+
+\usepackage{nomencl}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{abntex2cite}
+\usepackage{listings} % for code snippets
+
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    bookmarksopen,
+    pdfstartview={FitH},
+    colorlinks,
+    linkcolor={blue},
+    citecolor={blue},
+    urlcolor={blue}
+  }
+%
+%%%%%%% Esempio di composizione di tesi di laurea con PDFLATEX 
+%
+%
+% Per scrivere testo fasullo in "latinorum"
+\usepackage{lipsum}
+%
+
+%%%%%%% Definizioni locali
+%\newtheorem{osservazione}{Osservazione}% Standard LaTeX
+\makenomenclature
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\begin{document}\errorcontextlines=9
+\blankpagestyle{empty}
+\english
+\CorsoDiLaureaIn{Master in}
+\TesiDiLaurea{\large Master's Degree Thesis}
+\CandidateName{Candidate}% or Candidates
+\AdvisorName{Supervisor}% or Supervisors
+\CoAdvisorName{Co-supervisor}
+
+%%%%%%% Questi comandi è meglio metterli dentro l'ambiente
+%%%%%%% frontespizio o frontespizio*, oppure in un file di
+%%%%%%% configurazione personale. Si veda la documentazione
+%%%%%%% inglese o italiana.
+%%%%%%% Comunque i presenti comandi servono per comporre la
+%%%%%%% tesi con i moduli di estensione standard del pacchetto
+%%%%%%% TOPtesi.
+\begin{ThesisTitlePage}
+\ateneo{Politecnico di Torino}
+\nomeateneo{Department of Control and Computer Engineering}
+%
+% Non tutte le università hanno un nome proprio
+%\nomeateneo{Sede di Torre Elettra}
+%
+%\struttura[III]{Matematica, Fisica e~Scienze Naturali}
+%\Materia{Remote sensing}
+\titolo{\Large An Architecture for Task and Traffic Offloading in Edge Computing via Deep Learning}
+
+%%%%%%% Corso degli studi
+\corsodilaurea{Computer Engineering}% per la laurea
+%%%%%%% L'eventuale numero di matricola va fra parentesi quadre
+\candidato{\tabular{@{}l@{}}Alessandro \textsc{Gaballo}\\ID: 231587\endtabular}% per tutti i percorsi
+
+%%%%%%% Relatori o supervisori
+%	
+    \relatore{\begin{tabular}[t]{@{}l@{}}
+    prof. Flavio Esposito\\
+    \normalsize{Saint Louis University, St. Louis (USA)}\\[1ex]
+  \end{tabular}}
+    \secondorelatore{\begin{tabular}[t]{@{}l@{}}
+    prof. Guido Marchetto\\
+    \normalsize{Politecnico di Torino, Torino (IT)}\\[1ex]
+  \end{tabular}}
+% 
+
+\sedutadilaurea{\textsc{Academic~year} 2017-2018}% 
+
+%%%%%%% Logo della sede
+\logosede[45mm]{img/politologo}% 
+\end{ThesisTitlePage}
+
+
+\paginavuota % funziona anche senza specificare l'opzione classica
+\include{dedication}
+\paginavuota % funziona anche senza specificare l'opzione classica
+
+\include{acknowledgments}
+\paginavuota
+\include{abstract}
+\paginavuota
+
+\tableofcontents
+\listoftables
+\paginavuota
+
+\listoffigures
+\paginavuota
+
+\printnomenclature[3cm]
+\paginavuota
+
+
+\mainmatter\setcounter{secnumdepth}{3}
+\interlinea{1.1}
+\include{Introduction}
+\include{RelatedWork}
+\include{Background}
+\include{Contribution}
+\include{Results}
+\include{Conclusions}
+\include{glossary}
+%now enable appendix numbering format and include any appendices
+\appendix
+\include{appendix2}
+\include{appendix1}
+\bibliography{refs}
+\cleardoublepage
+\end{document}
+

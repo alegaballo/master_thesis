@@ -1,0 +1,76 @@
+%!TEX root = tesi.tex
+\chapter{Protocol messages implementation}
+\label{proto_file}
+\begin{center}
+{\textbf{messages.proto}}
+\begin{lstlisting}
+syntax = "proto3";
+message OffloadRequest {
+    message Requirements {
+        enum Latency {
+            URGENT = 0;
+            STANDARD = 1;
+            LOOSE = 2;
+        }
+
+        float cpu = 1;
+        int32 memory = 2;
+        Latency latency = 3;
+    }
+    
+    enum Type {
+    	LAMBDA = 0;
+    	STANDARD = 1;
+    }
+
+    message Task {
+        message TaskWrapper {
+            enum WrapperType {
+                JAR = 0;
+                EGG = 1;
+            }
+
+            string name = 1;
+            WrapperType type = 2;
+            bytes task = 3;
+        }
+
+        oneof task_location {
+            string task_id = 1;
+            TaskWrapper wrapper = 2;
+        }
+    }
+
+    Requirements requirements = 1;
+    Type type = 2;
+    Task task = 3;
+
+}
+
+message Response{
+    enum Result {
+        OK = 0;
+        INVALID_MSG_SIZE = 1;
+        INVALID_REQUEST = 2;
+    }
+
+    Result result = 1;
+    string msg = 2;
+}
+
+message Message{
+    enum Type {
+        OFFLOAD_REQUEST = 0;
+        RESPONSE = 1;
+        TASK = 2;
+    }
+
+    Type type = 1;
+    oneof msg_type {
+        OffloadRequest off_req = 2;
+        OffloadRequest.Task task = 3;
+        Response response = 4;
+    }
+}
+\end{lstlisting}
+\end{center}
