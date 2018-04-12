@@ -1,0 +1,50 @@
+\select@language {italian}
+\select@language {italian}
+\select@language {italian}
+\select@language {english}
+\contentsline {chapter}{List of Tables}{\textlatin {xi}}{chapter*.4}
+\contentsline {chapter}{List of Figures}{\textlatin {xiii}}{chapter*.5}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {paragraph}{Chapter~\ref {ch:introduction}}{3}{section*.7}
+\contentsline {paragraph}{Chapter~\ref {ch:related_work}}{3}{section*.8}
+\contentsline {paragraph}{Chapter~\ref {ch:background}}{3}{section*.9}
+\contentsline {paragraph}{Chapter~\ref {ch:contribution}}{3}{section*.10}
+\contentsline {paragraph}{Chapter~\ref {ch:results}}{3}{section*.11}
+\contentsline {paragraph}{Chapter~\ref {ch:conclusion}}{3}{section*.12}
+\contentsline {chapter}{\numberline {2}Related Work}{5}{chapter.2}
+\contentsline {chapter}{\numberline {3}Background}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Software-Defined Networking}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Knowledge-Defined Networking}{10}{section.3.2}
+\contentsline {section}{\numberline {3.3}Routing}{10}{section.3.3}
+\contentsline {paragraph}{BGP}{11}{section*.13}
+\contentsline {paragraph}{OSPF}{11}{section*.14}
+\contentsline {section}{\numberline {3.4}Machine Learning}{11}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Deep Learning}{12}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}LSTM}{12}{subsection.3.4.2}
+\contentsline {chapter}{\numberline {4}Offloading Architecture}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Task Offloading Architecture and~\\Offloading Protocol}{15}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Offloading Architecture}{15}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Offloading Protocol}{17}{subsection.4.1.2}
+\contentsline {paragraph}{Abstract Syntax Notation}{18}{section*.15}
+\contentsline {paragraph}{OffloadRequest}{19}{section*.16}
+\contentsline {paragraph}{Response}{19}{section*.17}
+\contentsline {paragraph}{Message}{20}{section*.18}
+\contentsline {section}{\numberline {4.2}Path prediction via Deep Learning}{20}{section.4.2}
+\contentsline {paragraph}{Why Deep Learning?}{20}{section*.19}
+\contentsline {subsection}{\numberline {4.2.1}Dataset}{22}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Topology}{22}{subsubsection.4.2.1.1}
+\contentsline {subsubsection}{\numberline {4.2.1.2}Routing information}{23}{subsubsection.4.2.1.2}
+\contentsline {subsubsection}{\numberline {4.2.1.3}Router packet counter}{25}{subsubsection.4.2.1.3}
+\contentsline {subsubsection}{\numberline {4.2.1.4}Dataset Generation}{25}{subsubsection.4.2.1.4}
+\contentsline {subsection}{\numberline {4.2.2}Deep Learning Model}{27}{subsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.1}Input/Output modeling}{28}{subsubsection.4.2.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2.2}Neural Network Architecture}{29}{subsubsection.4.2.2.2}
+\contentsline {section}{\numberline {4.3}Implementation}{33}{section.4.3}
+\contentsline {chapter}{\numberline {5}Results}{35}{chapter.5}
+\contentsline {section}{\numberline {5.1}Learning from OSPF}{35}{section.5.1}
+\contentsline {section}{\numberline {5.2}Overwriting OSPF Routing}{38}{section.5.2}
+\contentsline {section}{\numberline {5.3}A critical scenario}{41}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusions and Research Directions}{43}{chapter.6}
+\contentsline {chapter}{\numberline {A}Protocol messages implementation}{45}{appendix.A}
+\contentsline {chapter}{\numberline {B}Configure mininet to run the Quagga routing suite}{49}{appendix.B}
+\contentsline {chapter}{Bibliography}{51}{appendix*.20}

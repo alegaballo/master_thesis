@@ -1,0 +1,89 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: tesi.aux
+A level-1 auxiliary file: dedication.aux
+A level-1 auxiliary file: acknowledgments.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: Introduction.aux
+A level-1 auxiliary file: RelatedWork.aux
+A level-1 auxiliary file: Background.aux
+A level-1 auxiliary file: Contribution.aux
+A level-1 auxiliary file: Results.aux
+A level-1 auxiliary file: Conclusions.aux
+A level-1 auxiliary file: glossary.aux
+A level-1 auxiliary file: appendix2.aux
+A level-1 auxiliary file: appendix1.aux
+The style file: abntex2-num.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Database file #1: abntex2-options.bib
+Database file #2: refs.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Warning--campo year vazio ou faltando em karpathy
+Warning--campo year vazio ou faltando em protobuf
+Warning--campo year vazio ou faltando em openflow
+Warning--campo year vazio ou faltando em caida
+Warning--campo year vazio ou faltando em topo_zoo
+Warning--campo year vazio ou faltando em mininext
+Warning--campo year vazio ou faltando em quagga
+Warning--campo year vazio ou faltando em ryu
+Warning--campo year vazio ou faltando em iperf
+Warning--campo year vazio ou faltando em keras
+Warning--campo year vazio ou faltando em tensorflow
++---------------------------------------------------------+
+| Estilo bibliográfico abntex2-num.bst versão v-1.9.6           |
+| Em caso de dúvidas ou problemas com este estilo procure |
+| http://www.abntex.net.br/                               |
++---------------------------------------------------------+
+You've used 49 entries,
+            6714 wiz_defined-function locations,
+            1469 strings with 17472 characters,
+and the built_in function-call counts, 44731 in all, are:
+= -- 4404
+> -- 1195
+< -- 249
++ -- 871
+- -- 350
+* -- 3013
+:= -- 5562
+add.period$ -- 184
+call.type$ -- 49
+change.case$ -- 556
+chr.to.int$ -- 97
+cite$ -- 59
+duplicate$ -- 2380
+empty$ -- 3000
+format.name$ -- 1867
+if$ -- 10878
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 844
+newline$ -- 240
+num.names$ -- 148
+pop$ -- 1225
+preamble$ -- 1
+purify$ -- 208
+quote$ -- 0
+skip$ -- 3380
+stack$ -- 1
+substring$ -- 1773
+swap$ -- 1090
+text.length$ -- 61
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 92
+warning$ -- 11
+while$ -- 277
+width$ -- 0
+write$ -- 666
+(There were 11 warnings)

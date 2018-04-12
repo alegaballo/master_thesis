@@ -1,0 +1,10 @@
+%!TEX root = tesi.tex
+\chapter{Conclusions and Research Directions}\label{ch:conclusion}
+
+In this work, we presented an architecture designed in support of mobile devices task and traffic offloading. Our architecture's aim has been to provide guidelines for task offloading protocol implementations; we prototyped our architecture within a local virtual network testbed based on Mininet.
+
+We focus our attention on a specific traffic offloading policy that leveraged deep learning to predict the best path towards a destination, increasing throughput and reducing perceived latency. Our results showed that despite some limitations, machine learning could be a valid alternative to traditional routing algorithms and can be leveraged to improve network performance. Our results also showed that cooperative routing can steer traffic with better performance than traditional methods, suggesting that applying machine learning in this context is an area worthy of further exploration. 
+
+Our work has some limitations that are not impossible to overcome: we noticed a prediction performance degradation with the increasing loss rate; we believe this is most likely due to our limited training dataset. We also disclose that the quality of our dataset is limited by constraints in both Mininet and the available computation capability. Another problem that needs to be addressed  is the scalability of this approach: training numerous deep learning models requires extensive computational power; being able to reduce the number of models to train would save time and make this system more scalable.
+
+As a future research direction, we suggest analyzing our method with a broader dataset and in different scenarios. Additionally, one could perform a deeper performance analysis by deploying a network that completely replaces OSPF with our system and collects measurements such as throughput and latency. Finally, one could explore more recent machine learning techniques, especially, reinforcement learning, which appear to be promising in solving decision problems.
