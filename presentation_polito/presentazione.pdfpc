@@ -1,0 +1,15 @@
+[file]
+presentazione.pdf
+[end_user_slide]
+24
+[notes]
+### 3
+Performance unaware
+Latency-sensitive applications### 10
+We implemented our own offloading policy with the aim of reducing latency by improving the path chosen to reach a destination### 13
+Learn from as many ospf configurations as possible and relate them with the traffic patterns### 15
+cross validation on a single target, then extend it to all the models### 20
+we compared the retransmission needed for the 2 approaches to complete a transmission in case of malfunctioning link### 21
+we compared the retransmission needed for the 2 approaches to complete a transmission in case of malfunctioning link
+Our system has a much lower retransmission rate, which is a significant improvement on the traditional behavior.### 22
+This work can still be further improved

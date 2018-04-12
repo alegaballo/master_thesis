@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  16 FEB 2018 15:20
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  8 APR 2018 10:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**presentazione.tex
+(./presentazione.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
@@ -1247,39 +1247,34 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MyArrow with sig. 'O{0pt}mmmO{out=150,in=210}' on line 86.
-.................................................
- (./main.aux)
-\openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 88.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 88.
+(./presentazione.aux)
+\openout1 = `presentazione.aux'.
 
-(/usr/share/texmf/tex/latex/tipa/t3cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 83.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 83.
+ (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    ... okay on input line 83.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1317,7 +1312,7 @@ LaTeX Font Info:    ... okay on input line 88.
 
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box77
-Package hyperref Info: Link coloring OFF on input line 88.
+Package hyperref Info: Link coloring OFF on input line 83.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1327,68 +1322,68 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count280
 )
-LaTeX Info: Redefining \ref on input line 88.
-LaTeX Info: Redefining \pageref on input line 88.
-LaTeX Info: Redefining \nameref on input line 88.
+LaTeX Info: Redefining \ref on input line 83.
+LaTeX Info: Redefining \pageref on input line 83.
+LaTeX Info: Redefining \nameref on input line 83.
 
-(./main.out) (./main.out)
+(./presentazione.out) (./presentazione.out)
 \@outlinefile=\write5
-\openout5 = `main.out'.
+\openout5 = `presentazione.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 88.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 83.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 88.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 83.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> EU1/lmr/m/n on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 88.
+(Font)                  OT1/cmss/m/n --> EU1/lmr/m/n on input line 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> EU1/FiraSansLight(0)/bx/n on input lin
-e 88.
+e 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  OT1/cmr/bx/n --> EU1/FiraSansLight(0)/bx/n on input lin
-e 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 88.
+e 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> EU1/FiraSansLight(0)/m/n on input line
- 88.
+ 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> EU1/FiraSansLight(0)/m/n on input lin
-e 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 88.
+e 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> EU1/FiraSansLight(0)/m/it on input lin
-e 88.
+e 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> EU1/FiraSansLight(0)/m/it on input li
-ne 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 88.
+ne 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> EU1/FiraMono(0)/m/n on input line 88.
+(Font)                  OT1/cmtt/m/n --> EU1/FiraMono(0)/m/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> EU1/FiraMono(0)/m/n on input line 88.
+(Font)                  OT1/cmtt/m/n --> EU1/FiraMono(0)/m/n on input line 83.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
 (Font)                  EU1/FiraSansLight(0)/m/n --> EU1/FiraSansLight(0)/bx/n 
-on input line 88.
+on input line 83.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  EU1/FiraSansLight(0)/m/it --> EU1/FiraSansLight(0)/bx/i
-t on input line 88.
+t on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> EU1/lmr/bx/n on input line 88.
+(Font)                  OT1/cmss/bx/n --> EU1/lmr/bx/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  EU1/FiraSansLight(0)/bx/n --> EU1/FiraSansLight(0)/bx/n
- on input line 88.
+ on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  EU1/FiraSansLight(0)/m/n --> EU1/FiraSansLight(0)/bx/n 
-on input line 88.
+on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  EU1/FiraSansLight(0)/m/it --> EU1/FiraSansLight(0)/bx/i
-t on input line 88.
+t on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  EU1/FiraMono(0)/m/n --> EU1/FiraMono(0)/bx/n on input l
-ine 88.
+ine 83.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
 ic-dictionary/translator-basic-dictionary-English.dict
@@ -1414,38 +1409,40 @@ Dictionary: translator-numbers-dictionary, Language: English
 orem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 88.
+LaTeX Info: Redefining \includegraphics on input line 83.
 \c@lstlisting=\count281
- (./main.nav)
-Invalid UTF-8 byte or sequence at line 89 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 89 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 89 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 89 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 89 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 89 replaced by U+FFFD.
-File: img/eurecom_logo.eps Graphic file (type eps)
 
-<img/eurecom_logo.eps>
-Overfull \vbox (21.9pt too high) detected at line 89
+(./presentazione.nav)
+File: img/politologo.png Graphic file (type QTm)
+ <use  "img/politologo.png" >
+Invalid UTF-8 byte or sequence at line 84 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 84 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 84 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 84 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 84 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 84 replaced by U+FFFD.
+File: img/slulogo1.eps Graphic file (type eps)
+ <img/slulogo1.eps>
+Overfull \vbox (21.9pt too high) detected at line 84
  []
 
 
-Overfull \vbox (15.63992pt too high) detected at line 89
+Overfull \vbox (15.63992pt too high) detected at line 84
  []
 
 [1
 
 ]
-File: img/delegation.pdf Graphic file (type QTm)
- <use  "img/delegation.pdf" > [2
+File: img/delegation.png Graphic file (type QTm)
+ <use  "img/delegation.png" > [2
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 108.
+LaTeX Font Info:    Try loading font information for U+msa on input line 102.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 108.
+LaTeX Font Info:    Try loading font information for U+msb on input line 102.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1456,157 +1453,98 @@ File: img/offloading.pdf Graphic file (type QTm)
 
 ] [4
 
-] [5
+] (./presentazione.toc) [5
 
-] [6
-
-] (./main.toc) [7
-
-] (./main.toc)
-[8
-
-] [9
+]
+(./presentazione.toc) [6
 
 ]
 File: img/off_sys_arch.pdf Graphic file (type QTm)
- <use  "img/off_sys_arch.pdf" > [10
+ <use  "img/off_sys_arch.pdf" > [7
 
-] (./main.toc) [11
+]
+(./presentazione.toc) [8
 
 ]
 File: img/protocol_sequence.pdf Graphic file (type QTm)
-
-<use  "img/protocol_sequence.pdf" >
-Overfull \hbox (14.31412pt too wide) in paragraph at lines 161--161
+ <use  "img/protocol_sequence.pdf" >
+Overfull \hbox (14.31412pt too wide) in paragraph at lines 145--145
  [][] 
  []
 
-[12
+[9
 
-] (./main.toc) [13
+] (./presentazione.toc) [10
 
-] [14
+] [11
 
-]
-File: img/dnn.pdf Graphic file (type QTm)
- <use  "img/dnn.pdf" > [15
-
-] [16
+] [12
 
 ]
 File: img/problem_model.pdf Graphic file (type QTm)
+ <use  "img/problem_model.pdf" >
+[13
 
-<use  "img/problem_model.pdf" > [17
-
-]
-File: img/prediction_flow.pdf Graphic file (type QTm)
- <use  "img/prediction_flow.pdf" > [18
-
-]
-[19
-
-]
-File: img/example.pdf Graphic file (type QTm)
- <use  "img/example.pdf" > [20
-
-] (./main.toc) [21
-
-] [22
-
-]
-File: img/network_arch.png Graphic file (type QTm)
-
-<use  "img/network_arch.png" >
-Overfull \vbox (2.5993pt too high) detected at line 226
- []
-
-[23
-
-] [24
-
-]
-File: img/packet_counter.pdf Graphic file (type QTm)
- <use  "img/packet_counter.pdf" > [25
-
-] [26
-
-] (./main.toc) [27
-
-]
-File: img/cross_validation.pdf Graphic file (type QTm)
-
-<use  "img/cross_validation.pdf" > [28
+] (./presentazione.toc) [14
 
 ]
 File: img/architecture_cmp.eps Graphic file (type eps)
- <img/architecture_cmp.eps> [29
+ <img/architecture_cmp.eps> [15
 
 ]
 File: img/timing_cmp.eps Graphic file (type eps)
 
-<img/timing_cmp.eps> [30
+<img/timing_cmp.eps> [16
 
-]
-File: img/normalization_acc_cmp.eps Graphic file (type eps)
- <img/normalization_acc_cmp.eps> [31
+] (./presentazione.toc) [17
 
-] (./main.toc)
-[32
+] [18
 
-] [33
-
-] (./main.toc) [34
-
-]
-File: img/validation_target.pdf Graphic file (type QTm)
- <use  "img/validation_target.pdf" > [35
+] (./presentazione.toc) [19
 
 ]
 File: img/path_comparison.pdf Graphic file (type QTm)
-
-<use  "img/path_comparison.pdf" >
-Overfull \vbox (8.44328pt too high) detected at line 312
+ <use  "img/path_comparison.pdf" >
+Overfull \vbox (16.93002pt too high) detected at line 197
  []
 
-[36
+[20
 
 ]
 File: img/prediction_cmp_bar.eps Graphic file (type eps)
- <img/prediction_cmp_bar.eps> [37
+ <img/prediction_cmp_bar.eps> [21
 
-] (./main.toc) [38
+] (./presentazione.toc) [22
 
-] [39
+] [23
 
-] [40
-
-] [41
+] [24
 
 ]
-[42
+[25
 
-] [43
+] [26
 
-] [44
+] [27
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `presentazione.vrb'.
 
- (./main.vrb) [45
+ (./presentazione.vrb) [28
 
-] [46
-
-
-] [47
+] [29
 
 
-] [48
+] [30
 
 
-] [49
+] [31
 
 
-] [50
+] [32
+
+
+] [33
 
 
 ]
@@ -1614,41 +1552,76 @@ File: img/simple_rnn.png Graphic file (type QTm)
 
 <use  "img/simple_rnn.png" >
 File: img/simple_lstm.png Graphic file (type QTm)
- <use  "img/simple_lstm.png" > [51
+ <use  "img/simple_lstm.png" > [34
 
 ]
 File: img/tanh.eps Graphic file (type eps)
  <img/tanh.eps>
-[52
+[35
 
 ]
-File: img/prediction_cmp_bar_ecmp.eps Graphic file (type eps)
- <img/prediction_cmp_bar_ecmp.eps> [53
+File: img/prediction_full_cmp_bar.eps Graphic file (type eps)
+ <img/prediction_full_cmp_bar.eps> [36
+
+]
+File: img/example.pdf Graphic file (type QTm)
+ <use  "img/example.pdf" > [37
+
+]
+[38
+
+]
+File: img/network_arch.png Graphic file (type QTm)
+ <use  "img/network_arch.png" >
+Overfull \vbox (2.5993pt too high) detected at line 349
+ []
+
+[39
+
+] [40
+
+]
+File: img/packet_counter.pdf Graphic file (type QTm)
+ <use  "img/packet_counter.pdf" > [41
+
+] [42
+
+]
+File: img/normalization_acc_cmp.eps Graphic file (type eps)
+
+<img/normalization_acc_cmp.eps> [43
+
+]
+File: img/prediction_flow.pdf Graphic file (type QTm)
+ <use  "img/prediction_flow.pdf" > [44
+
+]
+[45
 
 ]
 \tf@nav=\write6
-\openout6 = `main.nav'.
+\openout6 = `presentazione.nav'.
 
 \tf@toc=\write7
-\openout7 = `main.toc'.
+\openout7 = `presentazione.toc'.
 
 \tf@snm=\write8
-\openout8 = `main.snm'.
+\openout8 = `presentazione.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 455.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 455.
- (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 455.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 455.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 455.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 403.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 403.
+ (./presentazione.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 403.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 403.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 403.
  ) 
 Here is how much of TeX's memory you used:
- 37420 strings out of 493638
- 739519 string characters out of 6146796
- 750097 words of memory out of 5000000
- 40155 multiletter control sequences out of 15000+600000
- 16469 words of font info for 107 fonts, out of 8000000 for 9000
+ 37348 strings out of 493638
+ 738270 string characters out of 6146796
+ 749827 words of memory out of 5000000
+ 40097 multiletter control sequences out of 15000+600000
+ 13940 words of font info for 93 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 71i,13n,95p,10481b,932s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,13n,95p,10490b,932s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (53 pages).
+Output written on presentazione.pdf (45 pages).

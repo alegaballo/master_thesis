@@ -4,16 +4,19 @@
 \usetikzlibrary{tikzmark,decorations.pathreplacing,calc}
 \usepackage{listings}
 \title{An Architecture for Task and Traffic Offloading in Edge Computing via Deep Learning}
-\date{\today}
-%\date{February 16, 2018}
+%\date{\today}
+\date{April 9, 2018}
 \author{Alessandro Gaballo}
-\institute{Supervisor: Flavio Esposito - Saint Louis University}
+\institute{Supervisor: Flavio Esposito - Saint Louis University\\
+			Cosupervisor: Guido Marchetto - Politecnico di Torino}
 
 \setbeamertemplate{frametitle continuation}{\insertcontinuationcount}
 % logo of my university
 \titlegraphic{%
   \begin{picture}(0,0)
-    \put(290,-135){\makebox(0,0)[rt]{\includegraphics[width=2.5cm]{img/eurecom_logo}}}
+    \put(283,-145){\makebox(0,0)[rt]{\includegraphics[width=1.5cm]{img/politologo}}}
+    \put(290,-120){\makebox(0,0)[rt]{\includegraphics[width=2cm]{img/slulogo1}}}
+
   \end{picture}} 
  
 \AtBeginSection[]{
@@ -76,50 +79,40 @@
 \definecolor{colori}{RGB}{166,35,41}
 \definecolor{colorii}{RGB}{248,219,162}
 
-\NewDocumentCommand\MyArrow{O{0pt}mmmO{out=150,in=210}}
-{%
-\begin{tikzpicture}[overlay, remember picture]
-  \draw [->,thick,line width=4pt,#4]
-    ( $ ({pic cs:#3}|-{pic cs:#2}) + (-#1,1.3ex) $ ) to[#5]  
-    ( $ (pic cs:#3) + (-#1,0) $ );
-\end{tikzpicture}%
-}
 
 \begin{document}
 \maketitle
 \section*{Motivation}
   \begin{frame}{How many times have you delegated a task?}
-	\includegraphics[width=\textwidth]{img/delegation.pdf}  
+	\includegraphics[width=\textwidth]{img/delegation}  
   \end{frame}
   
-  \frame{\frametitle{What is task offloading?}
+  \frame{\frametitle{What is task offloading and how should it be done?}
   	\begin{columns}[totalwidth=\textwidth]
 	\begin{column}{0.65\textwidth}
 	  Task offloading is the process of transferring tasks to another platform. \\~\\
-  It is often adopted in the context of Mobile Edge Computing (MEC). \\~\\
-  The goal is to reduce power consumption and get results faster.
+	  There is no architecture describing the offloading mechanisms.\\~\\
+	  Currently used routing strategies, such as OSPF, are performance unaware.
 	\end{column}
-	\begin{column}{0.33\textwidth}  %%<--- here
+	\begin{column}{0.33\textwidth}
 	\centering	
 	\includegraphics[scale=0.4]{img/offloading.pdf}
 	\end{column}
 	\end{columns}
-
   }
-   \frame{\frametitle{How should tasks be offloaded?}
-	There is no architecture describing the offloading mechanisms.\\~\\
-	Currently used routing strategies, such as OSPF, are performance unaware.\\~\\OSPF computes the shortest path to a destination, without considering any performance indicator, which can be crucial in critical scenarios.
-  }  
+
   
-  \frame{\frametitle{What tools do we have?}
-	Recently Software-Defined Networking (SDN) has spreaded, with the idea of separating data and control plane. \\~\\
-	Knowledge-Defined Networking (KDN) is the idea of building a knowledge plane~(1) for the network and manage it accordingly.\\~\\
-	The combination of SDN \& KDN is a powerful tool for network management.\\~\\~\\
+  \frame{\frametitle{What tools do we have and what can we do?}
+	Recently the ideas of Software-Defined Networking (SDN) and Knowledge-Defined Networking (KDN)~[1] have spreaded.\\~\\
+
+	The combination of SDN \& KDN represents a powerful tool for network management.\\~\\
+	
+	In this work we design a task offloading architecture to address the complexity problem and leverage a network knowledge plane to support performance aware traffic steering. \\~\\~\\
 	 \begin{columns}[totalwidth=\textwidth]
 	\begin{column}{0.35\textwidth}
 	~
 	\end{column}
-	\begin{column}{0.63\textwidth}  %%<--- here
+	\begin{column}{0.63\textwidth}
 	
 	\scriptsize{[1] D. Clark, C. Partridge, J. Ramming, and J. Wroclawski. \\
 	\textbf{A knowledge plane for the internet.} \\
@@ -127,26 +120,17 @@
 	\end{column}
 	\end{columns}
   }
-  
-  \begin{frame}{What can we do?}
-	\begin{itemize}
-		\item Architecture definition to address the complexity problem
-		\item Knowledge Plane to support network management
-		\item Performance aware traffic steering
-	\end{itemize}
-  \end{frame}
-  \begin{frame}{Talk overview}
+\begin{frame}{Talk overview}
 	\tableofcontents[hideallsubsections]
-  \end{frame}
+\end{frame}
 \section{Offloading Architecture}
 \subsection{Architecture}
 	\mytoc
-	\frame{\frametitle{What is an architecture?}
-	In Computer Science and Engineering, an architecture describes the necessary and sufficient set of invariances to achieve a goal. \\~\\The architecture is also responsible of separating the different functionalities by identifying who does what.}
 	\begin{frame}{Our contribution: offloading architecture}
 		\centering
 		\includegraphics[scale=0.5]{img/off_sys_arch.pdf}
 	\end{frame}
+
 \subsection{Task Offloading Protocol}
 	\mytoc
 	\begin{frame}{Our contribution: task offloading protocol}
@@ -159,21 +143,18 @@
 		\item offloading logic (e.g. nearest server)
 		\end{itemize}
 	\end{frame}
+
 \subsection{Path Prediction via Deep Learning}	
-\subsubsection{Overview}
 	\mytoc
 	\begin{frame}{Our contribution: path prediction via deep learning}
-	Machine learning is a powerful tool for inference tasks
+	Deep learning is a powerful tool for inference tasks
 	\\~\\
 	\centering	
 	{\Huge$\Downarrow$}
 	\flushleft
 	\textbf{IDEA:} Routing problem as inference problem
 	\end{frame}
-	\frame{\frametitle{How to determine the best path?}Use traffic pattern as performance indicator.\\Perform path prediction with machine learning.\\~\\	
-\centering
-	\includegraphics[width=\textwidth]{img/dnn.pdf}	
-	}	
+	
 	\frame{\frametitle{Long Short-Term Memory (LSTM)}
 	LSTM is an evolution of recurrent neural networks (RNNs) capable of memorizing data temporal patterns\\~\\
 	\textbf{Objective:}\\Learn how traffic patterns evolve and route accordingly
@@ -183,102 +164,11 @@
 	\centering
 	\includegraphics[width=\textwidth]{img/problem_model}
 	}
-	\frame{\frametitle{Our prediction model}	
-	To use a LSTM we must define the model input and output.\\
-	~\\
-	\begin{columns}[totalwidth=\textwidth]
-	\begin{column}{0.49\textwidth}
-	\textbf{Input:}\\~\\
-	Incoming packets count \\on each router\\~\\
-	\end{column}
-	\begin{column}{0.49\textwidth}  %%<--- here
-	\textbf{Output:}\\~\\
-	One-hot encoded vector \\with the next hop in the path\\~\\
-\end{column}
-\end{columns}
-	\centering
-	\includegraphics[width=\textwidth]{img/prediction_flow}
-	}
-	\frame{\frametitle{Path prediction process}Training a single model for all the targets in the topology is not feasible.\\~\\
-	\textbf{SOLUTION}: train a model for all the source-destination pairs in the network.\\~\\
-	To compute the whole path we iteratively use the model of the predicted next hop until the destination is reached.}
-	\frame{\frametitle{Example: computing the path from R1 to R4 }	
-	\includegraphics[width=\textwidth]{img/example.pdf}\\
-	Step 1 - model = R1-R4 --> next hop = R2\\
-	Step 2 - model = R2-R4 --> next hop = R3\\
-	Step 3 - model = R3-R4 --> next hop = R4 \\~\\
-	Computed path: R1 - R2 - R3 - R4\\}
-	\subsubsection{Dataset}
-	\mytoc
-	\frame{\frametitle{Dataset generation}
-	To train our model we need:
-	\begin{itemize}
-	\item network topology
-	\item routing algorithm
-	\item packet counter
-\end{itemize}
-	We could not find any public dataset suited to our needs so we create our own.
-	}
-	\frame{\frametitle{Network topology}
-	We create this topology using MiniNeXt
-	\includegraphics[width=\textwidth]{img/network_arch}\\ 
-	\tiny{\textit{* All switches are connected to the SDN controller}}	
-	}
-	\frame{\frametitle{Routing algorithm}
-	To run routing algorithms on MiniNeXt nodes we use Quagga.\\
-	Quagga is a routing suite providing different routing algorithms (e.g OSPF, IS-IS, RIP).\\~\\
-	We choose Open Shortest Path First (OSPF) because of its wide adoption as iBGP.\\
-	}
-	\frame{\frametitle{Packet counter}
-	The SDN controller --Ryu-- is responsible of retrieving the packet count.\\~\\
-	\includegraphics[width=\textwidth]{img/packet_counter.pdf}
-	}
-		
-	\frame{\frametitle{Dataset generation steps}
-		%\MyArrow[1.3em]{start}{end}{line width=1pt}[out=150, in=210]	
-	For an arbitrary number of times:
-	\begin{enumerate}
-	\item\label{p1} Initialize the topology with different link speed
-	\item Simulate traffic between routers
-	\item Save packet count and routing tables
-	\item Stop the traffic simulation and tear down the network
-	\item Back to step~\ref{p1}
-	% ADD ARROW FROM THE LAST TO THE FIRST BULLET
-	\end{enumerate}
-	}
 	
-%	\subsubsection{LSTM Architecture}
-%	\mytoc
-%	\frame{\frametitle{How to decide the LSTM structure?}
-%	The number of layers and neurons cannot be decided a priori.
-%	Cross validation is a powerful technique to determine the model parameters.\\~\\
-%	\includegraphics[width=\textwidth]{img/cross_validation}
-%	}
-%	\frame{\frametitle{Accuracy: more neurons or more layers?}
-%	Neurons affect performance more than hidden layers\\~\\	
-%	\includegraphics[width=\textwidth]{img/architecture_cmp}	
-%	}
-%	
-%	\frame{\frametitle{Finding the trade-off: training time}
-%	\includegraphics[width=\textwidth]{img/timing_cmp}	\\~\\
-%	\tiny{\textit{* Accuracy shown only for models with 128 neurons}}	
-%	}
-%	\frame{\frametitle{Tuning the network: input normalization}
-%	\includegraphics[width=\textwidth]{img/normalization_acc_cmp}	\\~\\
-%	\tiny{\textit{* Accuracy shown only for models with 128 neurons}}	
-%	}
-	
-
-
 \section{Results}
 	\subsection{LSTM architecture}
 	\mytoc
 
-	\frame{\frametitle{How to decide the LSTM structure?}
-	The number of layers and neurons cannot be decided a priori.
-	Cross validation is a powerful technique to determine the model parameters.\\~\\
-	\includegraphics[width=\textwidth]{img/cross_validation.pdf}
-	}
 	\frame{\frametitle{Accuracy: more neurons or more layers?}
 	Neurons affect performance more than hidden layers\\~\\	
 	\includegraphics[width=\textwidth]{img/architecture_cmp}	
@@ -288,10 +178,7 @@
 	\includegraphics[width=\textwidth]{img/timing_cmp}	\\~\\
 	\tiny{\textit{* Accuracy shown only for models with 128 neurons}}	
 	}
-	\frame{\frametitle{Tuning the network: input normalization}
-	\includegraphics[width=\textwidth]{img/normalization_acc_cmp}	\\~\\
-	\tiny{\textit{* Accuracy shown only for models with 128 neurons}}	
-	}	
+
 	
 	\subsection{Emulating OSPF}
 	\mytoc
@@ -300,37 +187,24 @@
 
 	\subsection{Performance aware routing}
 	\mytoc
-	\frame{\frametitle{Is the system performance aware?}
-	%We want to investigate the system ability to detect and adapt to network anomalies.\\
-	We select a target and analyze, through an example, how our system behaves differently from OSPF in case of link loss.\\~\\
+	\frame{\frametitle{The LSTM system exhibits a dynamic behavior}
+	We select a target and analyze how our system behaves differently from OSPF in case of link loss
+	
 	\centering
-	\includegraphics[scale=0.19]{img/validation_target}
+	\includegraphics[width=0.85\textwidth]{img/path_comparison}\\
+	\flushleft	
+	The LSTM path predictor suggests multiple paths
 	}
-	\frame{\frametitle{The system exhibits a dynamic behavior}
-	The LSTM path predictor is able to suggest multiple paths\\~\\
-	\includegraphics[width=\textwidth]{img/path_comparison}	
-	}
+
 	\frame{\frametitle{LSTMs outrun current approaches in terms of retransmission}
 	In case of malfunctioning links, our system has a lower retransmission percentage then traditional routing\\~\\
 	\includegraphics[width=\textwidth]{img/prediction_cmp_bar}\\
 	\tiny{\textit{OSPF = Open Shortest-Path First, LSTM = Long Short-Term Memory
 }	}}
 
-\section{Limitations}
+\section{Future work}
 	\mytoc
-	\begin{frame}{Limitations}
-	Testbed:
-	\begin{itemize}
-	\item The functionalities of Mininet are limited
-	\item Higher link loss decreases the prediction efficiency
-	\end{itemize}
-	~\\
-	Computation:	
-	\begin{itemize}
-	\item The number of models to train is big
-	\item The trained models occupy GBs of memory
-	\end{itemize}
-	\end{frame}
+	
 	\frame{\frametitle{Future work}
 	Current results are encouraging, therefore  we want to further investigate the problem by:
 	\begin{itemize}
@@ -359,7 +233,6 @@
   {\small Alessandro Gaballo}
 \end{frame}
 
-%backup slides
 %backup slides
 \begin{frame}[allowframebreaks, noframenumbering, fragile]{Protocol}
 \centering
@@ -450,6 +323,81 @@ message Message{
 \includegraphics[width=\textwidth]{img/tanh.eps}
 \end{frame}
 \begin{frame}[noframenumbering]{Comparing with other techniques}
-\includegraphics[width=\textwidth]{img/prediction_cmp_bar_ecmp}
+\includegraphics[width=\textwidth]{img/prediction_full_cmp_bar}
+\end{frame}
+\begin{frame}{Example: computing the path from R1 to R4}	
+\includegraphics[width=\textwidth]{img/example.pdf}\\
+Step 1 - model = R1-R4 --> next hop = R2\\
+Step 2 - model = R2-R4 --> next hop = R3\\
+Step 3 - model = R3-R4 --> next hop = R4 \\~\\
+Computed path: R1 - R2 - R3 - R4\\
+\end{frame}
+\begin{frame}{Dataset generation}
+	To train our model we need:
+	\begin{itemize}
+	\item network topology
+	\item routing algorithm
+	\item packet counter
+\end{itemize}
+	We could not find any public dataset suited to our needs so we create our own.
+\end{frame}
+
+\begin{frame}{Network topology}
+	We create this topology using MiniNeXt
+	\includegraphics[width=\textwidth]{img/network_arch}\\ 
+	\tiny{\textit{* All switches are connected to the SDN controller}}	
+\end{frame}
+\begin{frame}{Routing algorithm}
+	To run routing algorithms on MiniNeXt nodes we use Quagga.\\
+	Quagga is a routing suite providing different routing algorithms (e.g OSPF, IS-IS, RIP).\\~\\
+	We choose Open Shortest Path First (OSPF) because of its wide adoption as iBGP.\\
+\end{frame}
+\begin{frame}{Packet counter}
+	The SDN controller --Ryu-- is responsible of retrieving the packet count.\\~\\
+	\includegraphics[width=\textwidth]{img/packet_counter.pdf}
+\end{frame}
+\begin{frame}{Dataset generation steps}
+	For an arbitrary number of times:
+	\begin{enumerate}
+	\item\label{p1} Initialize the topology with different link speed
+	\item Simulate traffic between routers
+	\item Save packet count and routing tables
+	\item Stop the traffic simulation and tear down the network
+	\item Back to step~\ref{p1}
+	\end{enumerate}
+\end{frame}
+\begin{frame}{Tuning the network: input normalization}
+\includegraphics[width=\textwidth]{img/normalization_acc_cmp}	\\~\\
+\tiny{\textit{* Accuracy shown only for models with 128 neurons}}	
+\end{frame}
+	
+\begin{frame}{Our prediction model}	
+	To use a LSTM we must define the model input and output.\\
+	~\\
+	\begin{columns}[totalwidth=\textwidth]
+	\begin{column}{0.49\textwidth}
+	\textbf{Input:}\\~\\
+	Incoming packets count \\on each router\\~\\
+	\end{column}
+	\begin{column}{0.49\textwidth}  %%<--- here
+	\textbf{Output:}\\~\\
+	One-hot encoded vector \\with the next hop in the path\\~\\
+\end{column}
+\end{columns}
+	\centering
+	\includegraphics[width=\textwidth]{img/prediction_flow}
+\end{frame}
+\begin{frame}{Limitations}
+	Testbed:
+	\begin{itemize}
+	\item The functionalities of Mininet are limited
+	\item Higher link loss decreases the prediction efficiency
+	\end{itemize}
+	~\\
+	Computation:	
+	\begin{itemize}
+	\item The number of models to train is big
+	\item The trained models occupy GBs of memory
+	\end{itemize}
 \end{frame}
 \end{document}
