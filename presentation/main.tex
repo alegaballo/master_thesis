@@ -1,21 +1,32 @@
 \documentclass{beamer}
 \usetheme[sectionpage=none, progressbar=frametitle, numbering=none]{metropolis}        % Use metropolis theme
 \usepackage{tikz}
+\usepackage{fixltx2e}
 \usetikzlibrary{tikzmark,decorations.pathreplacing,calc}
 \usepackage{listings}
-\title{An Architecture for Task and Traffic Offloading in Edge Computing via Deep Learning}
-\date{\today}
+\setbeamertemplate{footnote}{%
+	\parindent 0em\noindent%
+	\raggedright
+	\usebeamercolor{footnote}\hbox to 0.6em{\hfil\insertfootnotemark}\insertfootnotetext\par\hfil%
+	}
+\title{An Architecture for Steering Traffic and Computations
+via Deep Learning in Challenged Edge Networks}
+% \date{\today}
+\date{October 11\textsuperscript{th}, 2019}
 %\date{February 16, 2018}
-\author{Alessandro Gaballo}
-\institute{Supervisor: Flavio Esposito - Saint Louis University}
-
+\author{Alessandro Gaballo, Matteo Flocco, Flavio Esposito, Guido Marchetto}
+\institute{Saint Louis University, Politecnico di Torino\par~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\\tiny{\textit{Invited Paper}}}
 \setbeamertemplate{frametitle continuation}{\insertcontinuationcount}
 % logo of my university
 \titlegraphic{%
   \begin{picture}(0,0)
-    \put(290,-135){\makebox(0,0)[rt]{\includegraphics[width=2.5cm]{img/eurecom_logo}}}
+	\put(310,-150){\makebox(0,0)[rt]{\includegraphics[width=2.cm]{img/slu_logo}}
+	}
+  \end{picture}
+  \begin{picture}(0,0)
+	\put(230,-155){\makebox(0,0)[rt]{\includegraphics[width=2.cm]{img/politologo}}
+	}
   \end{picture}} 
- 
 \AtBeginSection[]{
 %\frame{\sectionpage}
 }

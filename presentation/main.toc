@@ -1,4 +1,3 @@
-\beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {2}{Offloading Architecture}{8}{0}{1}
 \beamer@subsectionintoc {2}{1}{Architecture}{8}{0}{1}
 \beamer@subsectionintoc {2}{2}{Task Offloading Protocol}{11}{0}{1}
